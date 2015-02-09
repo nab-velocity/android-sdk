@@ -1,0 +1,313 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#DDDDDD"
+    tools:context="com.example.velocitysample.VelocityMainActivity" 
+    android:orientation="vertical">
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" >
+      <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            
+     <CheckBox  
+        android:id="@+id/checkTestMode"  
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:layout_alignParentLeft="true"  
+        android:layout_alignParentTop="true"
+        android:textColor="#000000"  
+        android:text="Enable Test mode" />  
+            
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                 android:text="Transaction Name" />
+
+         <Spinner
+               android:id="@+id/transactionNameId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:entries="@array/TransactionName_arrays"
+               android:prompt="@string/TransactionName_prompt"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Card holder name" />
+
+            <EditText
+                android:id="@+id/cardHolderName"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Street" />
+
+            <EditText
+                android:id="@+id/street"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="City" />
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="State" />
+         <Spinner
+               android:id="@+id/spinnerState"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:entries="@array/state_arrays"
+               android:prompt="@string/state_prompt" />
+          <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Zip" />
+
+            <EditText
+                android:id="@+id/zipId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+           <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Country" />
+
+            <EditText
+                android:id="@+id/countryId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Email" />
+
+            <EditText
+                android:id="@+id/emailId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Phone" />
+
+            <EditText
+                android:id="@+id/phoneId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Amount($)"/>
+
+            <EditText
+                android:id="@+id/amountId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Amount for adjust" />
+
+            <EditText
+                android:id="@+id/amountAdjustId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Card Type" />
+              <Spinner
+               android:id="@+id/cardTypeId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:entries="@array/cardType_arrays"
+               android:prompt="@string/cardType_prompt" />
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Credit Card Number:" />
+
+            <EditText
+                android:id="@+id/creditCardId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                 android:text="Currency code" />
+
+         <Spinner
+               android:id="@+id/currencyCodeId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:entries="@array/CurrencyCode_arrays"
+               android:prompt="@string/CurrencyCode_prompt"/>
+         
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="CVC:" />
+
+            <EditText
+                android:id="@+id/cvcId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Employee/Customer Id" />
+
+            <EditText
+                android:id="@+id/employeeId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+             
+             
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Expiry Date:" />
+            <Spinner
+               android:id="@+id/monthId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:entries="@array/month_arrays"
+               android:prompt="@string/month_prompt"/>
+            <Spinner
+               android:id="@+id/yearId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:entries="@array/year_arrays"
+               android:prompt="@string/year_prompt" />
+          <Button
+                android:id="@+id/button1"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="12dp"
+                 android:gravity="center"
+                android:onClick="onProcessPaymentButton"
+                android:text="Process Payment"
+                android:textSize="22dp" />
+        </LinearLayout>
+    </ScrollView>
+       
+</LinearLayout>
