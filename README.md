@@ -212,6 +212,7 @@ This class has the following main attributes with its name and data-type.<br/>
      41.  goodsType - String     <br/>
      42.  invoiceNumber - String     <br/>
      43.  orderNumber - String      <br/>
+     44.  customerId-String  <br/>
 <h2> 4.Download  the Eclipse IDE</h2><br/>
    1. Reference-https://eclipse.org/downloads/<br/>   
 <h2>5. Deployment Instructions for Android-SDK and Velocity Sample Android  Application </h2><br/>
