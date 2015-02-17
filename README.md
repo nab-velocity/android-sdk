@@ -212,7 +212,8 @@ This class has the following main attributes with its name and data-type.<br/>
      41.  goodsType - String     <br/>
      42.  invoiceNumber - String     <br/>
      43.  orderNumber - String      <br/>
-     
+<h2> 4.Download  the Eclipse IDE</h2><br/>
+   1. Reference-https://eclipse.org/downloads/<br/>   
 <h2>4. Deployment Instructions for Android-SDK and Velocity Sample Android  Application </h2><br/>
 
 <b>4.1 Android SDK</b> <br/>
@@ -228,7 +229,7 @@ This class has the following main attributes with its name and data-type.<br/>
  1. Find the sample Android application file  <b>VelocityCardSample.apk </b> inside the folder  velocityCardSample/bin/<br/>
 
  2. install <b> VelocityCardSample.apk </b> file on the  device. <br/>
- 3. click the install file <br/>
+ 3. click the install file. <br/>
  
  
 
