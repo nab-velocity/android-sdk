@@ -217,7 +217,9 @@ This class has the following main attributes with its name and data-type.<br/>
 <h2>5. Deployment Instructions for Android-SDK and Velocity Sample Android  Application </h2><br/>
 
 <b>5.1 Android SDK</b> <br/>
-1.Two jar <b>axis-1.4.jar</b>  <b>velocitylibrary.jar </b><br/>
+
+ 1.Two jar <b>axis-1.4.jar</b> and  <b>velocitylibrary.jar </b><br/>
+
  <b> 5.2 How to use the jar file with Eclipse IDE</b><br/>
  1.To use a Java library (JAR file) inside your Android project<br/>
  2. you can simple copy the JAR file into the folder called libs in your application.<br/>
