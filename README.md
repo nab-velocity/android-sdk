@@ -45,7 +45,7 @@ The method is responsible for the invocation of verify operation on the Velocity
 @returnType  <b>VelocityResponse</b>  <br/>
     <b>Sample code</b><br/> 
        1.Request a createCardToken() method from API .<br/> 
-        VelocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);<br/>
+      VelocityResponse  velocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);<br/>
        2.Get the success or Error response from API.<br/> 
        
           if(velocityResponse!=null){ 
@@ -115,7 +115,7 @@ The method is responsible for the invocation of authorize operation on the Veloc
 @returnType  <b>VelocityResponse</b>  <br/>  
    <b>Sample code</b><br/> 
        1.Request a authorizeToken() method from API .<br/> 
-        VelocityResponse=velocityProcessor.authorizeToken(velocityPaymentTransaction);<br/>
+       VelocityResponse velocityResponse=velocityProcessor.authorizeToken(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
           if(velocityResponse!=null){ 
@@ -191,7 +191,7 @@ VelocityPaymentTransaction <br/>
 @returnType  <b>VelocityResponse</b>  <br/>  
      <b>Sample code</b><br/> 
        1.Request a authAndCapture() method from API .<br/> 
-        VelocityResponse=velocityProcessor.authAndCapture(velocityPaymentTransaction);<br/>
+       VelocityResponse velocityResponse=velocityProcessor.authAndCapture(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/> 
        
           if(velocityResponse!=null){  
@@ -222,7 +222,7 @@ The method is responsible for the invocation of capture operation on the Velocit
 
 <b>Sample code</b><br/> 
        1.Request a capture() method from API .<br/> 
-        VelocityResponse=velocityProcessor.capture(velocityPaymentTransaction);<br/>
+       VelocityResponse velocityResponse=velocityProcessor.capture(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
           if(velocityResponse!=null){  
@@ -249,7 +249,7 @@ The method is responsible for the invocation of undo operation on the Velocity R
    @returnType  <b>VelocityResponse</b>  <br/> 
    <b>Sample code</b><br/> 
        1.Request a undo() method from API .<br/> 
-        VelocityResponse=velocityProcessor.undo(velocityPaymentTransaction);<br/>
+       VelocityResponse velocityResponse=velocityProcessor.undo(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
           if(velocityResponse!=null){   
