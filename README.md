@@ -46,7 +46,8 @@ The method is responsible for the invocation of verify operation on the Velocity
     <b>Sample code</b><br/> 
        1.Request a createCardToken() method from API .<br/> 
         VelocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);<br/>
-       2.Get the success or Error response from API.<br/>  
+       2.Get the success or Error response from API.<br/> 
+       
           if(velocityResponse!=null){ <br/>
 		    	//Here get the successful status then show the corresponding message.<br/>
 				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ <br/>
@@ -191,7 +192,8 @@ VelocityPaymentTransaction <br/>
      <b>Sample code</b><br/> 
        1.Request a authAndCapture() method from API .<br/> 
         VelocityResponse=velocityProcessor.authAndCapture(velocityPaymentTransaction);<br/>
-       2.Get the success or Error response 	from API.<br/>  
+       2.Get the success or Error response 	from API.<br/> 
+       
           if(velocityResponse!=null){  <br/>
 		    	//Here get the successful status then show the corresponding message. <br/>
 				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ <br/>
@@ -223,6 +225,7 @@ The method is responsible for the invocation of capture operation on the Velocit
        1.Request a capture() method from API .<br/> 
         VelocityResponse=velocityProcessor.capture(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
+       
           if(velocityResponse!=null){  <br/>
 		    	//Here get the successful status then show the corresponding message. <br/>
 				 if(velocityResponse.getBankcardCaptureResponse()!=null && velocityResponse.getBankcardCaptureResponse().getStatus()!=null){  <br/>
@@ -251,6 +254,7 @@ The method is responsible for the invocation of undo operation on the Velocity R
        1.Request a undo() method from API .<br/> 
         VelocityResponse=velocityProcessor.undo(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
+       
           if(velocityResponse!=null){   <br/>
 		    	//Here get the successful status then show the corresponding message. <br/>
 				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){   <br/>
@@ -281,6 +285,7 @@ The method is responsible for the invocation of adjust operation on the Velocity
        1.Request a adjust() method from API .<br/> 
         VelocityResponse velocityResponse=velocityProcessor.adjust(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
+       
           if(velocityResponse!=null){  <br/>
 		    	//Here get the successful status then show the corresponding message.  <br/>
 				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){  <br/>
@@ -311,6 +316,7 @@ The method is responsible for the invocation of returnById operation on the Velo
        1.Request a returnById() method from API .<br/> 
         VelocityResponse velocityResponse=velocityProcessor.returnById(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
+       
           if(velocityResponse!=null){  <br/>
 		    	//Here get the successful status then show the corresponding message.  <br/>
 				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){  <br/>
@@ -378,6 +384,7 @@ The method is responsible for the invocation of returnUnLinked operation on the 
        1.Request a returnUnLinked() method from API .<br/> 
         VelocityResponse velocityResponse=velocityProcessor.returnUnLinked(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
+       
           if(velocityResponse!=null){   <br/>
 		    	//Here get the successful status then show the corresponding message.   <br/>
 				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){   <br/>
