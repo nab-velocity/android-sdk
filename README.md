@@ -67,7 +67,7 @@ The method is responsible for the invocation of authorize operation on the Veloc
 <b>public VelocityResponse authorizeToken(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-               1.cardType - String     <br/>
+            1.cardType - String     <br/>
 			   2.cardholderName - String     <br/>
                3.panNumber-String   <br/>
                4.expiryDate - String   <br/>
@@ -83,15 +83,15 @@ The method is responsible for the invocation of authorize operation on the Veloc
 			   14.amount - String       <br/>
                15.currencyCode - String       <br/> 
                16.customerPresent - String     <br/>
-               17. employeeId - String     <br/>
-               18.entryMode - String      <br/>
-	           19.industryType - String   <br/>
+               17. partialShipment - boolean   <br/>
+               18.signatureCaptured - boolean    <br/>
+	           19.quasiCash - boolean    <br/>
                20.email - String   <br/>
 			   21.transactionDateTime - String   <br/>
 			   22.city -String <br/>
-			   23. state - String     <br/>
+			   23.partialApprovalCapable-String <br/>
                24.country - String     <br/>
-               25.customerPresent - String     <br/>
+               25.tipAmount - String   <br/>
                26.employeeId - String     <br/>
                27.entryMode - String      <br/>
 	           28.industryType - String   <br/>
@@ -105,11 +105,6 @@ The method is responsible for the invocation of authorize operation on the Veloc
                36.invoiceNumber - String     <br/>
                37.orderNumber - String      <br/>
 	           38.FeeAmount - String   <br/>
-               39.tipAmount - String   <br/>
-               40.partialApprovalCapable - String   <br/>
-               41.quasiCash - boolean    <br/>
-               42.signatureCaptured - boolean    <br/>
-               43.partialShipment - boolean   <br/>
     
      
 @returnType  <b>VelocityResponse</b>  <br/>  
@@ -141,7 +136,7 @@ The method is responsible for the invocation of authorizeAndCapture operation on
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorizeAndCapture request 
 VelocityPaymentTransaction <br/>
-              1. cardType - String     <br/>
+             1. cardType - String     <br/>
 			  2. cardholderName - String     <br/>
               3.panNumber-String   <br/>
               4.expiryDate - String   <br/>
@@ -163,12 +158,12 @@ VelocityPaymentTransaction <br/>
               20. email - String   <br/>
 			  21. transactionDateTime - String   <br/>
 			  22. city -String <br/>
-			  23. state - String     <br/>
+			  23. partialShipment - boolean   <br/>
               24.country - String     <br/>
-              25.customerPresent - String     <br/>
-              26.employeeId - String     <br/>
-              27. entryMode - String      <br/>
-	          28.industryType - String   <br/>
+              25.signatureCaptured - boolean    <br/>
+              26.tipAmount - String   <br/>
+              27. quasiCash - boolean    <br/>
+	          28.partialApprovalCapable - String   <br/>
               29. countryCode - String     <br/>
               30. businnessName - String   <br/>
               31.comment - String    <br/>
@@ -179,11 +174,8 @@ VelocityPaymentTransaction <br/>
               36.invoiceNumber - String     <br/>
               37. orderNumber - String      <br/>
 	          38.FeeAmount - String   <br/>
-              39. tipAmount - String   <br/>
-              40. partialApprovalCapable - String   <br/>
-              41.quasiCash - boolean    <br/>
-              42.signatureCaptured - boolean    <br/>
-              43.partialShipment - boolean   <br/>
+              39.transactionId-String <br/> 
+  
 
 
  
@@ -332,7 +324,7 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 <b> public VelocityResponse returnUnLinked(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the returnUnlinked request VelocityPaymentTransaction<br/>
-            1. cardType - String     <br/>
+             1. cardType - String     <br/>
 			2. cardholderName - String     <br/>
             3.  panNumber-String   <br/>
             4.   expiryDate - String   <br/>
@@ -353,11 +345,11 @@ The method is responsible for the invocation of returnUnLinked operation on the 
             19.   email - String   <br/>
 			20.   transactionDateTime - String   <br/>
 			21.   city -String <br/>
-			22.   state - String     <br/>
+			22.   quasiCash - boolean    <br/>
             23.  country - String     <br/>
-            24.  customerPresent - String     <br/>
-            25.  employeeId - String     <br/>
-            26.  entryMode - String      <br/
+            24. transactionId- String <br/>
+            25.  signatureCaptured - boolean    <br/>
+            26.  partialShipment - boolean   <br/>
             27.  countryCode - String     <br/>
             28.  businnessName - String   <br/>
             29. comment - String    <br/>
@@ -370,9 +362,6 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 	        36. FeeAmount - String   <br/>
             37. tipAmount - String   <br/>
             38. partialApprovalCapable - String   <br/>
-            39. quasiCash - boolean    <br/>
-            40. signatureCaptured - boolean    <br/>
-            41.partialShipment - boolean   <br/>
 
 @returnType  <b>VelocityResponse</b>  <br/> 
 <b>Sample code</b><br/> 
