@@ -116,8 +116,11 @@ The method is responsible for the invocation of authorize operation on the Veloc
        1.Request a authorizeToken() method from API .<br/> 
         VelocityResponse=velocityProcessor.authorizeToken(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
+       
           if(velocityResponse!=null){ <br/>
+          
 		    	//Here get the successful status then show the corresponding message.<br/>
+		    	
 				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ <br/>
 				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); <br/>
 
@@ -208,10 +211,12 @@ VelocityPaymentTransaction <br/>
 The method is responsible for the invocation of capture operation on the Velocity REST server.<br/>
 <b> public VelocityResponse capture(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
-@parameter <b>velocityPaymentTransaction </b> - holds the values for the capture request VelocityPaymentTransaction <br/>
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the capture request VelocityPaymentTransaction.<br/>
+
            1.transactionId - String <br/>
            2.tipAmount - String  <br/>
-		   3. amount - String   <br/> 
+           3. amount - String   <br/> 
+           
 @returnType  <b>VelocityResponse</b>  <br/> 
 
 <b>Sample code</b><br/> 
