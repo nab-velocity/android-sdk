@@ -45,12 +45,12 @@ The method is responsible for the invocation of verify operation on the Velocity
 @returnType  <b>VelocityResponse</b>  <br/>
     <b>Sample code</b><br/> 
        1.Request a createCardToken() method from API .<br/> 
-        VelocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);
+        VelocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);<br/>
        2.Get the success or Error response from API.<br/>  
-          if(velocityResponse!=null){ 
+          if(velocityResponse!=null){ <br/>
 		    	//Here get the successful status then show the corresponding message.<br/>
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
-				     Log.i("VelocityProcessor", "Created card Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ <br/>
+				     Log.i("VelocityProcessor", "Created card Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); <br/>
 
 				   // TODO your business logic to complete payment...
 
