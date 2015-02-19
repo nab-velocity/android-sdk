@@ -45,22 +45,22 @@ The method is responsible for the invocation of verify operation on the Velocity
 @returnType  <b>VelocityResponse</b>  <br/>
     <b>Sample code</b><br/> 
        1.Request a createCardToken() method from API .<br/> 
-        VelocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);<br/>
+        VelocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);
        2.Get the success or Error response from API.<br/>  
-          if(velocityResponse!=null){ <br/>
+          if(velocityResponse!=null){ 
 		    	//Here get the successful status then show the corresponding message.<br/>
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ <br/>
-				     Log.i("VelocityProcessor", "Created card Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); <br/>
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Created card Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
 
 				   // TODO your business logic to complete payment...
 
-				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ <br/>
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
 				 
-				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); <br/>
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); 
 
 				   // TODO your business logic to complete payment...
 				}
-       }<br/>
+       }
 <h2>1.2 authorizeToken(...) </h2><br/>
 The method is responsible for the invocation of authorize operation on the Velocity REST server.<br/>
 <b>public VelocityResponse authorizeToken(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
