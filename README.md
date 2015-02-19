@@ -48,10 +48,10 @@ The method is responsible for the invocation of verify operation on the Velocity
         VelocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);<br/>
        2.Get the success or Error response from API.<br/> 
        
-          if(velocityResponse!=null){ <br/>
-		    	//Here get the successful status then show the corresponding message.<br/>
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ <br/>
-				     Log.i("VelocityProcessor", "Created card Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); <br/>
+          if(velocityResponse!=null){ 
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Created card Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
 
 				   // TODO your business logic to complete payment...
 
@@ -118,22 +118,22 @@ The method is responsible for the invocation of authorize operation on the Veloc
         VelocityResponse=velocityProcessor.authorizeToken(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
-          if(velocityResponse!=null){ <br/>
+          if(velocityResponse!=null){ 
           
-		    	//Here get the successful status then show the corresponding message.<br/>
+		    	//Here get the successful status then show the corresponding message.
 		    	
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ <br/>
-				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); <br/>
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
 
 				   // TODO your business logic to complete payment...
 
-				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ <br/>
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
 				 
 				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
 
 				   // TODO your business logic to complete payment...
 				}
-       }<br/>
+       }
 
 <h2>1.3 authAndCapture(...) </h2><br/>
 The method is responsible for the invocation of authorizeAndCapture operation on the Velocity REST server.<br/>
@@ -194,27 +194,26 @@ VelocityPaymentTransaction <br/>
         VelocityResponse=velocityProcessor.authAndCapture(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/> 
        
-          if(velocityResponse!=null){  <br/>
+          if(velocityResponse!=null){  
 		    	//Here get the successful status then show the corresponding message. <br/>
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ <br/>
-				     Log.i("VelocityProcessor", "AuthAndCapture : " + velocityResponse.getBankcardTransactionResponse().getStatus()); <br/>
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "AuthAndCapture : " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
 
 				   // TODO your business logic to complete payment...
 
-				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ <br/>
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
 				 
-				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); <br/>
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); 
 
 				   // TODO your business logic to complete payment...
 				}
-       }<br/>
+       }
 
 <h2>1.4 capture(...) </h2><br/>
 The method is responsible for the invocation of capture operation on the Velocity REST server.<br/>
 <b> public VelocityResponse capture(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the capture request VelocityPaymentTransaction.<br/>
-
            1.transactionId - String <br/>
            2.tipAmount - String  <br/>
            3. amount - String   <br/> 
@@ -226,28 +225,26 @@ The method is responsible for the invocation of capture operation on the Velocit
         VelocityResponse=velocityProcessor.capture(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
-          if(velocityResponse!=null){  <br/>
-		    	//Here get the successful status then show the corresponding message. <br/>
-				 if(velocityResponse.getBankcardCaptureResponse()!=null && velocityResponse.getBankcardCaptureResponse().getStatus()!=null){  <br/>
-				     Log.i("VelocityProcessor", "Capture: " + velocityResponse.getBankcardCaptureResponse().getStatus());  <br/>
+          if(velocityResponse!=null){  
+		    	//Here get the successful status then show the corresponding message. 
+				 if(velocityResponse.getBankcardCaptureResponse()!=null && velocityResponse.getBankcardCaptureResponse().getStatus()!=null){  
+				     Log.i("VelocityProcessor", "Capture: " + velocityResponse.getBankcardCaptureResponse().getStatus());  
 
 				   // TODO your business logic to complete payment...
 
-				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  <br/>
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  
 				 
-				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); <br/>
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); 
 
 				   // TODO your business logic to complete payment...
 				}
-       }<br/>
+       }
 
 <h2>1.5 undo(...) </h2><br/>
 The method is responsible for the invocation of undo operation on the Velocity REST server.<br/>
 <b> public VelocityResponse undo(VelocityPaymentTransaction velocityPaymentTransaction) </b><br/>
 
-@parameter <b>velocityPaymentTransaction </b> - holds the values for the undo request VelocityPaymentTransaction <br/>
-
-             1. transactionId - String <br/>
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the undo request VelocityPaymentTransaction <br/>                1. transactionId - String <br/>
 			  
    @returnType  <b>VelocityResponse</b>  <br/> 
    <b>Sample code</b><br/> 
@@ -255,28 +252,27 @@ The method is responsible for the invocation of undo operation on the Velocity R
         VelocityResponse=velocityProcessor.undo(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
-          if(velocityResponse!=null){   <br/>
+          if(velocityResponse!=null){   
 		    	//Here get the successful status then show the corresponding message. <br/>
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){   <br/>
-				     Log.i("VelocityProcessor", "undo(Void): " + velocityResponse.getBankcardTransactionResponse().getStatus());   <br/>
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){   
+				     Log.i("VelocityProcessor", "undo(Void): " + velocityResponse.getBankcardTransactionResponse().getStatus());  
 
 				   // TODO your business logic to complete payment...
 
-				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  <br/>
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  
 				 
-				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());   <br/>
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());   
 
 				   // TODO your business logic to complete payment...
 				}
-       }<br/>
+       }
 
 <h2>1.6 adjust(...) </h2><br/>
 The method is responsible for the invocation of adjust operation on the Velocity REST server.<br/>
 <b> public VelocityResponse adjust(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the adjust request VelocityPaymentTransaction <br/>
-
-           1.amountfordjust - String     <br/>
+                   1.amountfordjust - String     <br/>
 		   2.transactionId - String <br/>
 
 @returnType  <b>VelocityResponse</b>  <br/> 
@@ -286,28 +282,27 @@ The method is responsible for the invocation of adjust operation on the Velocity
         VelocityResponse velocityResponse=velocityProcessor.adjust(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
-          if(velocityResponse!=null){  <br/>
-		    	//Here get the successful status then show the corresponding message.  <br/>
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){  <br/>
-				     Log.i("VelocityProcessor", "Adjust: " + velocityResponse.getBankcardTransactionResponse().getStatus());  <br/>
+          if(velocityResponse!=null){  
+		    	//Here get the successful status then show the corresponding message.  
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){  
+				     Log.i("VelocityProcessor", "Adjust: " + velocityResponse.getBankcardTransactionResponse().getStatus());  
 
 				   // TODO your business logic to complete payment...
 
-				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  <br/>
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  
 				 
-				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());  <br/>
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());  
 
 				   // TODO your business logic to complete payment...
 				}
-       }<br/>
+       }
 
 <h2>1.7 returnById(...) </h2><br/>
 The method is responsible for the invocation of returnById operation on the Velocity REST server.<br/>
 <b>public VelocityResponse returnById(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the returnById request VelocityPaymentTransaction <br/>
-        
-		 1. transactionId - String <br/>
+                 1. transactionId - String <br/>
 		 2. amount - String   <br/> 
 
 @returnType  <b>VelocityResponse</b>  <br/> 
@@ -317,20 +312,20 @@ The method is responsible for the invocation of returnById operation on the Velo
         VelocityResponse velocityResponse=velocityProcessor.returnById(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
-          if(velocityResponse!=null){  <br/>
+          if(velocityResponse!=null){  
 		    	//Here get the successful status then show the corresponding message.  <br/>
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){  <br/>
-				     Log.i("VelocityProcessor", "ReturnById: " + velocityResponse.getBankcardTransactionResponse().getStatus());  <br/>
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){  
+				     Log.i("VelocityProcessor", "ReturnById: " + velocityResponse.getBankcardTransactionResponse().getStatus());  
 
 				   // TODO your business logic to complete payment...
 
-				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  <br/>
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  
 				 
-				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());  <br/>
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());  
 
 				   // TODO your business logic to complete payment...
 				}
-       }<br/>
+       }
 
 <h2>1.8 returnUnLinked(...) </h2><br/>
 The method is responsible for the invocation of returnUnLinked operation on the Velocity REST server.<br/>
@@ -385,20 +380,20 @@ The method is responsible for the invocation of returnUnLinked operation on the 
         VelocityResponse velocityResponse=velocityProcessor.returnUnLinked(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
-          if(velocityResponse!=null){   <br/>
+          if(velocityResponse!=null){   
 		    	//Here get the successful status then show the corresponding message.   <br/>
-				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){   <br/>
-				     Log.i("VelocityProcessor", "returnUnLinked: " + velocityResponse.getBankcardTransactionResponse().getStatus());  <br/>
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){   
+				     Log.i("VelocityProcessor", "returnUnLinked: " + velocityResponse.getBankcardTransactionResponse().getStatus());  
 
 				   // TODO your business logic to complete payment...
 
-				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  <br/>
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  
 				 
-				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); <br/>
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); 
 
 				   // TODO your business logic to complete payment...
 				}
-       }<br/>
+       }
 
 <h2>2. VelocityResponse </h2><br/>
 
