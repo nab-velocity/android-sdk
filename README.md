@@ -22,16 +22,114 @@ The method is responsible for the invocation of verify operation on the Velocity
 <b> public VelocityResponse createCardToken(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the verify request VelocityPaymentTransaction <br/>
+               1.cardType - String     <br/>
+			   2.cardholderName - String     <br/>
+               3.panNumber-String   <br/>
+               4.expiryDate - String   <br/>
+			   5.street - String   <br/>
+               6.stateProvince - String     <br/>
+               7.postalCode - String   <br/>
+               8.phone - String    <br/>
+			   9.state - String     <br/>
+               10.cvDataProvided - String    <br/>
+               11.cVData - String   <br/>
+			   12.amount - String       <br/>
+               13.currencyCode - String       <br/> 
+               14.customerPresent - String     <br/>
+               15.employeeId - String     <br/>
+               16.entryMode - String      <br/>
+	           17.industryType - String   <br/>
+               18.email - String   <br/>
+			   19.transactionDateTime - String   <br/>
+			   20.city -String <br/>
+@returnType  <b>VelocityResponse</b>  <br/>
+    <b>Sample code</b><br/> 
+       1.Request a createCardToken() method from API .<br/> 
+        VelocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+          if(velocityResponse!=null){
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){
+				     Log.i("VelocityProcessor", "Created card Token: " + velocityResponse.getBankcardTransactionResponse().getStatus());
 
-@returnType  <b>VelocityResponse</b>  <br/>  
+				   // TODO your business logic to complete payment...
 
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }<br/>
 <h2>1.2 authorizeToken(...) </h2><br/>
 The method is responsible for the invocation of authorize operation on the Velocity REST server.<br/>
 <b>public VelocityResponse authorizeToken(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-
+               1.cardType - String     <br/>
+			   2.cardholderName - String     <br/>
+               3.panNumber-String   <br/>
+               4.expiryDate - String   <br/>
+			   5.street - String   <br/>
+               6.stateProvince - String     <br/>
+               7.postalCode - String   <br/>
+               8.phone - String    <br/>
+			   9.state - String     <br/>
+               10.cvDataProvided - String    <br/>
+               11.cVData - String   <br/>
+			   12.reportingDataReference String <br/>
+               13.transactionDataReference  String<br/>
+			   14.amount - String       <br/>
+               15.currencyCode - String       <br/> 
+               16.customerPresent - String     <br/>
+               17. employeeId - String     <br/>
+               18.entryMode - String      <br/>
+	           19.industryType - String   <br/>
+               20.email - String   <br/>
+			   21.transactionDateTime - String   <br/>
+			   22.city -String <br/>
+			   23. state - String     <br/>
+               24.country - String     <br/>
+               25.customerPresent - String     <br/>
+               26.employeeId - String     <br/>
+               27.entryMode - String      <br/>
+	           28.industryType - String   <br/>
+               29.countryCode - String     <br/>
+               30.businnessName - String   <br/>
+               31.comment - String    <br/>
+               32.description - String    <br/>
+               33.paymentAccountDataToken - String   <br/>
+               34.cashBackAmount - String       <br/> 
+               35.goodsType - String     <br/>
+               36.invoiceNumber - String     <br/>
+               37.orderNumber - String      <br/>
+	           38.FeeAmount - String   <br/>
+               39.tipAmount - String   <br/>
+               40.partialApprovalCapable - String   <br/>
+               41.quasiCash - boolean    <br/>
+               42.signatureCaptured - boolean    <br/>
+               43.partialShipment - boolean   <br/>
+    
+     
 @returnType  <b>VelocityResponse</b>  <br/>  
+   <b>Sample code</b><br/> 
+       1.Request a authorizeToken() method from API .<br/> 
+        VelocityResponse=velocityProcessor.authorizeToken(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+          if(velocityResponse!=null){
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){
+				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus());
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }<br/>
 
 <h2>1.3 authAndCapture(...) </h2><br/>
 The method is responsible for the invocation of authorizeAndCapture operation on the Velocity REST server.<br/>
@@ -39,25 +137,129 @@ The method is responsible for the invocation of authorizeAndCapture operation on
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorizeAndCapture request 
 VelocityPaymentTransaction <br/>
+              1. cardType - String     <br/>
+			  2. cardholderName - String     <br/>
+              3.panNumber-String   <br/>
+              4.expiryDate - String   <br/>
+			  5.street - String   <br/>
+              6. stateProvince - String     <br/>
+              7.postalCode - String   <br/>
+              8. phone - String    <br/>
+			  9. reportingDataReference String <br/>
+              10. transactionDataReference  String<br/>
+			  11. state - String     <br/>
+              12. cvDataProvided - String    <br/>
+              13.cVData - String   <br/>
+			  14. amount - String       <br/>
+              15. currencyCode - String       <br/> 
+              16. customerPresent - String     <br/>
+              17. employeeId - String     <br/>
+              18. entryMode - String      <br/>
+	          19.industryType - String   <br/>
+              20. email - String   <br/>
+			  21. transactionDateTime - String   <br/>
+			  22. city -String <br/>
+			  23. state - String     <br/>
+              24.country - String     <br/>
+              25.customerPresent - String     <br/>
+              26.employeeId - String     <br/>
+              27. entryMode - String      <br/>
+	          28.industryType - String   <br/>
+              29. countryCode - String     <br/>
+              30. businnessName - String   <br/>
+              31.comment - String    <br/>
+              32.description - String    <br/>
+              33.paymentAccountDataToken - String   <br/>
+              34.cashBackAmount - String       <br/> 
+              35.goodsType - String     <br/>
+              36.invoiceNumber - String     <br/>
+              37. orderNumber - String      <br/>
+	          38.FeeAmount - String   <br/>
+              39. tipAmount - String   <br/>
+              40. partialApprovalCapable - String   <br/>
+              41.quasiCash - boolean    <br/>
+              42.signatureCaptured - boolean    <br/>
+              43.partialShipment - boolean   <br/>
+
+
+ 
 
 @returnType  <b>VelocityResponse</b>  <br/>  
+     <b>Sample code</b><br/> 
+       1.Request a authAndCapture() method from API .<br/> 
+        VelocityResponse=velocityProcessor.authAndCapture(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+          if(velocityResponse!=null){
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){
+				     Log.i("VelocityProcessor", "AuthAndCapture : " + velocityResponse.getBankcardTransactionResponse().getStatus());
 
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }<br/>
 
 <h2>1.4 capture(...) </h2><br/>
 The method is responsible for the invocation of capture operation on the Velocity REST server.<br/>
 <b> public VelocityResponse capture(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the capture request VelocityPaymentTransaction <br/>
-
+           1.transactionId - String <br/>
+           2.tipAmount - String  <br/>
+		   3. amount - String   <br/> 
 @returnType  <b>VelocityResponse</b>  <br/> 
 
+<b>Sample code</b><br/> 
+       1.Request a capture() method from API .<br/> 
+        VelocityResponse=velocityProcessor.capture(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+          if(velocityResponse!=null){
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardCaptureResponse()!=null && velocityResponse.getBankcardCaptureResponse().getStatus()!=null){
+				     Log.i("VelocityProcessor", "Capture: " + velocityResponse.getBankcardCaptureResponse().getStatus());
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }<br/>
 
 <h2>1.5 undo(...) </h2><br/>
 The method is responsible for the invocation of undo operation on the Velocity REST server.<br/>
 <b> public VelocityResponse undo(VelocityPaymentTransaction velocityPaymentTransaction) </b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the undo request VelocityPaymentTransaction <br/>
+
+             1. transactionId - String <br/>
+			  
    @returnType  <b>VelocityResponse</b>  <br/> 
+   <b>Sample code</b><br/> 
+       1.Request a undo() method from API .<br/> 
+        VelocityResponse=velocityProcessor.undo(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+          if(velocityResponse!=null){
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){
+				     Log.i("VelocityProcessor", "undo(Void): " + velocityResponse.getBankcardTransactionResponse().getStatus());
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }<br/>
 
 <h2>1.6 adjust(...) </h2><br/>
 The method is responsible for the invocation of adjust operation on the Velocity REST server.<br/>
@@ -65,23 +267,126 @@ The method is responsible for the invocation of adjust operation on the Velocity
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the adjust request VelocityPaymentTransaction <br/>
 
+           1.amountfordjust - String     <br/>
+		   2.transactionId - String <br/>
+
 @returnType  <b>VelocityResponse</b>  <br/> 
+
+<b>Sample code</b><br/> 
+       1.Request a adjust() method from API .<br/> 
+        VelocityResponse velocityResponse=velocityProcessor.adjust(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+          if(velocityResponse!=null){
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){
+				     Log.i("VelocityProcessor", "Adjust: " + velocityResponse.getBankcardTransactionResponse().getStatus());
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }<br/>
 
 <h2>1.7 returnById(...) </h2><br/>
 The method is responsible for the invocation of returnById operation on the Velocity REST server.<br/>
 <b>public VelocityResponse returnById(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the returnById request VelocityPaymentTransaction <br/>
+        
+		 1. transactionId - String <br/>
+		 2. amount - String   <br/> 
 
 @returnType  <b>VelocityResponse</b>  <br/> 
+
+<b>Sample code</b><br/> 
+       1.Request a returnById() method from API .<br/> 
+        VelocityResponse velocityResponse=velocityProcessor.returnById(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+          if(velocityResponse!=null){
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){
+				     Log.i("VelocityProcessor", "ReturnById: " + velocityResponse.getBankcardTransactionResponse().getStatus());
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }<br/>
 
 <h2>1.8 returnUnLinked(...) </h2><br/>
 The method is responsible for the invocation of returnUnLinked operation on the Velocity REST server.<br/>
 <b> public VelocityResponse returnUnLinked(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the returnUnlinked request VelocityPaymentTransaction<br/>
+            1. cardType - String     <br/>
+			2. cardholderName - String     <br/>
+            3.  panNumber-String   <br/>
+            4.   expiryDate - String   <br/>
+			5.   street - String   <br/>
+            6.   stateProvince - String     <br/>
+            7.   postalCode - String   <br/>
+            8.   phone - String    <br/>
+			9.    reportingDataReference String <br/>
+            10.   transactionDataReference  String<br/>
+			11.   state - String     <br/>
+            12.   cvDataProvided - String    <br/>
+			13.   amount - String       <br/>
+            14.   currencyCode - String       <br/> 
+            15.   customerPresent - String     <br/>
+            16.   employeeId - String     <br/>
+            17.   entryMode - String      <br/>
+	        18.   industryType - String   <br/>
+            19.   email - String   <br/>
+			20.   transactionDateTime - String   <br/>
+			21.   city -String <br/>
+			22.   state - String     <br/>
+            23.  country - String     <br/>
+            24.  customerPresent - String     <br/>
+            25.  employeeId - String     <br/>
+            26.  entryMode - String      <br/
+            27.  countryCode - String     <br/>
+            28.  businnessName - String   <br/>
+            29. comment - String    <br/>
+            30. description - String    <br/>
+            31. paymentAccountDataToken - String   <br/>
+            32. cashBackAmount - String       <br/> 
+            33. goodsType - String     <br/>
+            34.invoiceNumber - String     <br/>
+            35.orderNumber - String      <br/>
+	        36. FeeAmount - String   <br/>
+            37. tipAmount - String   <br/>
+            38. partialApprovalCapable - String   <br/>
+            39. quasiCash - boolean    <br/>
+            40. signatureCaptured - boolean    <br/>
+            41.partialShipment - boolean   <br/>
 
 @returnType  <b>VelocityResponse</b>  <br/> 
+<b>Sample code</b><br/> 
+       1.Request a returnUnLinked() method from API .<br/> 
+        VelocityResponse velocityResponse=velocityProcessor.returnUnLinked(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+          if(velocityResponse!=null){
+		    	//Here get the successful status then show the corresponding message.
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){
+				     Log.i("VelocityProcessor", "returnUnLinked: " + velocityResponse.getBankcardTransactionResponse().getStatus());
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }<br/>
 
 <h2>2. VelocityResponse </h2><br/>
 
@@ -95,7 +400,7 @@ It has the following attributes with name and datatype.<br/>
 
 <h2>2.1 BankcardTransactionResponsePro</h2><br/>
 
-This class has the following main attributes with its name and datatype. <br/>
+This class has the following main attributes with its name and data type. <br/>
      1.   status - String     <br/>
      2.   statusCode - String     <br/>
      3.   statusMessage - String     <br/>
@@ -143,7 +448,7 @@ This class has the following main attributes with its name and datatype. <br/>
      6.   serviceTransactionId - String     <br/>
      7.   date - String   <br/>
      8.   time - String   <br/>
-     9.   timezone - String     <br/>
+     9.   time zone - String     <br/>
      10.  addendum - Addendum   <br/>
      11.  captureState - String    <br/>
      12.  transactionState - String    <br/>
@@ -210,17 +515,17 @@ This class has the following main attributes with its name and data-type.<br/>
      39.  transactionId - String       <br/>
      40.  cashBackAmount - String       <br/> 
      41.  goodsType - String     <br/>
-     42.  invoiceNumber - String     <br/>
-     43.  orderNumber - String      <br/>
-     44.  customerId-String  <br/>
-<h2>4.Download  the Eclipse IDE</h2><br/>
-   1. Reference-https://eclipse.org/downloads/<br/>   
-<h2>5. Deployment Instructions for Android-SDK and Velocity Sample Android  Application </h2><br/>
+     42. reportingDataReference String <br/>
+     43. transactionDataReference  String<br/>  
+	 44. customerId - String      <br/>
+	 45.  city - String <br/>
+<h2>4.Download the Eclipse IDE</h2><br/>
+	  1. Reference-https://eclipse.org/downloads/<br/>
+     
+  <h2>5. Deployment Instructions for Android-SDK and Velocity Sample Android  Application </h2><br/>
 
 <b>5.1 Android SDK</b> <br/>
-
- 1.Two jar <b>axis-1.4.jar</b> and  <b>velocitylibrary.jar </b><br/>
-
+1.Two jar <b>axis-1.4.jar</b>  <b>velocitylibrary.jar </b><br/>
  <b> 5.2 How to use the jar file with Eclipse IDE</b><br/>
  1.To use a Java library (JAR file) inside your Android project<br/>
  2. you can simple copy the JAR file into the folder called libs in your application.<br/>
@@ -232,7 +537,7 @@ This class has the following main attributes with its name and data-type.<br/>
  1. Find the sample Android application file  <b>VelocityCardSample.apk </b> inside the folder  velocityCardSample/bin/<br/>
 
  2. install <b> VelocityCardSample.apk </b> file on the  device. <br/>
- 3. click the install file. <br/>
+ 3. click the install file <br/>
  
  
 
