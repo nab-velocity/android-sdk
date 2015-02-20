@@ -545,7 +545,7 @@ Depending upon the type of transaction performed with request input data, respon
 <b>6.1 Android SDK</b> <br/>
  1.Two jar <b>axis-1.4.jar</b> and <b>velocitylibrary.jar </b><br/>
  <b> 6.2 How to use the jar file with Eclipse IDE</b><br/>
- 1. To use a Java library (JAR file) inside your Android project<br/>
+ 1. To use a Android library (JAR file) inside your Android project<br/>
  2. you can simple copy the JAR file into the folder called libs in your application.<br/>
  3. Right click project then select build-path/configure-build-path.
  4. Add two velocitylibrary.jar and axis-1.4.jar.
