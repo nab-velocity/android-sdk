@@ -515,20 +515,42 @@ This class has the following main attributes with its name and data-type.<br/>
      43. transactionDataReference  String<br/>  
 	 44. customerId - String      <br/>
 	 45.  city - String <br/>
-<h2>4.Download the Eclipse IDE</h2><br/>
+
+<h2>3.Velocity sample android Application </h2><br/>
+The velocity  sample android Application is responsible for putting the Velocity Android-SDK for test purpose. <br/>
+It intends to perform the testing of transaction methods available on the Velocity payment gateway for a merchant. <br/>
+
+When a transaction method needs to invoke from Velocity server then it sends the transaction request data and receives the response depending on the type of transaction performed on the velocity server.<br/>
+The request data is send through the User Interface form which includes the fields required for a transaction. <br/>
+
+The Velocity sample android  Application is able to test the following transaction methods through its user interface. <br/>
+
+1. Verify - The Verify operation is used to verify information about a payment account, such as address verification data (AVSData) on a credit card account, without reserving any funds. <br/>
+2. Authorize - The Authorize operation is used to authorize transactions by performing a check on card-holder's funds and reserves the authorization amount if sufficient funds are available. <br/>
+3. Authorize W/O token - This method proceeds with the card details when payment account data token is not available. <br/>
+4. AuthorizeAndCapture - The AuthorizeAndCapture operation is used to authorize transactions by performing a check on card-holder's funds and reserves the authorization amount if sufficient funds are available, and flags the transaction for capture (settlement) in a single invocation.<br/> 
+5. AuthorizeAndCapture W/O token - This method proceeds with the card details and performs the capture operation in single invocation when the payment account data token is not available. <br/>
+6. Capture - The Capture operation is used to capture a single transaction for settlement after it has been successfully authorized by the Authorize operation. <br/>
+7. Void(Undo) - The Undo operation is used to release card-holder funds by performing a void (Credit Card) or reversal (PIN Debit) on a previously authorized transaction that has not been captured (flagged) for settlement. <br/> 
+8. Adjust - The Adjust operation is used to make adjustments to a previously authorized amount (incremental or reversal) prior to capture and settlement. <br/>
+9. ReturnById - The ReturnById operation is used to perform a linked credit to a card-holder’s account from the merchant’s account based on a previously authorized and settled(Captured) transaction. <br/>
+10. ReturnUnlinked - The ReturnUnlinked operation is used to perform an "unlinked", or standalone, credit to a card-holder’s account from the merchant’s account. <br/>
+
+Depending upon the type of transaction performed with request input data, response is generated from the velocity server which can be viewed on the Result page. <br/>
+<h2>5.Download the Eclipse IDE</h2><br/>
 	  1. Reference-https://eclipse.org/downloads/<br/>
      
-  <h2>5. Deployment Instructions for Android-SDK and Velocity Sample Android  Application </h2><br/>
+  <h2>6. Deployment Instructions for Android-SDK and Velocity Sample Android  Application </h2><br/>
 
-<b>5.1 Android SDK</b> <br/>
+<b>6.1 Android SDK</b> <br/>
 1.Two jar <b>axis-1.4.jar</b> and <b>velocitylibrary.jar </b><br/>
- <b> 5.2 How to use the jar file with Eclipse IDE</b><br/>
+ <b> 6.2 How to use the jar file with Eclipse IDE</b><br/>
  1.To use a Java library (JAR file) inside your Android project<br/>
  2. you can simple copy the JAR file into the folder called libs in your application.<br/>
  3. Right click project then select build-path/configure-build-path.
  4. Add two velocitylibrary.jar and axis-1.4.jar.
  
-<b>5.3 Velocity Sample Android Application</b> <br/>
+<b>6.3 Velocity Sample Android Application</b> <br/>
  
  1. Find the sample Android application file  <b>VelocityCardSample.apk </b> inside the folder  velocityCardSample/bin/<br/>
 
