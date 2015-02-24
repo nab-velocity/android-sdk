@@ -4,6 +4,12 @@ It has the implementation of all the transaction payment solution methods for a 
 At the centre of this SDK, there is the class <b>com.android.velocity.VelocityProcessor</b>. <br/>
 The signature of the constructor of this class is as below: <br/>
 <b>public VelocityProcessor(String sessionToken,String identityToken, String appProfileId, String merchantProfileId, String workFlowId, boolean isTestAccount)</b> <br/>
+@parameter  <b>sessionToken </b> - initializes the value for session token.  <br/>
+@parameter  <b>identityToken </b> - initializes the value for identity token.  <br/>
+@parameter  <b>appProfileId </b> - initializes the value for application profile Id.  <br/>
+@parameter  <b>merchantProfileId </b> - initializes the value for merchant profile Id.  <br/>
+@parameter  <b>workFlowId </b> - initializes the value for workflow Id.  <br/>
+@parameter  <b>isTestAccount </b> - works as a flag for the TestAccount.  <br/>
 
  <h2>1. VelocityProcessor </h2><br/>
 This class provides the implementation of the following methods: <br/>
