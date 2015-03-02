@@ -20,7 +20,8 @@ This class provides the implementation of the following methods: <br/>
      5. undo     <br/>
      6. adjust   <br/>
      7. returnById    <br/>
-     8. returnUnLinked     <br/><br/>
+     8. returnUnLinked     <br/>
+     9.returnUnLinkedWithoutToken <br/><br/>
 
 <h2>1.1 createCardToken(...) </h2><br/>
 The method is responsible for the invocation of verify operation on the Velocity REST server.<br/>
