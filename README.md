@@ -389,7 +389,70 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 				   // TODO your business logic to complete payment...
 				}
        }
+<h2>1.9 returnUnLinkedWithoutToken(...) </h2><br/>
+The method is responsible for the invocation of returnUnLinked operation on the Velocity REST server.<br/>
+<b> public VelocityResponse returnUnLinkedWithoutToken(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the returnUnlinked request VelocityPaymentTransaction<br/>
+             1. cardType - String     <br/>
+			2. cardholderName - String     <br/>
+            3.  panNumber-String   <br/>
+            4.   expiryDate - String   <br/>
+			5.   street - String   <br/>
+            6.   stateProvince - String     <br/>
+            7.   postalCode - String   <br/>
+            8.   phone - String    <br/>
+			9.    reportingDataReference String <br/>
+            10.   transactionDataReference  String<br/>
+			11.   state - String     <br/>
+            12.   cvDataProvided - String    <br/>
+			13.   amount - String       <br/>
+            14.   currencyCode - String       <br/> 
+            15.   customerPresent - String     <br/>
+            16.   employeeId - String     <br/>
+            17.   entryMode - String      <br/>
+	        18.   industryType - String   <br/>
+            19.   email - String   <br/>
+			20.   transactionDateTime - String   <br/>
+			21.   city -String <br/>
+			22.   quasiCash - boolean    <br/>
+            23.  country - String     <br/>
+            24. transactionId- String <br/>
+            25.  signatureCaptured - boolean    <br/>
+            26.  partialShipment - boolean   <br/>
+            27.  countryCode - String     <br/>
+            28.  businnessName - String   <br/>
+            29. comment - String    <br/>
+            30. description - String    <br/>
+            31.partialApprovalCapable - String   <br/>
+            32. cashBackAmount - String       <br/> 
+            33. goodsType - String     <br/>
+            34.invoiceNumber - String     <br/>
+            35.orderNumber - String      <br/>
+	        36. FeeAmount - String   <br/>
+            37. tipAmount - String   <br/>
+           
+
+@returnType  <b>VelocityResponse</b>  <br/> 
+<b>Sample code</b><br/> 
+       1.Request a returnUnLinkedWithoutToken() method from API .<br/> 
+        VelocityResponse velocityResponse=velocityProcessor.returnUnLinkedWithoutToken(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){   
+		    	//Here get the successful status then show the corresponding message.   <br/>
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){   
+				     Log.i("VelocityProcessor", "returnUnLinked: " + velocityResponse.getBankcardTransactionResponse().getStatus());  
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); 
+
+				   // TODO your business logic to complete payment...
+				}
+       }
 <h2>2. VelocityResponse </h2><br/>
 
 This class implements the responses coming from the Velocity server for a payment transaction request. <br/>
