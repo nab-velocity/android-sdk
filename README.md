@@ -134,7 +134,46 @@ The method is responsible for the invocation of authorize operation on the Veloc
                36.invoiceNumber - String     <br/>
                37.orderNumber - String      <br/>
 	           38.FeeAmount - String   <br/>
-    
+    <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+                 velocityPaymentTransaction.setCardType("Visa"); <br/>
+	         velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	         velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
+		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setcVData("123"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+		velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87-bba2-d572d6b70d55"); <br/>
+		 
      
 @returnType  <b>VelocityResponse</b>  <br/>  
    <b>Sample code</b><br/> 
@@ -203,12 +242,46 @@ VelocityPaymentTransaction <br/>
               36.invoiceNumber - String     <br/>
               37. orderNumber - String      <br/>
 	          38.FeeAmount - String   <br/>
-              39.transactionId-String <br/> 
-  
-
-
- 
-
+             
+ <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+               velocityPaymentTransaction.setCardType("Visa"); <br/>
+	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	       velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
+		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setcVData("123"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05");<br/>
+		velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87                    -bba2-d572d6b70d55"); <br/>
 @returnType  <b>VelocityResponse</b>  <br/>  
      <b>Sample code</b><br/> 
        1.Request a authAndCapture() method from API .<br/> 
@@ -238,7 +311,11 @@ The method is responsible for the invocation of capture operation on the Velocit
            1.transactionId - String <br/>
            2.tipAmount - String  <br/>
            3. amount - String   <br/> 
-           
+  <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+  velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
+  velocityPaymentTransaction.setTipAmount("2.34");<br/>
+  velocityPaymentTransaction.setAmount("12.34"); <br/>
 @returnType  <b>VelocityResponse</b>  <br/> 
 
 <b>Sample code</b><br/> 
@@ -266,7 +343,9 @@ The method is responsible for the invocation of undo operation on the Velocity R
 <b> public VelocityResponse undo(VelocityPaymentTransaction velocityPaymentTransaction) </b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the undo request VelocityPaymentTransaction <br/>                1. transactionId - String <br/>
-			  
+<h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+   velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>			  
    @returnType  <b>VelocityResponse</b>  <br/> 
    <b>Sample code</b><br/> 
        1.Request a undo() method from API .<br/> 
@@ -295,9 +374,11 @@ The method is responsible for the invocation of adjust operation on the Velocity
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the adjust request VelocityPaymentTransaction <br/>
                    1.amountfordjust - String     <br/>
 		   2.transactionId - String <br/>
-
+<h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+  velocityPaymentTransaction.setAmountfordjust("10.23");
+  velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
 @returnType  <b>VelocityResponse</b>  <br/> 
-
 <b>Sample code</b><br/> 
        1.Request a adjust() method from API .<br/> 
         VelocityResponse velocityResponse=velocityProcessor.adjust(velocityPaymentTransaction);<br/>
@@ -325,7 +406,10 @@ The method is responsible for the invocation of returnById operation on the Velo
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the returnById request VelocityPaymentTransaction <br/>
                  1. transactionId - String <br/>
 		 2. amount - String   <br/> 
-
+<h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+   velocityPaymentTransaction.setAmount("10.23");
+   velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
 @returnType  <b>VelocityResponse</b>  <br/> 
 
 <b>Sample code</b><br/> 
@@ -391,7 +475,45 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 	        36. FeeAmount - String   <br/>
             37. tipAmount - String   <br/>
             38. partialApprovalCapable - String   <br/>
-
+<h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+               velocityPaymentTransaction.setCardType("Visa"); <br/>
+	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	       velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
+		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setcVData("123"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05");<br/>
+           velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87               -bba2-d572d6b70d55"); <br/>
 @returnType  <b>VelocityResponse</b>  <br/> 
 <b>Sample code</b><br/> 
        1.Request a returnUnLinked() method from API .<br/> 
@@ -454,8 +576,44 @@ The method is responsible for the invocation of returnUnLinked operation on the 
             35.orderNumber - String      <br/>
 	        36. FeeAmount - String   <br/>
             37. tipAmount - String   <br/>
-           
-
+ <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+               velocityPaymentTransaction.setCardType("Visa"); <br/>
+	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	       velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
+		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setcVData("123"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05");<br/>
 @returnType  <b>VelocityResponse</b>  <br/> 
 <b>Sample code</b><br/> 
        1.Request a returnUnLinkedWithoutToken() method from API .<br/> 
