@@ -49,6 +49,28 @@ The method is responsible for the invocation of verify operation on the Velocity
                18.email - String   <br/>
 			   19.transactionDateTime - String   <br/>
 			   20.city -String <br/>
+<h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+             velocityPaymentTransaction.setCardType("Visa"); <br/>
+	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	      velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
+		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setcVData("123"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+ 
 @returnType  <b>VelocityResponse</b>  <br/>
     <b>Sample code</b><br/> 
        1.Request a createCardToken() method from API .<br/> 
