@@ -1,7 +1,7 @@
 # Android-sdk
 This is the velocity Android SDK implementation. <br/>
 It has the implementation of all the transaction payment solution methods for a merchant application who wants to access the Velocity payment gateway. <br/><br/>
-At the centre of this SDK, there is the class <b>com.android.velocity.VelocityProcessor</b>. <br/>
+At the center of this SDK, there is the class <b>com.android.velocity.VelocityProcessor</b>. <br/>
 The signature of the constructor of this class is as below: <br/>
 <b>public VelocityProcessor(String sessionToken,String identityToken, String appProfileId, String merchantProfileId, String workFlowId, boolean isTestAccount)</b> <br/>
 @parameter  <b>sessionToken </b> - initializes the value for session token.  <br/>
