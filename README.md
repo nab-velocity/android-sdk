@@ -162,7 +162,7 @@ The method is responsible for the invocation of authorize operation on the Veloc
 		velocityPaymentTransaction.setPartialShipment(false);<br/>
 		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
 		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
 		velocityPaymentTransaction.setTipAmount("2.34");<br/>
 		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
 		velocityPaymentTransaction.setComment("a test comment");<br/>
@@ -271,7 +271,7 @@ VelocityPaymentTransaction <br/>
 		velocityPaymentTransaction.setPartialShipment(false);<br/>
 		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
 		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
 		velocityPaymentTransaction.setTipAmount("2.34");<br/>
 		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
 		velocityPaymentTransaction.setComment("a test comment");<br/>
@@ -503,7 +503,7 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 		velocityPaymentTransaction.setPartialShipment(false);<br/>
 		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
 		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
 		velocityPaymentTransaction.setTipAmount("2.34");<br/>
 		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
 		velocityPaymentTransaction.setComment("a test comment");<br/>
@@ -604,7 +604,7 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 		velocityPaymentTransaction.setPartialShipment(false);<br/>
 		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
 		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
 		velocityPaymentTransaction.setTipAmount("2.34");<br/>
 		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
 		velocityPaymentTransaction.setComment("a test comment");<br/>
