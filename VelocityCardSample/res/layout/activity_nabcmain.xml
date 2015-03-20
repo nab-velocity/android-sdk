@@ -19,7 +19,7 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
-            
+   <!--          
      <CheckBox  
         android:id="@+id/checkTestMode"  
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         android:layout_alignParentTop="true"
         android:textColor="#000000"  
         android:text="Enable Test mode" />  
-            
+             -->
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -179,6 +179,22 @@
 
             <EditText
                 android:id="@+id/amountId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="Tip Amount($)"/>
+
+            <EditText
+                android:id="@+id/tipamountId"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"

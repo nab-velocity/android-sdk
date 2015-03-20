@@ -12,8 +12,9 @@ import com.velocity.enums.VelocityEnums;
  */
 public class Adjust {
 
-	//private String type;
+	
 	private VelocityEnums type;
+	
 	private String applicationProfileId;
 
 	private BatchIds batchIds;
@@ -73,12 +74,6 @@ public class Adjust {
 		this.type = type;
 	}
 
-	/*public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}*/
+	
   
 }

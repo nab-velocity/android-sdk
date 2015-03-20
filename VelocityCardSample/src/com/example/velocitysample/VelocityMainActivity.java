@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -35,8 +34,9 @@ public class VelocityMainActivity extends Activity {
 	//Attached with the REST URL for various transaction.
 	private String workflowId=VelocityConstants.workflowId ;
 	//Works as flag for the get the url based on the flag.
-	//private boolean isTestAccount=VelocityConstants.isTestAccount;
-	private boolean isTestAccount;
+	private boolean isTestAccount=VelocityConstants.isTestAccount;
+	//sessionToken is required for all api method.
+	private String sessionToken;
 	private int position;
 	private String month;
 	private int year;
@@ -45,10 +45,10 @@ public class VelocityMainActivity extends Activity {
 	private VelocityResponse velocityResponse;
 	private EditText editCardHolName,editStreet,editCity,
 	         editZip,editCountry,editemail,editPhone,editAmount,editAmountforadjust,
-	         editCreditCardNumber,editCvc,editEmployeeId;
+	         editCreditCardNumber,editCvc,editEmployeeId,editTipAmount;
 	private  Spinner spinnerTransName, spinnerState,spinnerCardType,spinnerMonth,
 	         spinnerYear,spinnerCurrencyCode;
-	private  CheckBox testModeUrl;
+	//private  CheckBox testModeUrl;
 	final Context context=this;
 	// create the reference for VelocityProcessor class for access the implemented method.
 	private VelocityProcessor velocityProcessor=null;
@@ -57,10 +57,12 @@ public class VelocityMainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_nabcmain);
 		setLayoutPref();
-		isTestAccount=testModeUrl.isChecked();
+		//isTestAccount=testModeUrl.isChecked();
 	   
 		// create the object of VelocityProcessor class.
-		velocityProcessor=new VelocityProcessor(identityToken,appProfileId,merchantProfileId,workflowId,isTestAccount);
+		//sessionToken=VelocityProcessor.signOn(identityToken);
+		//Log.d("sessiontoken", sessionToken);
+		velocityProcessor=new VelocityProcessor(identityToken,appProfileId,merchantProfileId,workflowId,isTestAccount,sessionToken);
 		
 		
 		//here implement spinner for drop down.
@@ -198,6 +200,8 @@ public class VelocityMainActivity extends Activity {
 		velocityPaymentTransaction.setEmployeeId(editEmployeeId.getText().toString().trim());
 		//set the dynamic value for currencyCode.	
 		velocityPaymentTransaction.setCurrencyCode(spinnerCurrencyCode.getSelectedItem().toString());
+		//set the dynamic value for tipAmount.
+		velocityPaymentTransaction.setTipAmount(editTipAmount.getText().toString().trim());
 		//set the static value for entryMode.
 		velocityPaymentTransaction.setEntryMode("Keyed");
 		//set the static value for transactionDateTime.
@@ -229,7 +233,7 @@ public class VelocityMainActivity extends Activity {
 		//set the static value for feeAmount.
 		velocityPaymentTransaction.setFeeAmount("1000.05");
 		//set the static value for tipAmount.
-		velocityPaymentTransaction.setTipAmount("12.34");
+		//velocityPaymentTransaction.setTipAmount("12.34");
 		//set the static value for partialApprovalCapable.
 		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
 		//set the static value for quasiCash.
@@ -245,7 +249,9 @@ public class VelocityMainActivity extends Activity {
 /*--------------------------------------------------------------------------------verify---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 		case 0: 
 			    //calling the verify method. 
-			     velocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);
+			    velocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);
+			   /* String sessionToken=velocityProcessor.signOn(identityToken);
+			    Log.i("sessionToken", sessionToken);*/
 			      break;
 		     
 /*--------------------------------------------------------------------------------authorize---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -262,13 +268,7 @@ public class VelocityMainActivity extends Activity {
 		     break;
 /*-----------------------------------------------------------------AuthwithoutToken--------------------------------------------------------------------------------------------------------------------------------------------------------------*/			
 		case 2:
-			/*//calling verify method .
-			 velocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);
-			 if(velocityResponse!=null && velocityResponse.getBankcardTransactionResponse()!=null ){
-				 //Here get the paymentAccountDataToken from createCardToken method and
-				 //set the PaymentAccountDataToken with VelocityPaymentTransaction model class.
-				 velocityPaymentTransaction.setPaymentAccountDataToken(velocityResponse.getBankcardTransactionResponse().getPaymentAccountDataToken());
-			 }*/
+			
 			// calling AuthorizewithoutToken method 
 			 velocityResponse=velocityProcessor.authorizeWithoutToken(velocityPaymentTransaction);
 			 break;
@@ -285,13 +285,7 @@ public class VelocityMainActivity extends Activity {
 			break;
 /*---------------------------------------------------------------------------------AuthAndCapture without token-------------------------------------------------------------------------------------------------------------------------*/	
 		case 4:
-			/*//calling verify method .
-			 velocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);
-			 if(velocityResponse!=null && velocityResponse.getBankcardTransactionResponse()!=null ){
-				 //Here get the paymentAccountDataToken from createCardToken method and
-				 //set the PaymentAccountDataToken with VelocityPaymentTransaction model class.
-				 velocityPaymentTransaction.setPaymentAccountDataToken(velocityResponse.getBankcardTransactionResponse().getPaymentAccountDataToken());
-			 }*/
+			
 			//calling AuthAndCapturewithoutToken method
 			velocityResponse=velocityProcessor.authAndCaptureWithoutToken(velocityPaymentTransaction); 
 			  break;
@@ -397,24 +391,20 @@ public class VelocityMainActivity extends Activity {
 		 case 9:
 			//calling verify method.
 			 velocityResponse=velocityProcessor.createCardToken(velocityPaymentTransaction);
-			 if(velocityResponse.getBankcardTransactionResponse()!=null ){
+			 if(velocityResponse!=null && velocityResponse.getBankcardTransactionResponse()!=null ){
 				//Here get the paymentAccountDataToken from createCardToken method and 
 				 //set the PaymentAccountDataToken with VelocityPaymentTransaction model class.
 				 velocityPaymentTransaction.setPaymentAccountDataToken(velocityResponse.getBankcardTransactionResponse().getPaymentAccountDataToken());
 			 }
-			//calling authorize method.
-				velocityResponse=velocityProcessor.authorizeToken(velocityPaymentTransaction);
-				 
-				if(velocityResponse!=null && velocityResponse.getBankcardTransactionResponse()!=null){
-					 //Here get the transactionId from authorize method and
-					 //set the transactionId with VelocityPaymentTransaction model class.
-					  velocityPaymentTransaction.setTransactionId(velocityResponse.getBankcardTransactionResponse().getTransactionId());
-				 }
 				
 			//calling returnUnLinked method.
 		velocityResponse=velocityProcessor.returnUnLinked(velocityPaymentTransaction);
-				break;			
-					
+				break;	
+/*---------------------------------------------------------------------ReturnUnLinked without token--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/			
+		 case 10:
+			//calling returnUnLinked without token method.
+			 velocityResponse=velocityProcessor.returnUnLinkedWithoutToken(velocityPaymentTransaction)	;
+			 break;
 		default:
 			break;
 		}
@@ -447,14 +437,14 @@ public class VelocityMainActivity extends Activity {
 						//Here get the Error status then show the corresponding message.
 					} else if(velocityResponse.getBankcardCaptureResponse()!=null && velocityResponse.getBankcardCaptureResponse().getStatus()!=null){
 						
-						Log.d("BankcardCapture", "BankcardCapture");
+						//Log.d("BankcardCapture", "BankcardCapture");
 						AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 						alertDialogBuilder
 						.setTitle("success response")
 						.setMessage("HttpStatusCode:"+velocityResponse.getStatusCode()+"\n"+"HttpStatusMessage:"+velocityResponse.getMessage()+"\n"+"Status:"+velocityResponse.getBankcardCaptureResponse().getStatus()+"\n"+
 								"StatusCode:"+velocityResponse.getBankcardCaptureResponse().getStatusCode()+"\n"+"TransactionState:"+velocityResponse.getBankcardCaptureResponse().getTransactionState()+"\n"+"TransactionId:"+velocityResponse.getBankcardCaptureResponse().getTransactionId()+"\n"+"CaptureState:"+velocityResponse.getBankcardCaptureResponse().getCaptureState()+"\n"
 								+"OriginatorTransactionId:"+velocityResponse.getBankcardCaptureResponse().getOriginatorTransactionId()+"\n"+ 
-								"BatchId:"+velocityResponse.getBankcardCaptureResponse().getBatchId())
+								"BatchId:"+velocityResponse.getBankcardCaptureResponse().getBatchId()+"\n"+"NetAmmount:"+velocityResponse.getBankcardCaptureResponse().getNetAmount())
 								.setCancelable(false)
 								.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,int id) {
@@ -471,7 +461,7 @@ public class VelocityMainActivity extends Activity {
 						// show it
 						alertDialog.show();
 						
-				}else if(velocityResponse.getErrorResponse()!=null){
+				}else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){
 							// Here  getting the error response from ErrorResponse .
 							AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 							alertDialogBuilder
@@ -519,7 +509,8 @@ public class VelocityMainActivity extends Activity {
 		editCreditCardNumber=(EditText)findViewById(R.id.creditCardId);
 		editCvc=(EditText)findViewById(R.id.cvcId);
 		editEmployeeId=(EditText)findViewById(R.id.employeeId);
-		testModeUrl=(CheckBox)findViewById(R.id.checkTestMode);
+		//testModeUrl=(CheckBox)findViewById(R.id.checkTestMode);
+		editTipAmount=(EditText)findViewById(R.id.tipamountId);
 		// set the value on run time.
 		editCardHolName.setText("ashish");
 		editStreet.setText("4 corporate sq");
@@ -530,10 +521,11 @@ public class VelocityMainActivity extends Activity {
 		editCreditCardNumber.setText("4012888812348882");
 		editCvc.setText("123");
 		editemail.setText("ashishg2@chetu.com");
-		editAmount.setText("2.34");
+		editAmount.setText("12.34");
 		editEmployeeId.setText("11");
 		editAmountforadjust.setText("3.00");
-		testModeUrl.setChecked(true);
+		editTipAmount.setText("12.34");
+		//testModeUrl.setChecked(true);
 	}
 	
 	/**

@@ -12,12 +12,12 @@ public class VelocityPaymentTransaction {
 	private String state;
 	private String country;
 	private String amountfordjust;
-	private String type;
+	//private String type;
 	private String cardType;
 	private String cardholderName;
 	private String panNumber;
 	private String expiryDate;
-	private boolean isNullable;
+	//private boolean isNullable;
 	private String street;
 	private String city;
 	private String stateProvince;
@@ -34,7 +34,7 @@ public class VelocityPaymentTransaction {
 	private String email;
 	private String countryCode;
 	private String businnessName;
-	private String CustomerId;
+	//private String CustomerId;
 	private String comment;
 	private String description;
 	private String reportingDataReference;
@@ -53,6 +53,7 @@ public class VelocityPaymentTransaction {
 	private boolean signatureCaptured;
 	private boolean partialShipment;
 	private String transactionId;
+	 private String customerId;
 	
 	
 	public String getAccountType() {
@@ -102,13 +103,7 @@ public class VelocityPaymentTransaction {
 		this.email = email;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 
 	public String getCardType() {
 		return cardType;
@@ -142,13 +137,7 @@ public class VelocityPaymentTransaction {
 		this.expiryDate = expiryDate;
 	}
 
-	public boolean isNullable() {
-		return isNullable;
-	}
-
-	public void setNullable(boolean isNullable) {
-		this.isNullable = isNullable;
-	}
+	
 
 	public String getStreet() {
 		return street;
@@ -303,11 +292,11 @@ public class VelocityPaymentTransaction {
 	}
 
 	public String getCustomerId() {
-		return CustomerId;
+		return customerId;
 	}
 
 	public void setCustomerId(String customerId) {
-		CustomerId = customerId;
+		this.customerId = customerId;
 	}
 
 	public String getComment() {

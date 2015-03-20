@@ -1,5 +1,7 @@
 package com.velocity.verify.response;
 
+
+
 public class AVSResult {
 	
 	private String actualResult;

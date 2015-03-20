@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.ExecutionException;
+
 import org.apache.axis.encoding.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,7 +16,10 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+
+import android.os.AsyncTask;
 import android.util.Log;
+
 import com.velocity.exceptions.VelocityCardGenericException;
 import com.velocity.exceptions.VelocityGenericException;
 import com.velocity.exceptions.VelocityNotFound;
@@ -40,14 +44,14 @@ import com.velocoity.models.authorizeAndCapture.AuthorizeAndCaptureTransaction;
     //storing the getting the response for paymentgateaway service.
 	private String result=null;
 	//sessionToken getting from calling signOn method.
-    private String sessionToken=null;
+    private String sessionToken;
   //serverURL getting based on the flag.
     private String serverURL;
    // Application profile Id for transaction initiation.
     private String appProfileId;
     //Merchant profile Id for transaction initiation.
     private String merchantProfileId;
-    //Attached with the REST URL for various transaction.
+    //workFlowId  for transaction initiation.
     private String workFlowId;
     //Encrypted data to initiate transaction.
     private String identityToken;
@@ -60,21 +64,20 @@ import com.velocoity.models.authorizeAndCapture.AuthorizeAndCaptureTransaction;
 	 * @param merchantProfileId- Merchant profile Id for transaction initiation.
 	 * @param workFlowId - Attached with the REST URL for various transaction.
 	 * @param isTestAccount -Works as flag for the Test Account.
+	 * @param sessionToken-sessionToken is requierd for all api method.
 	 */
-   public VelocityCardTokenImpl(boolean isTestAccount,String appProfileId,String merchantProfileId,String workFlowId,String identityToken ){
+   public VelocityCardTokenImpl(boolean isTestAccount,String appProfileId,String merchantProfileId,String workFlowId,String identityToken,String sessionToken){
     	
     	this.isTestAccount=isTestAccount;
     	this.appProfileId=appProfileId;
     	this.merchantProfileId=merchantProfileId;
     	this.workFlowId=workFlowId;
     	this.identityToken=identityToken;
-    	velocityParseResponse=new VelocityParseResponse();
-  
     	try {
 			setVelocityRestServerURL();
 		} catch (VelocityCardGenericException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+	  		e.printStackTrace();
 		} catch (velocityCardIllegalArgument e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,6 +85,20 @@ import com.velocoity.models.authorizeAndCapture.AuthorizeAndCaptureTransaction;
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	// sessionToken is null then call the signOn method for getting the sessionToken.
+    	if((sessionToken == null || sessionToken.isEmpty()) && (identityToken != null && !identityToken.isEmpty())){
+    	try {
+			this.sessionToken=signOn(identityToken);
+		} catch (VelocityNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	}else{
+    		this.sessionToken=sessionToken;
+    	}
+    	velocityParseResponse=new VelocityParseResponse();
+  
+    	
     }
     /**
      * @author ranjitk
@@ -116,23 +133,28 @@ import com.velocoity.models.authorizeAndCapture.AuthorizeAndCaptureTransaction;
   */
 	
 @Override
-public VelocityResponse verify(String sessionToken,
-		String workFlowId, AuthorizeTransaction authorizeTransaction)
+public VelocityResponse verify(String workFlowId, AuthorizeTransaction authorizeTransaction)
 		throws VelocityCardGenericException, ClientProtocolException, IOException, InterruptedException, ExecutionException {
    VelocityResponse velocityResponse = null;
 	 String verifyXMLInput;
+	 String sessionTokenValue=null;
 	 try {
 		 //generate the xml request based on the user input.
 	 verifyXMLInput = generateVerifyRequestXMLInput(authorizeTransaction);
-	 Log.d("verify xml", verifyXMLInput);
-	 //sessionToken=signOn(identityToken);
-	sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
-	Log.d("session token", sessionToken);
+	 //Log.d("verify xml", verifyXMLInput);
+	 if(sessionToken==null || sessionToken.isEmpty()){
+	  sessionToken=signOn(identityToken);
+	 }
+	 if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+		{
+		 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+		}
+	//Log.d("session token", sessionToken);
 	//Encripted the session toke.
-	String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+	String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 	//verify rest api url
 	String invokeURL = serverURL + "/Txn/" + workFlowId + "/verify";
-	Log.d("verify url", invokeURL);
+	//Log.d("verify url", invokeURL);
 	//calling the generateVelocityResponse method.
 	velocityResponse = generateVelocityResponse(VelocityConstants.POST_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", verifyXMLInput);
 		return velocityResponse;
@@ -234,44 +256,66 @@ public String generateVerifyRequestXMLInput(com.velocity.models.verify.Authorize
   * 
   * 
   */
-@Override
  public String signOn(String identityToken) throws  VelocityNotFound {
-	try{
-		
-		HttpClient httpClient=VelocityExSSLSocketFactory.getHttpsClient(new DefaultHttpClient());
-		//HttpGet getRequest = new HttpGet("https://api.cert.nabcommerce.com/REST/2.0.18/SvcInfo/token");
-		HttpGet getRequest = new HttpGet(serverURL + "/SvcInfo/token");
-		//Encripted the identity token.
-		String encIdentitytoken = new String(Base64.encode((identityToken + ":").getBytes()));
-		//String sessionToken = null;
-		//attach the encriptedtoken with header.
-	       getRequest.addHeader("Authorization", "Basic "+encIdentitytoken);
-		   getRequest.addHeader("Content-type", "application/json");
-		   getRequest.addHeader("Accept", "");
-		HttpResponse response = httpClient.execute(getRequest);
-        BufferedReader br = new BufferedReader(new InputStreamReader((response.getEntity().getContent())));
-		String output = null;
-		Log.i("============Output:============", "============Output:============");
-		
-		// Simply iterate through XML response and show on console.
-		while ((output = br.readLine()) != null) {
-			sessionToken = output;
-			break;
-		 }
-		} catch(IOException ex)
-		{
-			
-			Log.e("Exception in session Token",""+ex);
-			try {
-				throw new Exception("VelocityCard IO Exception occured::", ex);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
+	try {
+		String sessionToken=new VelocitySignOn().execute(identityToken).get();
 		return sessionToken;
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ExecutionException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
+		
+		return null;
+	}
+
+private class VelocitySignOn extends AsyncTask<String, Void, String>{
+
+	  @Override
+		protected String doInBackground(String... identityToken) {
+		  try{
+			HttpClient httpClient=VelocityExSSLSocketFactory.getHttpsClient(new DefaultHttpClient());
+			//HttpGet getRequest = new HttpGet("https://api.cert.nabcommerce.com/REST/2.0.18/SvcInfo/token");
+			HttpGet getRequest = new HttpGet(serverURL + "/SvcInfo/token");
+			//Encripted the identity token.
+			String encIdentitytoken = new String(Base64.encode((identityToken[0] + ":").getBytes()));
+			//String sessionToken = null;
+			//attach the encriptedtoken with header.
+		       getRequest.addHeader("Authorization", "Basic "+encIdentitytoken);
+			   getRequest.addHeader("Content-type", "application/json");
+			   getRequest.addHeader("Accept", "");
+			  HttpResponse response = httpClient.execute(getRequest);
+			 BufferedReader br = new BufferedReader(new InputStreamReader((response.getEntity().getContent())));
+		    String output = null;
+			//Log.i("============Output:============", "============Output:============");
+			
+			// Simply iterate through XML response and show on console.
+		
+				while ((output = br.readLine()) != null) {
+					sessionToken = output;
+					break;
+				 }
+			} catch (IllegalStateException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+      return sessionToken;
+		
+		}  
+	
+	@Override
+	protected void onPostExecute(String result) {
+		// TODO Auto-generated method stub
+		super.onPostExecute(result);
+	}
+
+	
+}
 
 /*--------------------------------------------------------------------------AuthorizeWithToken---------------------------------------------------------------*/
 /**@author ranjitk
@@ -373,16 +417,22 @@ public String generateAuthorizeRequestXMLInput(com.velocity.models.authorize.Aut
 @Override
 public VelocityResponse invokeAuthorizeRequest(com.velocity.models.authorize.AuthorizeTransaction authorizeTransaction)throws VelocityGenericException {
 		String verifyXMLInput;
+		String sessionTokenValue=null;
 	try {
 		//Generate the xml request based on the input request.
 		verifyXMLInput=generateAuthorizeRequestXMLInput(authorizeTransaction);
-		Log.d("Authorize xml",		verifyXMLInput );
+		//Log.d("Authorize xml",		verifyXMLInput );
 		//get the session token.
-		sessionToken = signOn(identityToken);
-		sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
-		Log.d("session token", sessionToken);
+		if(sessionToken==null || sessionToken.isEmpty()){
+			  sessionToken=signOnWithToken(identityToken);
+			 }
+		if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+		{
+		 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+		}
+		//Log.d("session token", sessionToken);
 		//Encripted the session token.
-		String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+		String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 		
 		String invokeURL = serverURL + "/Txn/" + workFlowId;
 		VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.POST_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", verifyXMLInput);
@@ -504,16 +554,22 @@ public VelocityResponse invokeAuthorizeRequest(com.velocity.models.authorize.Aut
 @Override
 public VelocityResponse invokeAuthorizeWithoutTokenRequest(com.velocity.models.authorize.AuthorizeTransaction authorizeTransaction)throws VelocityGenericException {
 	 String verifyXMLInput;
+	 String sessionTokenValue=null;
 	try {
 		//Generate the xml request based on the input request.
 		verifyXMLInput=generateAuthorizeWithoutTokenRequestXMLInput(authorizeTransaction);
-		Log.d("Authorize xml",		verifyXMLInput );
+		//Log.d("Authorize xml",		verifyXMLInput );
 		//gettting the session token from signon method.
-		sessionToken = signOn(identityToken);
-		sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
-		Log.d("session token", sessionToken);
+		if(sessionToken==null || sessionToken.isEmpty()){
+			  sessionToken=signOnWithToken(identityToken);
+			 }
+		if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+		{
+		 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+		}
+		//Log.d("session token", sessionToken);
 		//Encripted the session token.
-		String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+		String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 		String invokeURL = serverURL + "/Txn/"+ workFlowId;
 		VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.POST_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", verifyXMLInput);
 		return velocityResponse;
@@ -637,15 +693,21 @@ public String generateAuthorizeAndCaptureRequestXMLInput(AuthorizeAndCaptureTran
 @Override
 public VelocityResponse invokeAuthorizeAndCaptureRequest(AuthorizeAndCaptureTransaction authorizeAndCaptureTransaction)throws VelocityGenericException {
 	 String verifyXMLInput;
+	 String sessionTokenValue=null;
 	try {
 		//Generate the xml request based on the input request.
 		verifyXMLInput=generateAuthorizeAndCaptureRequestXMLInput(authorizeAndCaptureTransaction);
 		//get the session token from signon method.
-		sessionToken = signOn(identityToken);
-		sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
-		Log.d("session token", sessionToken);
+		if(sessionToken==null || sessionToken.isEmpty()){
+			  sessionToken=signOnWithToken(identityToken);
+			 }
+		if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+		{
+		 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+		}
+		//Log.d("session token", sessionToken);
 		//Encripted the session token.
-		String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+		String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 		String invokeURL = serverURL + "/Txn/"+ workFlowId;
 		VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.POST_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", verifyXMLInput);
 		return velocityResponse;
@@ -778,15 +840,21 @@ public String generateAuthorizeAndCaptureWithoutTokenRequestXMLInput(AuthorizeAn
 @Override
 public VelocityResponse invokeAuthorizeAndCaptureWithoutTokenRequest(AuthorizeAndCaptureTransaction authorizeAndCaptureTransaction)throws VelocityGenericException {
 	 String verifyXMLInput;
+	 String sessionTokenValue=null;
 	try {
 		//Generate the xml request based on the input request.
 		verifyXMLInput=generateAuthorizeAndCaptureWithoutTokenRequestXMLInput(authorizeAndCaptureTransaction);
 		//get the session token from signon method.
-		sessionToken = signOn(identityToken);
-		sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
-		Log.d("session token", sessionToken);
+		if(sessionToken==null || sessionToken.isEmpty()){
+			  sessionToken=signOnWithToken(identityToken);
+			 }
+		if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+		{
+		 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+		}
+		//Log.d("session token", sessionToken);
 		//Encripted the session token.
-		String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+		String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 		String invokeURL = serverURL + "/Txn/"+ workFlowId;
 		VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.POST_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", verifyXMLInput);
 		return velocityResponse;
@@ -858,7 +926,8 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
  * @throws velocityCardIllegalArgument is thrown when null or bad data is passed.
  */
 	public VelocityResponse invokeCaptureRequest(com.velocity.models.capture.ChangeTransaction captureTransaction)throws VelocityGenericException {
-		 String captureXMLInput;    
+		 String captureXMLInput; 
+		 String sessionTokenValue=null;
 		 
 		try {
 
@@ -868,15 +937,20 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 
 			//Generate the xml request based on the input request.
 			    captureXMLInput = generateCaptureRequestXMLInput(captureTransaction);
-			    Log.d("capture xml", captureXMLInput);
+			   // Log.d("capture xml", captureXMLInput);
 			  //get the session token from signon method.
-			    sessionToken = signOn(identityToken);
-				sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
-				Log.d("transaction id", ""+captureTransaction.getDifferenceData().getTransactionId());
+			    if(sessionToken==null || sessionToken.isEmpty()){
+			  	  sessionToken=signOnWithToken(identityToken);
+			  	 }
+			    if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+				{
+				 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+				}
+				//Log.d("transaction id", ""+captureTransaction.getDifferenceData().getTransactionId());
 			    String invokeURL = serverURL + "/Txn/" + workFlowId + "/"+ captureTransaction.getDifferenceData().getTransactionId();
-			    Log.d("url", invokeURL);
+			   // Log.d("url", invokeURL);
 			  //Encripted the session token.
-			    String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+			    String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 	     VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.PUT_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", captureXMLInput);
 	    // Log.d("velocityimple", ""+velocityResponse.getBankcardCaptureResponse().getCaptureState());
 				return velocityResponse;
@@ -948,6 +1022,7 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 	{
 		
 		String undoXMLInput;
+		String sessionTokenValue=null;
 		
 		try {
 			
@@ -958,17 +1033,22 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			
 			//Generate the xml request based on the input request.
 		     undoXMLInput =  generateUndoRequestXMLInput(undoTransaction);
-		     Log.d("undo xml", undoXMLInput);
+		     //Log.d("undo xml", undoXMLInput);
 		   //get the session token from signon method.
-				String sessionToken = signOn(identityToken);
-				sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
-				Log.d("transaction id", ""+undoTransaction.getTransactionId());
+		     if(sessionToken==null || sessionToken.isEmpty()){
+		   	  sessionToken=signOnWithToken(identityToken);
+		   	 }
+		     if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+				{
+				 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+				}
+				//Log.d("transaction id", ""+undoTransaction.getTransactionId());
 		
 			/*Invoking URL for the XML input request*/
 			String invokeURL = serverURL + "/Txn/"+ workFlowId + "/" + undoTransaction.getTransactionId();
-			 Log.i("undo url", invokeURL);
+			 //Log.i("undo url", invokeURL);
 			 //Encripted the session token.
-			 String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+			 String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 			VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.PUT_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", undoXMLInput);
 		return velocityResponse;
 		} catch(Exception ex)
@@ -998,7 +1078,7 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			
 			if(adjustTransaction == null)
 			{
-				throw new VelocityGenericException("Adjust param can not ne null.");
+				throw new VelocityGenericException("Adjust param can not be null.");
 			}
 		
 		   /* Providing the adjust request data for generating its request XML. */
@@ -1037,6 +1117,7 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 	public VelocityResponse invokeAdjustRequest(com.velocity.models.adjust.Adjust adjustTransaction) throws VelocityGenericException,velocityCardIllegalArgument
 	{
 		String adjustXMLInput;
+		String  sessionTokenValue=null;
 		try {
 			
 			if(adjustTransaction == null)
@@ -1046,13 +1127,19 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			
 			//Generate the xml request based on the input request.
 			 adjustXMLInput =  generateAdjustRequestXMLInput(adjustTransaction);
+			// Log.d("ajust xml", adjustXMLInput);
 			 //get the session token from signon method.
-			 String sessionToken = signOn(identityToken);
-			 sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
+			 if(sessionToken==null || sessionToken.isEmpty()){
+				  sessionToken=signOnWithToken(identityToken);
+				 }
+			 if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+				{
+				 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+				}
 			String invokeURL = serverURL + "/Txn/"+ workFlowId + "/" + adjustTransaction.getDifferenceData().getTransactionId();
-			 Log.i("adjust url", invokeURL);
+			 //Log.i("adjust url", invokeURL);
 			 //Encripted the session token.
-				String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+				String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 				VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.PUT_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", adjustXMLInput);
 			 return velocityResponse;
 		} catch(Exception ex)
@@ -1086,7 +1173,7 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			
 			if(returnByIdTransaction == null)
 			{
-				throw new VelocityGenericException("ReturnById param can not ne null.");
+				throw new VelocityGenericException("ReturnById param can not be null.");
 			}
 		
 		/* Providing the returnById request data for generating its request XML.*/ 
@@ -1125,6 +1212,7 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 	@Override
 	public VelocityResponse invokeReturnByIdRequest(ReturnById returnByIdTransaction) throws VelocityGenericException,velocityCardIllegalArgument {
 		 String returnByIdXMLInput;
+		 String  sessionTokenValue=null;
        try {
 			
 			if(returnByIdTransaction == null)
@@ -1134,13 +1222,19 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			
 			//Generate the xml request based on the input request.
 		      returnByIdXMLInput =  generateReturnByIdRequestXMLInput(returnByIdTransaction);
+		     // Log.d("returnByid xml", returnByIdXMLInput);
 			 //get the session token from signon method.
-			String sessionToken = signOn(identityToken);
-			 sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
+		      if(sessionToken==null || sessionToken.isEmpty()){
+		    	  sessionToken=signOnWithToken(identityToken);
+		    	 }
+		      if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+				{
+				 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+				}
 		    String invokeURL = serverURL + "/Txn/"+ workFlowId;
-		    Log.i("returnById url", invokeURL);
+		   // Log.i("returnById url", invokeURL);
 		    //Encripted the session token.
-			String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+			String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 			VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.POST_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", returnByIdXMLInput);
 			return velocityResponse;
 		} catch(Exception ex)
@@ -1205,7 +1299,11 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			returnUnlinkedRequestXML.append("<ns3:Reference>"+returnUnlinkedTransaction.getTransaction().getReportingData().getReference()+ "</ns3:Reference>");
 			returnUnlinkedRequestXML.append("</ns3:ReportingData>");
 			returnUnlinkedRequestXML.append("<ns1:TenderData>");
-			returnUnlinkedRequestXML.append("<ns4:PaymentAccountDataToken xmlns:ns4=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().isNillable()+"\">" + returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().getValue() +"</ns4:PaymentAccountDataToken>");
+			if(returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().getValue()!=null && returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().getValue().length()!=0 ){
+			 returnUnlinkedRequestXML.append("<ns4:PaymentAccountDataToken xmlns:ns4=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().isNillable()+"\">" + returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().getValue() +"</ns4:PaymentAccountDataToken>");
+			} else {
+			 returnUnlinkedRequestXML.append("<ns4:PaymentAccountDataToken xmlns:ns4=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().isNillable()+"\">" + returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().getValue() +"</ns4:PaymentAccountDataToken>");	
+			}
 			returnUnlinkedRequestXML.append("<ns5:SecurePaymentAccountData xmlns:ns5=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+returnUnlinkedTransaction.getTransaction().getTenderData().getSecurePaymentAccountData().isNillable()+"\">" + returnUnlinkedTransaction.getTransaction().getTenderData().getSecurePaymentAccountData().getValue() + "</ns5:SecurePaymentAccountData>");
 			returnUnlinkedRequestXML.append("<ns6:EncryptionKeyId xmlns:ns6=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+returnUnlinkedTransaction.getTransaction().getTenderData().getEncryptionKeyId().isNillable()+"\">"+ returnUnlinkedTransaction.getTransaction().getTenderData().getEncryptionKeyId().getValue() +"</ns6:EncryptionKeyId>");
 			returnUnlinkedRequestXML.append("<ns7:SwipeStatus xmlns:ns7=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+returnUnlinkedTransaction.getTransaction().getTenderData().getSwipeStatus().isNillable()+"\">"+returnUnlinkedTransaction.getTransaction().getTenderData().getSwipeStatus().getValue() +"</ns7:SwipeStatus>");
@@ -1271,6 +1369,7 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 	public VelocityResponse invokeReturnUnlinkedRequest(com.velocity.models.returnUnLinked.ReturnTransaction returnUnlinkedTransaction) throws VelocityGenericException, velocityCardIllegalArgument
 	{
 		    String txnRequestXML;
+		    String sessionTokenValue=null;
 		try {
 			
 			if(returnUnlinkedTransaction == null)
@@ -1280,13 +1379,19 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			
 			 //Generating ReturnUnlinked XML input request. 
 			txnRequestXML =  generateReturnUnlinkedRequestXMLInput(returnUnlinkedTransaction);
-			String sessionToken = signOn(identityToken);
-			 sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
+			// Log.d("returnUnlinked xml", 			txnRequestXML);
+			if(sessionToken==null || sessionToken.isEmpty()){
+				  sessionToken=signOnWithToken(identityToken);
+				 }
+			if(sessionToken != null && sessionToken.startsWith("\"") && sessionToken.endsWith("\""))
+			{
+			 sessionTokenValue = sessionToken.substring(1, sessionToken.length() - 1);
+			}
 			//Invoking URL for the XML input request
 			String invokeURL = serverURL + "/Txn/"+ workFlowId;
-			 Log.i("returnUnlinked url", invokeURL);
+			 //Log.i("returnUnlinked url", invokeURL);
 			    //Encripted the session token.
-				String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+				String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 			VelocityResponse velocityResponse = generateVelocityResponse(VelocityConstants.POST_METHOD, invokeURL, "Basic "+encSessiontoken, "application/xml", txnRequestXML);
 		 return velocityResponse;
 		} catch(Exception ex)
@@ -1297,6 +1402,41 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 		
 		return null;
 	}
+	
+	//calling  only this method for recalling the signOnWithToken when session token is expired.
+   public String signOnWithToken(String identityToken){	
+	   try{
+			HttpClient httpClient=VelocityExSSLSocketFactory.getHttpsClient(new DefaultHttpClient());
+			//HttpGet getRequest = new HttpGet("https://api.cert.nabcommerce.com/REST/2.0.18/SvcInfo/token");
+			HttpGet getRequest = new HttpGet(serverURL + "/SvcInfo/token");
+			//Encripted the identity token.
+			String encIdentitytoken = new String(Base64.encode((identityToken + ":").getBytes()));
+			//String sessionToken = null;
+			//attach the encriptedtoken with header.
+		       getRequest.addHeader("Authorization", "Basic "+encIdentitytoken);
+			   getRequest.addHeader("Content-type", "application/json");
+			   getRequest.addHeader("Accept", "");
+			  HttpResponse response = httpClient.execute(getRequest);
+			 BufferedReader br = new BufferedReader(new InputStreamReader((response.getEntity().getContent())));
+		    String output = null;
+			//Log.i("============Output:============", "============Output:============");
+			
+			// Simply iterate through XML response and show on console.
+		
+				while ((output = br.readLine()) != null) {
+					sessionToken = output;
+					break;
+				 }
+			} catch (IllegalStateException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+    return sessionToken;
+		
+  }
 	/**
 	 * @desc This method generates the Velocity Response for the request XMLs
 	 * @param requestType defines the the type of request with which transaction proceeds
@@ -1385,49 +1525,45 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			
 			String result = EntityUtils.toString(response.getEntity());
 			Log.i("response xml",result);
-			
+			String sessionTokenValue=null;
 			if(result != null && result.contains(VelocityConstants.ERROR_RESPONSE))
 			{
 				/* Generating ErrorResponse instance from verify request response string. */
 				ErrorResponse errorResponse =velocityParseResponse.parseXmlErrorResponse(result);
-				
+				/* Checking the error code for session expired. */
 				if(errorResponse != null && errorResponse.getErrorId().equals(VelocityConstants.STATUSCODE_5000))
 				{
 					
 					
-					//calling the signOn method and getting sessionToken;
-					String sessionToken = signOn(identityToken);
-					sessionToken = sessionToken.substring(1, sessionToken.length() - 1);
+					//calling the signOnwith token method and getting sessionToken;
+					 //  Log.i("5000", "enter 5000");
+					   sessionTokenValue=signOnWithToken(identityToken);
+					    if(sessionTokenValue != null && sessionTokenValue.startsWith("\"") && sessionTokenValue.endsWith("\""))
+							{
+					    	sessionTokenValue = sessionTokenValue.substring(1, sessionTokenValue.length() - 1);
+							}
+					
 					//Encripted the session token
-					String encSessiontoken = new String(Base64.encode((sessionToken + ":").getBytes()));
+					String encSessiontoken = new String(Base64.encode((sessionTokenValue + ":").getBytes()));
 					authorizationHeader = "Basic "+encSessiontoken;
-					if(requestType.equals(VelocityConstants.POST_METHOD))//here request type post method 
-					{
 					postRequest = new HttpPost(invokeURL);
 					postRequest.addHeader("Authorization", authorizationHeader);
 					postRequest.addHeader("Content-type", contentType);
 					postRequest.addHeader("Accept", "");
 					postRequest.setEntity(entity);
 				    response = httpClient.execute(postRequest);
-					}else if(requestType.equals(VelocityConstants.PUT_METHOD))
-					{
-						putRequest = new HttpPut(invokeURL);
-						putRequest.addHeader("Authorization", authorizationHeader);
-						putRequest.addHeader("Content-type", contentType);
-						putRequest.addHeader("Accept", "");
-						putRequest.setEntity(entity);
-						response = httpClient.execute(putRequest);
-					}
+				   // Log.d("post method", ""+response);
 				 velocityResponse.setStatusCode(String.valueOf(response.getStatusLine().getStatusCode()));
 				 velocityResponse.setMessage(response.getStatusLine().getReasonPhrase());
 					
 					/* Getting response body string.  */
 					result = EntityUtils.toString(response.getEntity());
+					Log.d("response 5ooo", result);
 				}
 				else
 				{
 					velocityResponse.setErrorResponse(errorResponse);
-					
+					Log.d("error response", "set error");
 				}
 			}
 			
@@ -1436,7 +1572,7 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			{
 				
 				/* Generating BankcardTransactionResponsePro instance when calling bankCardTransaction parse response method. */
-				BankcardTransactionResponsePro bankcardTransactionResp =velocityParseResponse.parseXmlResponse(result);
+				BankcardTransactionResponsePro bankcardTransactionResp =velocityParseResponse.parseBancardTransctionResponse(result);
 			
 				velocityResponse.setBankcardTransactionResponse(bankcardTransactionResp);
 				return velocityResponse;
@@ -1462,16 +1598,16 @@ public String generateCaptureRequestXMLInput(com.velocity.models.capture.ChangeT
 			
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
-			
+			e.printStackTrace();
 			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			
+			e.printStackTrace();
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
-			
+			e.printStackTrace();
 		}
 		return null;
 	}

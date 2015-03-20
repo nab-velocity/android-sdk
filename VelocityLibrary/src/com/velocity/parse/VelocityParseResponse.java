@@ -15,8 +15,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import android.util.Log;
-
 import com.velocity.verify.response.BankcardCaptureResponse;
 import com.velocity.verify.response.BankcardTransactionResponsePro;
 import com.velocity.verify.response.ErrorResponse;
@@ -29,7 +27,7 @@ public class VelocityParseResponse {
 	 * @param xmlResponse
 	 * @return BankcardTransactionResponsePro
 	 */
-	 public BankcardTransactionResponsePro parseXmlResponse(String xmlResponse){
+	 public BankcardTransactionResponsePro parseBancardTransctionResponse(String xmlResponse){	 
 		 BankcardTransactionResponsePro bankcardTransactionResponsePro=new BankcardTransactionResponsePro();
 		 DocumentBuilder db = null;
 		 Element line=null;
@@ -48,7 +46,7 @@ public class VelocityParseResponse {
 	              NodeList status = element.getElementsByTagName("Status");
 					 line = (Element) status.item(0);
 					String statusValue = getCharacterDataFromElement(line);
-					Log.i("parse xml value", statusValue);
+					//Log.i("parse xml value", statusValue);
 					
 					bankcardTransactionResponsePro.setStatus(statusValue);
 					// parseResponse.setStatus(statusValue);
@@ -212,11 +210,13 @@ public class VelocityParseResponse {
 					 line = (Element) timeZone.item(0);
 					String timeZoneValue = getCharacterDataFromElement(line);
 					bankcardTransactionResponsePro.setTimeZone(timeZoneValue);
-					
-					
-					
+					NodeList resubmit = element.getElementsByTagName("Resubmit");
+					 line = (Element) resubmit.item(0);
+					String resubmitValue = getCharacterDataFromElement(line);
+					bankcardTransactionResponsePro.setResubmit(resubmitValue);
+	
 					}
-			}
+			} 
 			 } catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		  } catch (SAXException e) {
@@ -226,9 +226,8 @@ public class VelocityParseResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return bankcardTransactionResponsePro;
-		
+			
 	  }
 	 /**
 	  * @author ranjitk
@@ -257,7 +256,7 @@ public class VelocityParseResponse {
 		               NodeList status = element.getElementsByTagName("Status");
 		 				 line = (Element) status.item(0);
 		 				String statusValue = getCharacterDataFromElement(line);
-		 				Log.i("bank card capture parse xml value", statusValue);
+		 				//Log.i("bank card capture parse xml value", statusValue);
 		 				bankCardCaptureResponse.setStatus(statusValue);
 		 				// parseResponse.setStatus(statusValue);
 		 				NodeList statusMessage = element.getElementsByTagName("StatusMessage");
@@ -429,12 +428,12 @@ public class VelocityParseResponse {
 	  * @author ranjitk
 	  * @method getCharacterDataFromElement
 	  * @desc to access the child data.
-	  * @param e
+	  * @param element
 	  * @return String
 	  */
-	public static String getCharacterDataFromElement(Element e) {
-		if(null != e){
-			Node child = e.getFirstChild();
+	public static String getCharacterDataFromElement(Element element) {
+		if(null != element){
+			Node child = element.getFirstChild();
 			if (child instanceof CharacterData) {
 				CharacterData cd = (CharacterData) child;
 				return cd.getData();

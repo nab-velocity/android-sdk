@@ -6,7 +6,6 @@ import java.util.concurrent.ExecutionException;
 import org.apache.http.client.ClientProtocolException;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.velocity.enums.VelocityEnums;
 import com.velocity.exceptions.VelocityCardGenericException;
@@ -28,11 +27,11 @@ public  class VelocityProcessor {
 	//Encrypted data to initiate transaction.
 	private String identityToken;
 	//Application profile Id for transaction initiation.
-	private String appProfileId;
+	private  String appProfileId;
 	//Merchant profile Id for transaction initiation.
-	private String merchantProfileId;
+	private  String merchantProfileId;
 	//Attached with the REST URL for various transaction.
-	private String workflowId;
+	private  String workflowId;
 	//Works as flag for the get the url based on the flag.
 	private boolean isTestAccount;
 	//sessionToken getting from calling signOn method.
@@ -52,17 +51,79 @@ public  class VelocityProcessor {
 	 * @param merchantProfileId- Merchant profile Id for transaction initiation.
 	 * @param workFlowId - Attached with the REST URL for various transaction.
 	 * @param isTestAccount -Works as flag for the Test Account.
+	 * @param sessionToken-sessionToken is requierd for all api method.
 	 */
-	public VelocityProcessor(String identityToken,String appProfileId,String merchantProfileId,String workflowId,boolean isTestAccount){
+	 public VelocityProcessor(){
+		
+	 }
+	public VelocityProcessor(String identityToken,String appProfileId,String merchantProfileId,String workflowId,boolean isTestAccount,String sessionToken){
 		this.identityToken = identityToken;
 		this.appProfileId = appProfileId;
 		this.merchantProfileId = merchantProfileId;
 		this.workflowId = workflowId;
 		this.isTestAccount = isTestAccount;
-		velocityCardToken = new VelocityCardTokenImpl(isTestAccount,appProfileId,merchantProfileId,workflowId,identityToken);
+	     this.sessionToken=sessionToken;
+		velocityCardToken = new VelocityCardTokenImpl(isTestAccount,appProfileId,merchantProfileId,workflowId,identityToken,sessionToken);	
+	}
+/*-------------------------------------------------------Sign On method-----------------------------------------------------------------------------------*/
+	 /**
+	  * @author ranjitk
+	  * @method signOn
+	  * @desc to generate the session token based on the identityToken.
+	  * @param identityToken
+	  * @return String
+	  * 
+	  * 
+	  */
+
+	 public String signOn(String identityToken) {
+		try {
+			String sessionToken=new VelocitySignOn().execute(identityToken).get();
+			return sessionToken;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+			return null;
+		}
+
+	private class VelocitySignOn extends AsyncTask<String, Void, String>{
+
+		  @Override
+			protected String doInBackground(String... identityToken) {
+			  
+			try {
+				String sessionToken=velocityCardToken.signOnWithToken(identityToken[0]);
+				 return sessionToken;
+			} catch (velocityCardIllegalArgument e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (VelocityNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (IllegalStateException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	      return null;
+			
+			}  
 		
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+		}
+
 		
 	}
+
+	
+
 /*----------------------------------------------------------------------------VerifyToken------------------------------------------------------------------*/	
 	/**
 	 * @author ranjitk
@@ -102,8 +163,10 @@ public  class VelocityProcessor {
 	protected VelocityResponse doInBackground(Void... params) {
 		 try {
 			// VelocityResponse velocityResponse=new VelocityResponse();
-				sessionToken = velocityCardToken.signOn(identityToken);
-				VelocityResponse velocityResponse=velocityCardToken.verify(sessionToken, workflowId, authorizeTransaction);
+				
+					//sessionToken = velocityCardToken.signOn(identityToken);
+			
+				VelocityResponse velocityResponse=velocityCardToken.verify(workflowId, authorizeTransaction);
 				return velocityResponse;
 				//VelocityResponse=invokeRespone(velocityResponse);
 				} catch (ClientProtocolException e) {
@@ -121,13 +184,7 @@ public  class VelocityProcessor {
 				} catch (ExecutionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (velocityCardIllegalArgument e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (VelocityNotFound e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				}
 		return VelocityResponse;
 	}
 	
@@ -144,6 +201,7 @@ public  class VelocityProcessor {
     * @desc storing the data in model class.
     * @return AuthorizeTransaction
     */
+ //Here set the value in model class given by data from user interface.
    AuthorizeTransaction getAuthorizeTransactionInstance()
 	{
 	   
@@ -245,6 +303,7 @@ public  class VelocityProcessor {
    * 
    * @return Authorize transaction object 
    */
+//Here set the value in model class given by data from user interface.
   com.velocity.models.authorize.AuthorizeTransaction getAuthorizeRequestAuthorizeTransactionInstance()
  	{
  		com.velocity.models.authorize.AuthorizeTransaction authorizeTransaction = new com.velocity.models.authorize.AuthorizeTransaction();
@@ -355,6 +414,7 @@ public  class VelocityProcessor {
 	 @Override
 	   protected void onPostExecute(VelocityResponse result) {
 	  	 super.onPostExecute(result);
+	  	
 	     }
  }
  /**
@@ -362,7 +422,7 @@ public  class VelocityProcessor {
   * 
   * @return Authorize transaction object 
   */
-  
+//Here set the value in model class given by data from user interface.
  com.velocity.models.authorize.AuthorizeTransaction getAuthorizeRequestAuthorizewithoutTokenTransactionInstance()
 	{
 		com.velocity.models.authorize.AuthorizeTransaction authorizeTransaction = new com.velocity.models.authorize.AuthorizeTransaction();
@@ -475,6 +535,7 @@ public  class VelocityProcessor {
 	  	 super.onPostExecute(result);
 	     }  
   }
+//Here set the value in model class given by data from user interface.
   AuthorizeAndCaptureTransaction getAuthorizeAndCaptureTransactionInstance()
 	{
 		AuthorizeAndCaptureTransaction authorizeAndCaptureTransaction = new AuthorizeAndCaptureTransaction();
@@ -584,6 +645,7 @@ public VelocityResponse authAndCaptureWithoutToken(VelocityPaymentTransaction ve
 	}
 	
 }
+ //Here set the value in model class given by data from user interface.
  AuthorizeAndCaptureTransaction getAuthorizeAndCaptureWithoutTokenTransactionInstance()
 	{
 		AuthorizeAndCaptureTransaction authorizeAndCaptureTransaction = new AuthorizeAndCaptureTransaction();
@@ -697,7 +759,7 @@ public VelocityResponse authAndCaptureWithoutToken(VelocityPaymentTransaction ve
 			
 			captureTransaction.getDifferenceData().setTransactionId(velocityPaymentTransaction.getTransactionId());
 			VelocityResponse velocityResponse = velocityCardToken.invokeCaptureRequest(captureTransaction);
-			Log.d("velocityProcessor", ""+velocityResponse.getBankcardCaptureResponse().getCaptureState());
+			//Log.d("velocityProcessor", ""+velocityResponse.getBankcardCaptureResponse().getCaptureState());
 			return velocityResponse;	
 		} catch (VelocityGenericException e) {
 			// TODO Auto-generated catch block
@@ -713,6 +775,7 @@ public VelocityResponse authAndCaptureWithoutToken(VelocityPaymentTransaction ve
   * @desc  This method will be used invoking the capture request for transaction.
   * @return Capture
  */
+//Here set the value in model class given by data from user interface.
  com.velocity.models.capture.ChangeTransaction getCaptureTransactionInstance() throws VelocityGenericException{
 	   
 	   com.velocity.models.capture.ChangeTransaction captureTransaction = new com.velocity.models.capture.ChangeTransaction();
@@ -779,7 +842,7 @@ public VelocityResponse authAndCaptureWithoutToken(VelocityPaymentTransaction ve
       * @desc  This method will be used invoking the undo request for transaction.
 	  * @return Undo
 	 */
-  
+//Here set the value in model class given by data from user interface.
   com.velocity.models.undo. Undo getUndoTransactionInstance(){
 	   
 	  com.velocity.models.undo. Undo undoTransaction = new com.velocity.models.undo.Undo();
@@ -843,7 +906,7 @@ public VelocityResponse authAndCaptureWithoutToken(VelocityPaymentTransaction ve
    * @desc  This method will be used invoking the adjust request for transaction.
    * @return Capture
   */
-  
+//Here set the value in model class given by data from user interface.
   Adjust getAdjustTransactionInstance(){
 	   
 	   Adjust adjustTransaction = new Adjust();
@@ -907,6 +970,7 @@ public VelocityResponse authAndCaptureWithoutToken(VelocityPaymentTransaction ve
 	 * This method sets the values for the ReturnById XML.
 	 * @return of the type ReturnById
 	 */
+//Here set the value in model class given by data from user interface.
 	ReturnById getReturnByIdTransactionInstance(){
 
 		ReturnById returnByIdTransaction = new ReturnById();
@@ -969,6 +1033,7 @@ public VelocityResponse authAndCaptureWithoutToken(VelocityPaymentTransaction ve
 		 * This method sets the values for the ReturnUnlinked XML.
 		 * @return of the type ReturnTransaction
 		 */
+	//Here set the value in model class given by data from user interface.
 ReturnTransaction getReturnTransactionInstance()
 {
 			ReturnTransaction returnUnlinkedTransaction = new ReturnTransaction();
@@ -994,14 +1059,15 @@ ReturnTransaction getReturnTransactionInstance()
 			returnUnlinkedTransaction.getTransaction().getReportingData().setComment(velocityPaymentTransaction.getComment());
 			returnUnlinkedTransaction.getTransaction().getReportingData().setDescription(velocityPaymentTransaction.getDescription());
 			returnUnlinkedTransaction.getTransaction().getReportingData().setReference(velocityPaymentTransaction.getReportingDataReference());
+			returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().setNillable(true);
 			returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().setValue(velocityPaymentTransaction.getPaymentAccountDataToken());
 			returnUnlinkedTransaction.getTransaction().getTenderData().getSecurePaymentAccountData().setNillable(true);
 			returnUnlinkedTransaction.getTransaction().getTenderData().getEncryptionKeyId().setNillable(true);
 			returnUnlinkedTransaction.getTransaction().getTenderData().getSwipeStatus().setNillable(true);
 			returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().setCardType(velocityPaymentTransaction.getCardType());
 			returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().setpAN(velocityPaymentTransaction.getPanNumber());
-			returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().setExpire(velocityPaymentTransaction.getExpiryDate());;
-			returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().getTrack1Data().setNillable(true);;
+			returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().setExpire(velocityPaymentTransaction.getExpiryDate());
+			returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().getTrack1Data().setNillable(true);
 			returnUnlinkedTransaction.getTransaction().getTenderData().getEcommerceSecurityData().setNillable(true);
 			returnUnlinkedTransaction.getTransaction().getTransactionData().setAmount(velocityPaymentTransaction.getAmount());
 			returnUnlinkedTransaction.getTransaction().getTransactionData().setCurrencyCode(velocityPaymentTransaction.getCurrencyCode());
@@ -1034,5 +1100,122 @@ ReturnTransaction getReturnTransactionInstance()
 			return returnUnlinkedTransaction;
 		}
 
- 
+/*--------------------------------------------------------------------------------------ReturnUnLinked without token-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ 
+/**
+ * @author ranjitk
+ * @name returnUnLinkedWithoutToken
+ * @desc  This method will be used to returnUnLinked without token  for transaction.
+ * @param velocityPaymentTransaction
+ * @return VelocityResponse
+*/
+public VelocityResponse returnUnLinkedWithoutToken(VelocityPaymentTransaction velocityPaymentTransaction){
+	  this.velocityPaymentTransaction=velocityPaymentTransaction;
+	  try {
+		  VelocityResponse velocityResponse=new ReturnUnLinkedWithoutTokenProcessorService(getReturnTransactionInstanceWithoutToken()).execute().get();
+		return velocityResponse;
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ExecutionException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+  return null;    
+}
+//Here implementing the Asyn task for performing operation in background.
+private class ReturnUnLinkedWithoutTokenProcessorService extends AsyncTask<Void, Void, VelocityResponse>{
+	  private   ReturnTransaction returnUnlinkedTransaction;
+	  public ReturnUnLinkedWithoutTokenProcessorService(ReturnTransaction returnUnlinkedTransaction){
+		  this.returnUnlinkedTransaction=returnUnlinkedTransaction;
+	  }
+  	@Override
+	protected VelocityResponse doInBackground(Void... params) {
+		// TODO Auto-generated method stub
+				
+		try {
+			
+			VelocityResponse velocityResponse =velocityCardToken.invokeReturnUnlinkedRequest(returnUnlinkedTransaction);
+			return velocityResponse;
+		} catch (VelocityGenericException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (velocityCardIllegalArgument e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	  
+}
+/**
+	 * @author ranjitk
+	 * This method sets the values for the ReturnUnlinkedWithout token XML.
+	 * @return of the type ReturnTransaction
+	 */
+//Here set the value in model class given by data from user interface.
+ReturnTransaction getReturnTransactionInstanceWithoutToken()
+{
+		ReturnTransaction returnUnlinkedTransaction = new ReturnTransaction();
+
+		/*Setting the values for ReturnUnlinked without token XML*/
+
+		returnUnlinkedTransaction.getTransaction().setType(VelocityEnums.BankcardTransaction);
+		returnUnlinkedTransaction.getBatchIds().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getName().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getAddress().setStreet1(velocityPaymentTransaction.getStreet());
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getAddress().getStreet2().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getAddress().setCity(velocityPaymentTransaction.getCity());
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getAddress().setStateProvince(velocityPaymentTransaction.getStateProvince());
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getAddress().setPostalCode(velocityPaymentTransaction.getPostalCode());
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getAddress().setCountryCode(velocityPaymentTransaction.getCountryCode());
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().setBusinessName(velocityPaymentTransaction.getBusinnessName());
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getPhone().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getFax().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getBillingData().getEmail().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getCustomerData().setCustomerId(velocityPaymentTransaction.getEmployeeId());
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getCustomerTaxId().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getCustomerData().getShippingData().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getReportingData().setComment(velocityPaymentTransaction.getComment());
+		returnUnlinkedTransaction.getTransaction().getReportingData().setDescription(velocityPaymentTransaction.getDescription());
+		returnUnlinkedTransaction.getTransaction().getReportingData().setReference(velocityPaymentTransaction.getReportingDataReference());
+		returnUnlinkedTransaction.getTransaction().getTenderData().getPaymentAccountDataToken().setNillable(true);	
+		returnUnlinkedTransaction.getTransaction().getTenderData().getSecurePaymentAccountData().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTenderData().getEncryptionKeyId().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTenderData().getSwipeStatus().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().setCardType(velocityPaymentTransaction.getCardType());
+		returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().setpAN(velocityPaymentTransaction.getPanNumber());
+		returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().setExpire(velocityPaymentTransaction.getExpiryDate());
+		returnUnlinkedTransaction.getTransaction().getTenderData().getCardData().getTrack1Data().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTenderData().getEcommerceSecurityData().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setAmount(velocityPaymentTransaction.getAmount());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setCurrencyCode(velocityPaymentTransaction.getCurrencyCode());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setTransactionDateTime(velocityPaymentTransaction.getTransactionDateTime());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().getCampaignId().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setReference(velocityPaymentTransaction.getReportingDataReference());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setAccountType(velocityPaymentTransaction.getAccountType());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().getApprovalCode().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setCashBackAmount(velocityPaymentTransaction.getCashBackAmount());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setCustomerPresent(velocityPaymentTransaction.getCustomerPresent());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setEmployeeId(velocityPaymentTransaction.getEmployeeId());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setEntryMode(velocityPaymentTransaction.getEntryMode());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setGoodsType(velocityPaymentTransaction.getGoodsType());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setIndustryType(velocityPaymentTransaction.getIndustryType());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().getInternetTransactionData().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setInvoiceNumber(velocityPaymentTransaction.getInvoiceNumber());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setOrderNumber(velocityPaymentTransaction.getOrderNumber());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setPartialShipment(false);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setSignatureCaptured(false);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setFeeAmount(velocityPaymentTransaction.getFeeAmount());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().getTerminalId().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().getLaneId().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setTipAmount(velocityPaymentTransaction.getTipAmount());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().getBatchAssignment().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setPartialApprovalCapable(velocityPaymentTransaction.getPartialApprovalCapable());
+		returnUnlinkedTransaction.getTransaction().getTransactionData().getScoreThreshold().setNillable(true);
+		returnUnlinkedTransaction.getTransaction().getTransactionData().setIsQuasiCash(String.valueOf(velocityPaymentTransaction.isQuasiCash()));
+
+
+		return returnUnlinkedTransaction;
+	}
+
 }

@@ -1,9 +1,12 @@
 package com.velocity.verify.response;
+
+
 /**
  * 
  * @author ranjitk
  *
  */
+
 
 public class ServiceTransactionDateTime {
 	private String date;

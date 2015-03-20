@@ -20,7 +20,8 @@
         <item>Void(Undo)</item>
         <item>Adjust</item>
         <item>ReturnById</item>
-        <item>ReturnUnlinked</item>
+        <item>ReturnUnlinked W/Token</item>
+        <item>ReturnUnlinked W/O Token</item>
        </string-array>
       <string-array name="state_arrays">
         <item>Colorado</item>

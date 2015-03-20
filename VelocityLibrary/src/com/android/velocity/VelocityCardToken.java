@@ -27,7 +27,7 @@ public interface VelocityCardToken {
 	 * @throws VelocityCardNotFound is thrown when the exception occurs during the access the session token
 	 */
 	
-	public  String signOn(String identityToken) throws velocityCardIllegalArgument, VelocityNotFound;
+	public  String signOnWithToken(String identityToken) throws velocityCardIllegalArgument, VelocityNotFound;
 	/**
 	 * @param authorizeTransaction of the type AuthorizeTransaction.
 	 * @return of the type String
@@ -96,11 +96,12 @@ public interface VelocityCardToken {
 	 */
 	public String generateReturnByIdRequestXMLInput(com.velocity.models.returnById.ReturnById returnByIdTransaction) throws VelocityGenericException,velocityCardIllegalArgument;
 	/**
+	 * @param appProfileId 
 	 * @param authorizeTransaction of the type AuthorizeTransaction
 	 * @return of the type VelocityResponse
 	 * @throws VelocityGenericException is thrown when the exception occurs during the transaction. 
 	 */
-	public  VelocityResponse verify(String sessionToken, String workFlowId, AuthorizeTransaction authorizeTransaction) throws VelocityCardGenericException,ClientProtocolException,IOException, InterruptedException, ExecutionException;
+	public  VelocityResponse verify(String workFlowId, AuthorizeTransaction authorizeTransaction) throws VelocityCardGenericException,ClientProtocolException,IOException, InterruptedException, ExecutionException;
 	/**
 	 * @param authorizeTransaction of the Type AuthorizeTransaction.
 	 * @return of the type VelocityResponse
