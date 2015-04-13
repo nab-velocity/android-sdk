@@ -686,7 +686,7 @@ The Velocity sample android  Application is able to test the following transacti
 8. Adjust - The Adjust operation is used to make adjustments to a previously authorized amount (incremental or reversal) prior to capture and settlement. <br/>
 9. ReturnById - The ReturnById operation is used to perform a linked credit to a card-holder’s account from the merchant’s account based on a previously authorized and settled(Captured) transaction. <br/>
 10. ReturnUnlinked - The ReturnUnlinked operation is used to perform an "unlinked", or standalone, credit to a card-holder’s account from the merchant’s account. <br/>
-11. ReturnUnlinked W/O token - This method proceeds with the card details when payment account data token is not available.<br/>
+
 Depending upon the type of transaction performed with request input data, response is generated from the velocity server which can be viewed on the Result page. <br/>
 <h2>5.Download the Eclipse IDE</h2><br/>
 	  1. Reference-https://eclipse.org/downloads/<br/>
