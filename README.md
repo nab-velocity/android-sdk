@@ -97,10 +97,8 @@ The method is responsible for the invocation of verify operation on the Velocity
 The method is responsible for the invocation of authorize operation on the Velocity REST server.<br/>
 <b>public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
-@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-
-			   1.street - String   <br/>
-               2.stateProvince - String     <br/>
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>		 1.street - String   <br/>
+          2.stateProvince - String     <br/>
                3.postalCode - String   <br/>
                4.phone - String    <br/>
 			   5.state - String     <br/>
@@ -125,13 +123,13 @@ The method is responsible for the invocation of authorize operation on the Veloc
                24.countryCode - String     <br/>
                25.businnessName - String   <br/>
                26.comment - String    <br/>
-               27.description - String    <br/>
-               28.paymentAccountDataToken - String   <br/>
-               29.cashBackAmount - String       <br/> 
-               30.goodsType - String     <br/>
-               31.invoiceNumber - String     <br/>
-               32.orderNumber - String      <br/>
-	           33.FeeAmount - String   <br/>
+        27.description - String    <br/>
+      28.paymentAccountDataToken - String   <br/>
+     29.cashBackAmount - String       <br/> 
+  30.goodsType - String     <br/>
+  31.invoiceNumber - String     <br/>
+  32.orderNumber - String      <br/>
+    33.FeeAmount - String   <br/>
 
 
  <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
@@ -200,9 +198,7 @@ The method is responsible for the invocation of authorize operation on the Veloc
 	
 public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)<br/>
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-
-
-		1.cardType - String     <br/>
+ 	1.cardType - String     <br/>
 		2.cardholderName - String     <br/>
                 3.panNumber-String   <br/>
                 4.expiryDate - String   <br/>
@@ -306,8 +302,7 @@ public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTran
  <b>public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-
-			   1.securePaymentAccountData - String     <br/>
+1.securePaymentAccountData - String     <br/>
 			   2.encryptionKeyId - String     <br/>
                       3.orderNumber - String      <br/>
                     4.invoiceNumber - String     <br/>
@@ -505,8 +500,7 @@ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransa
 <b>public VelocityResponse authorizeAndCapture(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-
-			   1.cardType - String     <br/>
+   1.cardType - String     <br/>
 			   2.cardholderName - String     <br/>
                 3.panNumber-String   <br/>
                 4.expiryDate - String   <br/>
@@ -611,8 +605,7 @@ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransa
  <b>public VelocityResponse authorizeAndCapture(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-
-			   1.securePaymentAccountData - String     <br/>
+   1.securePaymentAccountData - String     <br/>
 			   2.encryptionKeyId - String     <br/>
                  3.orderNumber - String      <br/>
                 4.invoiceNumber - String     <br/>
@@ -962,8 +955,7 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 <b>public VelocityResponse returnUnlinked(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
  @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-
-			   1.cardType - String     <br/>
+  1.cardType - String     <br/>
 			   2.cardholderName - String     <br/>
                 3.panNumber-String   <br/>
                 4.expiryDate - String   <br/>
@@ -1067,8 +1059,7 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 <b>public VelocityResponse returnUnlinked(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-
-			   1.securePaymentAccountData - String     <br/>
+  1.securePaymentAccountData - String     <br/>
 			   2.encryptionKeyId - String     <br/>
                3.orderNumber - String      <br/>
                4.invoiceNumber - String     <br/>
