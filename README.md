@@ -54,25 +54,25 @@ The method is responsible for the invocation of verify operation on the Velocity
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
-            velocityPaymentTransaction.setCardType("Visa"); <br/>
-	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
-		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
-		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setcVData("123"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
+            velocityPaymentTransaction.setCardType("Visa"); 
+	     velocityPaymentTransaction.setCardholderName("ashish"); 
+	     velocityPaymentTransaction.setPanNumber("4012888812348882"); 
+		 velocityPaymentTransaction.setExpiryDate("0113"); 
+		 velocityPaymentTransaction.setStreet("4 corporate sq"); 
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setcVData("123"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided");
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver"); 
  
 @returnType  <b>VelocityResponse</b>  <br/>
     <b>Sample code</b><br/> 
@@ -138,38 +138,38 @@ The method is responsible for the invocation of authorize operation on the Veloc
 
  		VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  		
-         	 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
-		velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87-bba2-d572d6b70d55"); <br/>
+         	 velocityPaymentTransaction.setStreet("4 corporate sq"); 
+		 velocityPaymentTransaction.setState("CO"); 
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); 
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver"); 
+		 velocityPaymentTransaction.setReportingDataReference("001"); 
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); 
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber(""); 
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05"); 
+		velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87-bba2-d572d6b70d55"); 
 		 
      
 @returnType  <b>VelocityResponse</b>  <br/>  
@@ -241,42 +241,42 @@ public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTran
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
-               velocityPaymentTransaction.setCardType("Visa"); <br/>
-	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	      velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
-	      velocityPaymentTransaction.setExpiryDate("0113"); <br/> 
-		velocityPaymentTransaction.setcVData("123"); <br/>
-               velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+               velocityPaymentTransaction.setCardType("Visa"); 
+	      velocityPaymentTransaction.setCardholderName("ashish"); 
+	      velocityPaymentTransaction.setPanNumber("4012888812348882"); 
+	      velocityPaymentTransaction.setExpiryDate("0113");  
+		velocityPaymentTransaction.setcVData("123"); 
+               velocityPaymentTransaction.setStreet("4 corporate sq"); 
+		 velocityPaymentTransaction.setState("CO"); 
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); 
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16");
+		 velocityPaymentTransaction.setCity("Denver"); 
+		 velocityPaymentTransaction.setReportingDataReference("001"); 
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); 
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber(""); 
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05"); 
 		
  @returnType  <b>VelocityResponse</b>  <br/>  
     <b>Sample code</b><br/> 
@@ -345,39 +345,39 @@ public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTran
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
  
-            velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA 85647434D966CF8B4DAD1");<br/>
-		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
-             velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+            velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA 85647434D966CF8B4DAD1");
+		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");
+             velocityPaymentTransaction.setStreet("4 corporate sq"); 
+		 velocityPaymentTransaction.setState("CO"); 
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); 
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver"); 
+		 velocityPaymentTransaction.setReportingDataReference("001"); 
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); 
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber(""); 
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05"); 
 		
  @returnType  <b>VelocityResponse</b>  <br/>  
     <b>Sample code</b><br/> 
@@ -446,38 +446,38 @@ VelocityPaymentTransaction <br/>
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
 VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
               
-		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05");<br/>
-		velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87                    -bba2-d572d6b70d55"); <br/>
+		 velocityPaymentTransaction.setStreet("4 corporate sq"); 
+		 velocityPaymentTransaction.setState("CO"); 
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202");
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided");
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver"); 
+		 velocityPaymentTransaction.setReportingDataReference("001"); 
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); 
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber(""); 
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05");
+		velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87                    -bba2-d572d6b70d55"); 
 		
 @returnType  <b>VelocityResponse</b>  <br/>  
      <b>Sample code</b><br/> 
@@ -545,42 +545,42 @@ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransa
   <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
-               velocityPaymentTransaction.setCardType("Visa"); <br/>
-	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
-		 velocityPaymentTransaction.setExpiryDate("0113"); <br/> 
-		 velocityPaymentTransaction.setcVData("123"); <br/>
-              velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+               velocityPaymentTransaction.setCardType("Visa"); 
+	     velocityPaymentTransaction.setCardholderName("ashish");
+	     velocityPaymentTransaction.setPanNumber("4012888812348882"); 
+		 velocityPaymentTransaction.setExpiryDate("0113"); 
+		 velocityPaymentTransaction.setcVData("123"); 
+              velocityPaymentTransaction.setStreet("4 corporate sq");
+		 velocityPaymentTransaction.setState("CO"); 
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); 
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce");
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver"); 
+		 velocityPaymentTransaction.setReportingDataReference("001"); 
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); 
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber("");
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05");
 		
  @returnType  <b>VelocityResponse</b>  <br/>  
     <b>Sample code</b><br/> 
@@ -648,39 +648,39 @@ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransa
  <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
-         velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");<br/>
-		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
-         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+          velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");
+		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");
+         velocityPaymentTransaction.setStreet("4 corporate sq"); 
+		 velocityPaymentTransaction.setState("CO"); 
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); 
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver");
+		 velocityPaymentTransaction.setReportingDataReference("001"); 
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); 
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber(""); 
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05"); 
 		
  @returnType  <b>VelocityResponse</b>  <br/>  
     <b>Sample code</b><br/> 
@@ -716,10 +716,10 @@ The method is responsible for the invocation of capture operation on the Velocit
            3. amount - String   <br/> 
   <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
   
-      VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-      velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
-      velocityPaymentTransaction.setTipAmount("2.34");<br/>
-     velocityPaymentTransaction.setAmount("12.34"); <br/>
+      VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();
+      velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");
+      velocityPaymentTransaction.setTipAmount("2.34");
+     velocityPaymentTransaction.setAmount("12.34");
 @returnType  <b>VelocityResponse</b>  <br/> 
 
 <b>Sample code</b><br/> 
@@ -807,7 +807,7 @@ The method is responsible for the invocation of adjust operation on the Velocity
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
       velocityPaymentTransaction.setAmountfordjust("10.23");
-     velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
+     velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");
 @returnType  <b>VelocityResponse</b>  <br/> 
 <b>Sample code</b><br/> 
        1.Request a adjust() method from API .<br/> 
@@ -840,7 +840,7 @@ The method is responsible for the invocation of returnById operation on the Velo
   VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
 
        velocityPaymentTransaction.setAmount("10.23");
-       velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
+       velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");
 @returnType  <b>VelocityResponse</b>  <br/> 
 
 <b>Sample code</b><br/> 
@@ -906,38 +906,38 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
              
-		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-	     velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05");<br/>
-           velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87               -bba2-d572d6b70d55"); <br/>
+		 velocityPaymentTransaction.setStreet("4 corporate sq"); 
+		 velocityPaymentTransaction.setState("CO");
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+	     velocityPaymentTransaction.setCvDataProvided("Provided"); 
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com");
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver"); 
+		 velocityPaymentTransaction.setReportingDataReference("001");
+		velocityPaymentTransaction.setTransactionDataReference("xyt");
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber(""); 
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05");
+           velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87               -bba2-d572d6b70d55"); 
 
  @returnType  <b>VelocityResponse</b>  <br/> 
   <b>Sample code</b><br/> 
@@ -1006,42 +1006,42 @@ The method is responsible for the invocation of returnUnLinked operation on the 
  <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
-               velocityPaymentTransaction.setCardType("Visa"); <br/>
-	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	      velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
-		 velocityPaymentTransaction.setExpiryDate("0113"); <br/> 
-		 velocityPaymentTransaction.setcVData("123"); <br/>
-         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+               velocityPaymentTransaction.setCardType("Visa"); 
+	      velocityPaymentTransaction.setCardholderName("ashish"); 
+	      velocityPaymentTransaction.setPanNumber("4012888812348882"); 
+		 velocityPaymentTransaction.setExpiryDate("0113");
+		 velocityPaymentTransaction.setcVData("123"); 
+         velocityPaymentTransaction.setStreet("4 corporate sq"); 
+		 velocityPaymentTransaction.setState("CO");
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); 
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver"); 
+		 velocityPaymentTransaction.setReportingDataReference("001");
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); 
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber(""); 
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05"); 
 		
  @returnType  <b>VelocityResponse</b>  <br/>  
     <b>Sample code</b><br/> 
@@ -1109,39 +1109,39 @@ The method is responsible for the invocation of returnUnLinked operation on the 
   <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
-             velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");<br/>
-		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
-         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
-		 velocityPaymentTransaction.setState("CO"); <br/>
-		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
-		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
-		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
-		 velocityPaymentTransaction.setAmount("12.34"); <br/>
-		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
-		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
-		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
-		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
-		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
-		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
-		 velocityPaymentTransaction.setCity("Denver"); <br/>
-		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
-		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
-		velocityPaymentTransaction.setQuasiCash(false);<br/>
-		velocityPaymentTransaction.setPartialShipment(false);<br/>
-		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
-		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
-		velocityPaymentTransaction.setCountryCode("USA");<br/>
-		velocityPaymentTransaction.setTipAmount("2.34");<br/>
-		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
-		velocityPaymentTransaction.setComment("a test comment");<br/>
-		velocityPaymentTransaction.setDescription("a test description");<br/>
-		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
-		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
-		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
-		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
-		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+             velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");
+		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");
+         velocityPaymentTransaction.setStreet("4 corporate sq");
+		 velocityPaymentTransaction.setState("CO");
+		 velocityPaymentTransaction.setStateProvince("CO"); 
+		 velocityPaymentTransaction.setPostalCode("80202"); 
+		 velocityPaymentTransaction.setPhone("7849477899"); 
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); 
+		 velocityPaymentTransaction.setAmount("12.34"); 
+		 velocityPaymentTransaction.setCurrencyCode("USD"); 
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); 
+		 velocityPaymentTransaction.setEmployeeId("11"); 
+		 velocityPaymentTransaction.setEntryMode("Keyed"); 
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); 
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); 
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); 
+		 velocityPaymentTransaction.setCity("Denver"); 
+		 velocityPaymentTransaction.setReportingDataReference("001"); 
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); 
+		velocityPaymentTransaction.setQuasiCash(false);
+		velocityPaymentTransaction.setPartialShipment(false);
+		velocityPaymentTransaction.setSignatureCaptured(false);
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");
+		velocityPaymentTransaction.setCountryCode("USA");
+		velocityPaymentTransaction.setTipAmount("2.34");
+		velocityPaymentTransaction.setBusinnessName("MomCorp");
+		velocityPaymentTransaction.setComment("a test comment");
+		velocityPaymentTransaction.setDescription("a test description");
+		velocityPaymentTransaction.setCashBackAmount("0.0");
+		velocityPaymentTransaction.setGoodsType("NotSet");
+		velocityPaymentTransaction.setInvoiceNumber("");
+		velocityPaymentTransaction.setOrderNumber("629203"); 
+		velocityPaymentTransaction.setFeeAmount("1000.05"); 
 		
  @returnType  <b>VelocityResponse</b>  <br/>  
     <b>Sample code</b><br/> 
