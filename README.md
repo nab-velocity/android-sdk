@@ -191,8 +191,9 @@ The method is responsible for the invocation of authorize operation on the Veloc
 				   // TODO your business logic to complete payment...
 				}
        }
+	  
 	   
-<h2>	<b>Authorize without Token Transaction:<b/><h2/><br/>   
+	<b>Authorize without Token Transaction:<b/><br/>   
 	<b>public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
