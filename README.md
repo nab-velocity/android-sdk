@@ -132,11 +132,13 @@ The method is responsible for the invocation of authorize operation on the Veloc
                31.invoiceNumber - String     <br/>
                32.orderNumber - String      <br/>
 	           33.FeeAmount - String   <br/>
-	           
-    <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
- VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-        
-         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+
+
+ <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+
+
+ 		VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+         	 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
 		 velocityPaymentTransaction.setState("CO"); <br/>
 		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
 		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
@@ -194,9 +196,10 @@ The method is responsible for the invocation of authorize operation on the Veloc
        }
 	  
 	   
-	Authorize without Token Transaction:<br/>   
+	Authorize without Token Transaction:<br/>  
+	
 	public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)<br/>
-@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
+	@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
 
 			   1.cardType - String     <br/>
 			   2.cardholderName - String     <br/>
