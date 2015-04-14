@@ -1206,7 +1206,12 @@ The method is responsible for the invocation of returnById operation on the Velo
 
 				   // TODO your business logic to complete payment...
 
-				 }
+				 } else if(velocityResponse.getJsonErrorResponse()!=null &&    velocityResponse.getJsonErrorResponse().getErrorId()!=null){ 
+				 
+				   Log.i("VelocityProcessor", "JsonErrorResponse: " +velocityResponse.getJsonErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
        }
 <h2>2. VelocityResponse </h2><br/>
 
