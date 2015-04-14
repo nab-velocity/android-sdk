@@ -53,7 +53,8 @@ The method is responsible for the invocation of verify operation on the Velocity
 			   20.city -String <br/>
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-         velocityPaymentTransaction.setCardType("Visa"); <br/>
+ 
+            velocityPaymentTransaction.setCardType("Visa"); <br/>
 	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
 	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
 		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
@@ -136,6 +137,7 @@ The method is responsible for the invocation of authorize operation on the Veloc
 
 
  		VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+ 		
          	 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
 		 velocityPaymentTransaction.setState("CO"); <br/>
 		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
@@ -238,6 +240,7 @@ public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTran
 	        
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+ 
                velocityPaymentTransaction.setCardType("Visa"); <br/>
 	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
 	      velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
@@ -340,6 +343,7 @@ public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTran
 	        
   <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+ 
  
             velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA 85647434D966CF8B4DAD1");<br/>
 		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
@@ -541,12 +545,12 @@ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransa
   <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
  
-           velocityPaymentTransaction.setCardType("Visa"); <br/>
+               velocityPaymentTransaction.setCardType("Visa"); <br/>
 	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
 	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
 		 velocityPaymentTransaction.setExpiryDate("0113"); <br/> 
 		 velocityPaymentTransaction.setcVData("123"); <br/>
-          velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+              velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
 		 velocityPaymentTransaction.setState("CO"); <br/>
 		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
 		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
@@ -643,6 +647,7 @@ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransa
 	        
  <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+ 
          velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");<br/>
 		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
          velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
@@ -710,10 +715,11 @@ The method is responsible for the invocation of capture operation on the Velocit
            2.tipAmount - String  <br/>
            3. amount - String   <br/> 
   <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
- VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-  velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
-  velocityPaymentTransaction.setTipAmount("2.34");<br/>
-  velocityPaymentTransaction.setAmount("12.34"); <br/>
+  
+      VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+      velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
+      velocityPaymentTransaction.setTipAmount("2.34");<br/>
+     velocityPaymentTransaction.setAmount("12.34"); <br/>
 @returnType  <b>VelocityResponse</b>  <br/> 
 
 <b>Sample code</b><br/> 
@@ -765,7 +771,9 @@ The method is responsible for the invocation of undo operation on the Velocity R
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the undo request VelocityPaymentTransaction <br/>                1. transactionId - String <br/>
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+
   VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+  
    velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>			  
    @returnType  <b>VelocityResponse</b>  <br/> 
    <b>Sample code</b><br/> 
@@ -797,8 +805,9 @@ The method is responsible for the invocation of adjust operation on the Velocity
 		   2.transactionId - String <br/>
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-  velocityPaymentTransaction.setAmountfordjust("10.23");
-  velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
+ 
+      velocityPaymentTransaction.setAmountfordjust("10.23");
+     velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
 @returnType  <b>VelocityResponse</b>  <br/> 
 <b>Sample code</b><br/> 
        1.Request a adjust() method from API .<br/> 
@@ -829,8 +838,9 @@ The method is responsible for the invocation of returnById operation on the Velo
 		 2. amount - String   <br/> 
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
   VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-   velocityPaymentTransaction.setAmount("10.23");
-   velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
+
+       velocityPaymentTransaction.setAmount("10.23");
+       velocityPaymentTransaction.setTransactionId("AC564B5C021245D68014658C7DBE6A7B");<br/>
 @returnType  <b>VelocityResponse</b>  <br/> 
 
 <b>Sample code</b><br/> 
@@ -995,9 +1005,10 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 	        
  <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-         velocityPaymentTransaction.setCardType("Visa"); <br/>
-	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+ 
+               velocityPaymentTransaction.setCardType("Visa"); <br/>
+	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	      velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
 		 velocityPaymentTransaction.setExpiryDate("0113"); <br/> 
 		 velocityPaymentTransaction.setcVData("123"); <br/>
          velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
@@ -1097,7 +1108,8 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 	        
   <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-         velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");<br/>
+ 
+             velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");<br/>
 		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
          velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
 		 velocityPaymentTransaction.setState("CO"); <br/>
@@ -1169,14 +1181,15 @@ The method is responsible for the invocation of returnById operation on the Velo
 		
 <h2>How to set the Ui value on QueryTransactionsDetail model </h2><br/>
   
-           QueryTransactionsDetail queryTransactionsDetail=new QueryTransactionsDetail();
-	    	queryTransactionsDetail.setTransactionDetailFormat(com.velocity.enums.TransactionDetailFormat.CWSTransaction);
+                        QueryTransactionsDetail queryTransactionsDetail=new QueryTransactionsDetail();
+	    	        queryTransactionsDetail.setTransactionDetailFormat(com.velocity.enums.TransactionDetailFormat.CWSTransaction);
 			queryTransactionsDetail.getPagingParameters().setPage(0);
 			queryTransactionsDetail.getPagingParameters().setPageSize(10);
 			queryTransactionsDetail.setIncludeRelated(true);
 			queryTransactionsDetail.getQueryTransactionsParameters().getTransactionDateRange().setStartDateTime("2015-03-13 02:03:40");
 		    queryTransactionsDetail.getQueryTransactionsParameters().getTransactionDateRange().setEndDateTime("2015-03-14 02:03:40");
 			queryTransactionsDetail.getQueryTransactionsParameters().getTransactionIds().add("D2449805BD0A437C8FFA6A61AA207589");
+			
 @returnType  <b>VelocityResponse</b>  <br/> 
 
 <b>Sample code</b><br/> 
