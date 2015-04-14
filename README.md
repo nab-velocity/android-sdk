@@ -20,7 +20,9 @@ This class provides the implementation of the following methods: <br/>
      5. undo     <br/>
      6. adjust   <br/>
      7. returnById    <br/>
-     8. returnUnLinked     <br/><br/>
+     8. returnUnLinked     <br/>
+     9.queryTransactionDetails <br/>
+     10.captureAll <br/><br/>
      
 
 <h2>1.1 createCardToken(...) </h2><br/>
@@ -51,9 +53,9 @@ The method is responsible for the invocation of verify operation on the Velocity
 			   20.city -String <br/>
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-             velocityPaymentTransaction.setCardType("Visa"); <br/>
+         velocityPaymentTransaction.setCardType("Visa"); <br/>
 	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	      velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
 		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
 		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
 		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
@@ -96,56 +98,48 @@ The method is responsible for the invocation of authorize operation on the Veloc
 <b>public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
-            1.cardType - String     <br/>
-			   2.cardholderName - String     <br/>
-               3.panNumber-String   <br/>
-               4.expiryDate - String   <br/>
-			   5.street - String   <br/>
-               6.stateProvince - String     <br/>
-               7.postalCode - String   <br/>
-               8.phone - String    <br/>
-			   9.state - String     <br/>
-               10.cvDataProvided - String    <br/>
-               11.cVData - String   <br/>
-			   12.reportingDataReference String <br/>
-               13.transactionDataReference  String<br/>
-			   14.amount - String       <br/>
-               15.currencyCode - String       <br/> 
-               16.customerPresent - String     <br/>
-               17. partialShipment - boolean   <br/>
-               18.signatureCaptured - boolean    <br/>
-	           19.quasiCash - boolean    <br/>
-               20.email - String   <br/>
-			   21.transactionDateTime - String   <br/>
-			   22.city -String <br/>
-			   23.partialApprovalCapable-String <br/>
-               24.country - String     <br/>
-               25.tipAmount - String   <br/>
-               26.employeeId - String     <br/>
-               27.entryMode - String      <br/>
-	           28.industryType - String   <br/>
-               29.countryCode - String     <br/>
-               30.businnessName - String   <br/>
-               31.comment - String    <br/>
-               32.description - String    <br/>
-               33.paymentAccountDataToken - String   <br/>
-               34.cashBackAmount - String       <br/> 
-               35.goodsType - String     <br/>
-               36.invoiceNumber - String     <br/>
-               37.orderNumber - String      <br/>
-	           38.FeeAmount - String   <br/>
+
+			   1.street - String   <br/>
+               2.stateProvince - String     <br/>
+               3.postalCode - String   <br/>
+               4.phone - String    <br/>
+			   5.state - String     <br/>
+               6.cvDataProvided - String    <br/>
+               7.reportingDataReference String <br/>
+               8.transactionDataReference  String<br/>
+			   9.amount - String       <br/>
+               10.currencyCode - String       <br/> 
+               11.customerPresent - String     <br/>
+               12. partialShipment - boolean   <br/>
+               13.signatureCaptured - boolean    <br/>
+	           14.quasiCash - boolean    <br/>
+               15.email - String   <br/>
+			   16.transactionDateTime - String   <br/>
+			   17.city -String <br/>
+			   18.partialApprovalCapable-String <br/>
+               19.country - String     <br/>
+               20.tipAmount - String   <br/>
+               21.employeeId - String     <br/>
+               22.entryMode - String      <br/>
+	           23.industryType - String   <br/>
+               24.countryCode - String     <br/>
+               25.businnessName - String   <br/>
+               26.comment - String    <br/>
+               27.description - String    <br/>
+               28.paymentAccountDataToken - String   <br/>
+               29.cashBackAmount - String       <br/> 
+               30.goodsType - String     <br/>
+               31.invoiceNumber - String     <br/>
+               32.orderNumber - String      <br/>
+	           33.FeeAmount - String   <br/>
     <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-                 velocityPaymentTransaction.setCardType("Visa"); <br/>
-	         velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	         velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
-		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
-		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+        
+         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
 		 velocityPaymentTransaction.setState("CO"); <br/>
 		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
 		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
 		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setcVData("123"); <br/>
 		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
 		 velocityPaymentTransaction.setAmount("12.34"); <br/>
 		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
@@ -177,7 +171,7 @@ The method is responsible for the invocation of authorize operation on the Veloc
      
 @returnType  <b>VelocityResponse</b>  <br/>  
    <b>Sample code</b><br/> 
-       1.Request a authorizeToken() method from API .<br/> 
+       1.Request a authorize() method from API .<br/> 
        VelocityResponse velocityResponse=velocityProcessor.authorize(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
        
@@ -197,6 +191,211 @@ The method is responsible for the invocation of authorize operation on the Veloc
 				   // TODO your business logic to complete payment...
 				}
        }
+	   
+	<b>Authorize without Token Transaction:<b/><br/>   
+	<b>public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
+
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
+
+			   1.cardType - String     <br/>
+			   2.cardholderName - String     <br/>
+               3.panNumber-String   <br/>
+               4.expiryDate - String   <br/>
+			   5.street - String   <br/>
+               6.stateProvince - String     <br/>
+               7.postalCode - String   <br/>
+               8.phone - String    <br/>
+			   9.state - String     <br/>
+               10.cvDataProvided - String    <br/>
+               11.cVData - String   <br/>
+			   12.reportingDataReference String <br/>
+               13.transactionDataReference  String<br/>
+			   14.amount - String       <br/>
+               15.currencyCode - String       <br/> 
+               16.customerPresent - String     <br/>
+               17. partialShipment - boolean   <br/>
+               18.signatureCaptured - boolean    <br/>
+	           19.quasiCash - boolean    <br/>
+               20.email - String   <br/>
+			   21.transactionDateTime - String   <br/>
+			   22.city -String <br/>
+			   23.partialApprovalCapable-String <br/>
+               24.country - String     <br/>
+               25.tipAmount - String   <br/>
+               26.employeeId - String     <br/>
+               27.entryMode - String      <br/>
+	           28.industryType - String   <br/>
+               29.countryCode - String     <br/>
+               30.businnessName - String   <br/>
+               31.comment - String    <br/>
+               32.description - String    <br/>
+               33.FeeAmount - String   <br/>
+               34.cashBackAmount - String       <br/> 
+               35.goodsType - String     <br/>
+               36.invoiceNumber - String     <br/>
+               37.orderNumber - String      <br/>
+	        
+    <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+         velocityPaymentTransaction.setCardType("Visa"); <br/>
+	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+		 velocityPaymentTransaction.setExpiryDate("0113"); <br/> 
+		 velocityPaymentTransaction.setcVData("123"); <br/>
+         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+		
+ @returnType  <b>VelocityResponse</b>  <br/>  
+    <b>Sample code</b><br/> 
+       1.Request a authorize() method from API .<br/> 
+       VelocityResponse velocityResponse=velocityProcessor.authorize(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){ 
+          
+		    	//Here get the successful status then show the corresponding message.
+		    	
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }
+	 <b>P2PE transaction for Authorize: :<b/><br/>  
+ <b>public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
+
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
+
+			   1.securePaymentAccountData - String     <br/>
+			   2.encryptionKeyId - String     <br/>
+               3.orderNumber - String      <br/>
+               4.invoiceNumber - String     <br/>
+			   5.street - String   <br/>
+               6.stateProvince - String     <br/>
+               7.postalCode - String   <br/>
+               8.phone - String    <br/>
+			   9.state - String     <br/>
+               10.cvDataProvided - String    <br/>
+               11.goodsType - String     <br/>
+			   12.reportingDataReference String <br/>
+               13.transactionDataReference  String<br/>
+			   14.amount - String       <br/>
+               15.currencyCode - String       <br/> 
+               16.customerPresent - String     <br/>
+               17. partialShipment - boolean   <br/>
+               18.signatureCaptured - boolean    <br/>
+	           19.quasiCash - boolean    <br/>
+               20.email - String   <br/>
+			   21.transactionDateTime - String   <br/>
+			   22.city -String <br/>
+			   23.partialApprovalCapable-String <br/>
+               24.country - String     <br/>
+               25.tipAmount - String   <br/>
+               26.employeeId - String     <br/>
+               27.entryMode - String      <br/>
+	           28.industryType - String   <br/>
+               29.countryCode - String     <br/>
+               30.businnessName - String   <br/>
+               31.comment - String    <br/>
+               32.description - String    <br/>
+               33.FeeAmount - String   <br/>
+               34.cashBackAmount - String       <br/> 
+            
+	        
+    <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+         velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");<br/>
+		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
+         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+		
+ @returnType  <b>VelocityResponse</b>  <br/>  
+    <b>Sample code</b><br/> 
+       1.Request a authorize() method from API .<br/> 
+       VelocityResponse velocityResponse=velocityProcessor.authorize(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){ 
+          
+		    	//Here get the successful status then show the corresponding message.
+		    	
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }	 
+	   
 
 <h2>1.3 authorizeAndCapture(...) </h2><br/>
 The method is responsible for the invocation of authorizeAndCapture operation on the Velocity REST server.<br/>
@@ -204,10 +403,10 @@ The method is responsible for the invocation of authorizeAndCapture operation on
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorizeAndCapture request 
 VelocityPaymentTransaction <br/>
-             1. cardType - String     <br/>
-			  2. cardholderName - String     <br/>
-              3.panNumber-String   <br/>
-              4.expiryDate - String   <br/>
+              1.cashBackAmount - String       <br/> 
+			  2.goodsType - String     <br/>
+              3.invoiceNumber - String     <br/>
+              4. orderNumber - String      <br/>
 			  5.street - String   <br/>
               6. stateProvince - String     <br/>
               7.postalCode - String   <br/>
@@ -216,7 +415,7 @@ VelocityPaymentTransaction <br/>
               10. transactionDataReference  String<br/>
 			  11. state - String     <br/>
               12. cvDataProvided - String    <br/>
-              13.cVData - String   <br/>
+              13.FeeAmount - String   <br/>
 			  14. amount - String       <br/>
               15. currencyCode - String       <br/> 
               16. customerPresent - String     <br/>
@@ -237,24 +436,15 @@ VelocityPaymentTransaction <br/>
               31.comment - String    <br/>
               32.description - String    <br/>
               33.paymentAccountDataToken - String   <br/>
-              34.cashBackAmount - String       <br/> 
-              35.goodsType - String     <br/>
-              36.invoiceNumber - String     <br/>
-              37. orderNumber - String      <br/>
-	          38.FeeAmount - String   <br/>
-             
+                          
  <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-               velocityPaymentTransaction.setCardType("Visa"); <br/>
-	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	       velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
-		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
+              
 		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
 		 velocityPaymentTransaction.setState("CO"); <br/>
 		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
 		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
 		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setcVData("123"); <br/>
 		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
 		 velocityPaymentTransaction.setAmount("12.34"); <br/>
 		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
@@ -302,6 +492,210 @@ VelocityPaymentTransaction <br/>
 				   // TODO your business logic to complete payment...
 				}
        }
+	   <b>AuthorizeAndCapture without Token Transaction:<b/><br/>   
+	<b>public VelocityResponse authorizeAndCapture(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
+
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
+
+			   1.cardType - String     <br/>
+			   2.cardholderName - String     <br/>
+               3.panNumber-String   <br/>
+               4.expiryDate - String   <br/>
+			   5.street - String   <br/>
+               6.stateProvince - String     <br/>
+               7.postalCode - String   <br/>
+               8.phone - String    <br/>
+			   9.state - String     <br/>
+               10.cvDataProvided - String    <br/>
+               11.cVData - String   <br/>
+			   12.reportingDataReference String <br/>
+               13.transactionDataReference  String<br/>
+			   14.amount - String       <br/>
+               15.currencyCode - String       <br/> 
+               16.customerPresent - String     <br/>
+               17. partialShipment - boolean   <br/>
+               18.signatureCaptured - boolean    <br/>
+	           19.quasiCash - boolean    <br/>
+               20.email - String   <br/>
+			   21.transactionDateTime - String   <br/>
+			   22.city -String <br/>
+			   23.partialApprovalCapable-String <br/>
+               24.country - String     <br/>
+               25.tipAmount - String   <br/>
+               26.employeeId - String     <br/>
+               27.entryMode - String      <br/>
+	           28.industryType - String   <br/>
+               29.countryCode - String     <br/>
+               30.businnessName - String   <br/>
+               31.comment - String    <br/>
+               32.description - String    <br/>
+               33.FeeAmount - String   <br/>
+               34.cashBackAmount - String       <br/> 
+               35.goodsType - String     <br/>
+               36.invoiceNumber - String     <br/>
+               37.orderNumber - String      <br/>
+	        
+    <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+         velocityPaymentTransaction.setCardType("Visa"); <br/>
+	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+		 velocityPaymentTransaction.setExpiryDate("0113"); <br/> 
+		 velocityPaymentTransaction.setcVData("123"); <br/>
+         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+		
+ @returnType  <b>VelocityResponse</b>  <br/>  
+    <b>Sample code</b><br/> 
+       1.Request a authorizeAndCapture() method from API .<br/> 
+       VelocityResponse velocityResponse=velocityProcessor.authorizeAndCapture(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){ 
+          
+		    	//Here get the successful status then show the corresponding message.
+		    	
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }
+	 <b>P2PE transaction for AuthorizeAndCapture: :<b/><br/>  
+ <b>public VelocityResponse authorizeAndCapture(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
+
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
+
+			   1.securePaymentAccountData - String     <br/>
+			   2.encryptionKeyId - String     <br/>
+               3.orderNumber - String      <br/>
+               4.invoiceNumber - String     <br/>
+			   5.street - String   <br/>
+               6.stateProvince - String     <br/>
+               7.postalCode - String   <br/>
+               8.phone - String    <br/>
+			   9.state - String     <br/>
+               10.cvDataProvided - String    <br/>
+               11.goodsType - String     <br/>
+			   12.reportingDataReference String <br/>
+               13.transactionDataReference  String<br/>
+			   14.amount - String       <br/>
+               15.currencyCode - String       <br/> 
+               16.customerPresent - String     <br/>
+               17. partialShipment - boolean   <br/>
+               18.signatureCaptured - boolean    <br/>
+	           19.quasiCash - boolean    <br/>
+               20.email - String   <br/>
+			   21.transactionDateTime - String   <br/>
+			   22.city -String <br/>
+			   23.partialApprovalCapable-String <br/>
+               24.country - String     <br/>
+               25.tipAmount - String   <br/>
+               26.employeeId - String     <br/>
+               27.entryMode - String      <br/>
+	           28.industryType - String   <br/>
+               29.countryCode - String     <br/>
+               30.businnessName - String   <br/>
+               31.comment - String    <br/>
+               32.description - String    <br/>
+               33.FeeAmount - String   <br/>
+               34.cashBackAmount - String       <br/> 
+            
+	        
+    <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+         velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");<br/>
+		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
+         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+		
+ @returnType  <b>VelocityResponse</b>  <br/>  
+    <b>Sample code</b><br/> 
+       1.Request a authorizeAndCapture() method from API .<br/> 
+       VelocityResponse velocityResponse=velocityProcessor.authorizeAndCapture(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){ 
+          
+		    	//Here get the successful status then show the corresponding message.
+		    	
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }	 
+	   
 
 <h2>1.4 capture(...) </h2><br/>
 The method is responsible for the invocation of capture operation on the Velocity REST server.<br/>
@@ -337,8 +731,31 @@ The method is responsible for the invocation of capture operation on the Velocit
 				   // TODO your business logic to complete payment...
 				}
        }
+ <h2>1.5 captureAll(...) </h2><br/>
+The method is responsible for capture the all transaction on the Velocity REST server.<br/>
+<b> public VelocityResponse captureAll()</b><br/>
+@returnType  <b>VelocityResponse</b>  <br/> 
+<b>Sample code</b><br/> 
+       1.Request a captureAll() method from API .<br/> 
+       VelocityResponse velocityResponse=velocityProcessor.captureAll();<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){  
+		    	//Here get the successful status then show the corresponding message. 
+				 if(velocityResponse.getArrayOfResponse()!=null && velocityResponse.getArrayOfResponse().getStatus()!=null){  
+				     Log.i("VelocityProcessor", "CaptureAll: " + velocityResponse.getArrayOfResponse().getStatus());  
 
-<h2>1.5 undo(...) </h2><br/>
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){  
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId()); 
+
+				   // TODO your business logic to complete payment...
+				}
+       }
+
+<h2>1.6 undo(...) </h2><br/>
 The method is responsible for the invocation of undo operation on the Velocity REST server.<br/>
 <b> public VelocityResponse undo(VelocityPaymentTransaction velocityPaymentTransaction) </b><br/>
 
@@ -367,7 +784,7 @@ The method is responsible for the invocation of undo operation on the Velocity R
 				}
        }
 
-<h2>1.6 adjust(...) </h2><br/>
+<h2>1.7 adjust(...) </h2><br/>
 The method is responsible for the invocation of adjust operation on the Velocity REST server.<br/>
 <b> public VelocityResponse adjust(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
@@ -399,7 +816,7 @@ The method is responsible for the invocation of adjust operation on the Velocity
 				}
        }
 
-<h2>1.7 returnById(...) </h2><br/>
+<h2>1.8 returnById(...) </h2><br/>
 The method is responsible for the invocation of returnById operation on the Velocity REST server.<br/>
 <b>public VelocityResponse returnById(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
@@ -432,15 +849,15 @@ The method is responsible for the invocation of returnById operation on the Velo
 				}
        }
 
-<h2>1.8 returnUnLinked(...) </h2><br/>
+<h2>1.9 returnUnLinked(...) </h2><br/>
 The method is responsible for the invocation of returnUnLinked operation on the Velocity REST server.<br/>
 <b> public VelocityResponse returnUnLinked(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
 @parameter <b>velocityPaymentTransaction </b> - holds the values for the returnUnlinked request VelocityPaymentTransaction<br/>
-             1. cardType - String     <br/>
-			2. cardholderName - String     <br/>
-            3.  panNumber-String   <br/>
-            4.   expiryDate - String   <br/>
+             1. partialApprovalCapable - String   <br/>
+			2.  tipAmount - String   <br/>
+            3.  FeeAmount - String   <br/>
+            4.  orderNumber - String      <br/>   
 			5.   street - String   <br/>
             6.   stateProvince - String     <br/>
             7.   postalCode - String   <br/>
@@ -471,23 +888,16 @@ The method is responsible for the invocation of returnUnLinked operation on the 
             32. cashBackAmount - String       <br/> 
             33. goodsType - String     <br/>
             34.invoiceNumber - String     <br/>
-            35.orderNumber - String      <br/>
-	        36. FeeAmount - String   <br/>
-            37. tipAmount - String   <br/>
-            38. partialApprovalCapable - String   <br/>
+           
 <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
  VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
-               velocityPaymentTransaction.setCardType("Visa"); <br/>
-	      velocityPaymentTransaction.setCardholderName("ashish"); <br/>
-	       velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
-		 velocityPaymentTransaction.setExpiryDate("0113"); <br/>
+             
 		 velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
 		 velocityPaymentTransaction.setState("CO"); <br/>
 		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
 		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
 		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
-		 velocityPaymentTransaction.setcVData("123"); <br/>
-		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+	     velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
 		 velocityPaymentTransaction.setAmount("12.34"); <br/>
 		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
 		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
@@ -514,8 +924,8 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
 		velocityPaymentTransaction.setFeeAmount("1000.05");<br/>
            velocityPaymentTransaction.setPaymentAccountDataToken("78af6524-3325-4a01-be0f-3eea3378d62421664463-8f5f-4c87               -bba2-d572d6b70d55"); <br/>
-@returnType  <b>VelocityResponse</b>  <br/> 
-<b>Sample code</b><br/> 
+ @returnType  <b>VelocityResponse</b>  <br/> 
+  <b>Sample code</b><br/> 
        1.Request a returnUnLinked() method from API .<br/> 
         VelocityResponse velocityResponse=velocityProcessor.returnUnLinked(velocityPaymentTransaction);<br/>
        2.Get the success or Error response 	from API.<br/>  
@@ -534,7 +944,252 @@ The method is responsible for the invocation of returnUnLinked operation on the 
 				   // TODO your business logic to complete payment...
 				}
        }
+	   
+	  	   <b>ReturnUnlinked without Token Transaction:<b/><br/>   
+	 <b>public VelocityResponse returnUnlinked(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
 
+  @parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
+
+			   1.cardType - String     <br/>
+			   2.cardholderName - String     <br/>
+               3.panNumber-String   <br/>
+               4.expiryDate - String   <br/>
+			   5.street - String   <br/>
+               6.stateProvince - String     <br/>
+               7.postalCode - String   <br/>
+               8.phone - String    <br/>
+			   9.state - String     <br/>
+               10.cvDataProvided - String    <br/>
+               11.cVData - String   <br/>
+			   12.reportingDataReference String <br/>
+               13.transactionDataReference  String<br/>
+			   14.amount - String       <br/>
+               15.currencyCode - String       <br/> 
+               16.customerPresent - String     <br/>
+               17. partialShipment - boolean   <br/>
+               18.signatureCaptured - boolean    <br/>
+	           19.quasiCash - boolean    <br/>
+               20.email - String   <br/>
+			   21.transactionDateTime - String   <br/>
+			   22.city -String <br/>
+			   23.partialApprovalCapable-String <br/>
+               24.country - String     <br/>
+               25.tipAmount - String   <br/>
+               26.employeeId - String     <br/>
+               27.entryMode - String      <br/>
+	           28.industryType - String   <br/>
+               29.countryCode - String     <br/>
+               30.businnessName - String   <br/>
+               31.comment - String    <br/>
+               32.description - String    <br/>
+               33.FeeAmount - String   <br/>
+               34.cashBackAmount - String       <br/> 
+               35.goodsType - String     <br/>
+               36.invoiceNumber - String     <br/>
+               37.orderNumber - String      <br/>
+	        
+    <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+         velocityPaymentTransaction.setCardType("Visa"); <br/>
+	     velocityPaymentTransaction.setCardholderName("ashish"); <br/>
+	     velocityPaymentTransaction.setPanNumber("4012888812348882"); <br/>
+		 velocityPaymentTransaction.setExpiryDate("0113"); <br/> 
+		 velocityPaymentTransaction.setcVData("123"); <br/>
+         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+		
+ @returnType  <b>VelocityResponse</b>  <br/>  
+    <b>Sample code</b><br/> 
+       1.Request a returnUnlinked() method from API .<br/> 
+       VelocityResponse velocityResponse=velocityProcessor.returnUnlinked(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){ 
+          
+		    	//Here get the successful status then show the corresponding message.
+		    	
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }
+	 <b>P2PE transaction for  ReturnUnlinked:<b/><br/>  
+ <b>public VelocityResponse returnUnlinked(VelocityPaymentTransaction velocityPaymentTransaction)</b><br/>
+
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
+
+			   1.securePaymentAccountData - String     <br/>
+			   2.encryptionKeyId - String     <br/>
+               3.orderNumber - String      <br/>
+               4.invoiceNumber - String     <br/>
+			   5.street - String   <br/>
+               6.stateProvince - String     <br/>
+               7.postalCode - String   <br/>
+               8.phone - String    <br/>
+			   9.state - String     <br/>
+               10.cvDataProvided - String    <br/>
+               11.goodsType - String     <br/>
+			   12.reportingDataReference String <br/>
+               13.transactionDataReference  String<br/>
+			   14.amount - String       <br/>
+               15.currencyCode - String       <br/> 
+               16.customerPresent - String     <br/>
+               17. partialShipment - boolean   <br/>
+               18.signatureCaptured - boolean    <br/>
+	           19.quasiCash - boolean    <br/>
+               20.email - String   <br/>
+			   21.transactionDateTime - String   <br/>
+			   22.city -String <br/>
+			   23.partialApprovalCapable-String <br/>
+               24.country - String     <br/>
+               25.tipAmount - String   <br/>
+               26.employeeId - String     <br/>
+               27.entryMode - String      <br/>
+	           28.industryType - String   <br/>
+               29.countryCode - String     <br/>
+               30.businnessName - String   <br/>
+               31.comment - String    <br/>
+               32.description - String    <br/>
+               33.FeeAmount - String   <br/>
+               34.cashBackAmount - String       <br/> 
+            
+	        
+    <h2>How to set the Ui value on VelocityPaymentTransaction model </h2><br/>
+ VelocityPaymentTransaction  velocityPaymentTransaction=new VelocityPaymentTransaction();<br/>
+         velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");<br/>
+		 velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");<br/>
+         velocityPaymentTransaction.setStreet("4 corporate sq"); <br/>
+		 velocityPaymentTransaction.setState("CO"); <br/>
+		 velocityPaymentTransaction.setStateProvince("CO"); <br/>
+		 velocityPaymentTransaction.setPostalCode("80202"); <br/>
+		 velocityPaymentTransaction.setPhone("7849477899"); <br/>
+		 velocityPaymentTransaction.setCvDataProvided("Provided"); <br/>
+		 velocityPaymentTransaction.setAmount("12.34"); <br/>
+		 velocityPaymentTransaction.setCurrencyCode("USD"); <br/>
+		 velocityPaymentTransaction.setCustomerPresent("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmployeeId("11"); <br/>
+		 velocityPaymentTransaction.setEntryMode("Keyed"); <br/>
+		 velocityPaymentTransaction.setIndustryType("Ecommerce"); <br/>
+		 velocityPaymentTransaction.setEmail("ashishg2@chetu.com"); <br/>
+		 velocityPaymentTransaction.setTransactionDateTime("2013-04-03T13:50:16"); <br/>
+		 velocityPaymentTransaction.setCity("Denver"); <br/>
+		 velocityPaymentTransaction.setReportingDataReference("001"); <br/>
+		velocityPaymentTransaction.setTransactionDataReference("xyt"); <br/>
+		velocityPaymentTransaction.setQuasiCash(false);<br/>
+		velocityPaymentTransaction.setPartialShipment(false);<br/>
+		velocityPaymentTransaction.setSignatureCaptured(false);<br/>
+		velocityPaymentTransaction.setPartialApprovalCapable("NotSet");<br/>
+		velocityPaymentTransaction.setCountryCode("USA");<br/>
+		velocityPaymentTransaction.setTipAmount("2.34");<br/>
+		velocityPaymentTransaction.setBusinnessName("MomCorp");<br/>
+		velocityPaymentTransaction.setComment("a test comment");<br/>
+		velocityPaymentTransaction.setDescription("a test description");<br/>
+		velocityPaymentTransaction.setCashBackAmount("0.0");<br/>
+		velocityPaymentTransaction.setGoodsType("NotSet");<br/>
+		velocityPaymentTransaction.setInvoiceNumber(""); <br/>
+		velocityPaymentTransaction.setOrderNumber("629203"); <br/>
+		velocityPaymentTransaction.setFeeAmount("1000.05"); <br/>
+		
+ @returnType  <b>VelocityResponse</b>  <br/>  
+    <b>Sample code</b><br/> 
+       1.Request a returnUnlinked() method from API .<br/> 
+       VelocityResponse velocityResponse=velocityProcessor.returnUnlinked(velocityPaymentTransaction);<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){ 
+          
+		    	//Here get the successful status then show the corresponding message.
+		    	
+				 if(velocityResponse.getBankcardTransactionResponse() != null && velocityResponse.getBankcardTransactionResponse().getStatus()!=null){ 
+				     Log.i("VelocityProcessor", "Authorize Token: " + velocityResponse.getBankcardTransactionResponse().getStatus()); 
+
+				   // TODO your business logic to complete payment...
+
+				 } else if(velocityResponse.getErrorResponse()!=null && velocityResponse.getErrorResponse().getErrorId()!=null){ 
+				 
+				   Log.i("VelocityProcessor", "Error response: " +velocityResponse.getErrorResponse().getErrorId());
+
+				   // TODO your business logic to complete payment...
+				}
+       }	 
+	    
+<h2>2.0 queryTransactionDetails(...) </h2><br/>
+The method is responsible for the invocation of returnById operation on the Velocity REST server.<br/>
+<b>public VelocityResponse queryTransactionDetails(QueryTransactionsDetail queryTransactionsDetail)</b><br/>
+
+@parameter <b>queryTransactionsDetail </b> - holds the values for the queryTransactionDetails request QueryTransactionsDetail  <br/>
+                1. transactionId - List<String> <br/>
+		        2. endDateTime-String <br/>
+				3. transactionDetailFormat-TransactionDetailFormat<br/>
+				4. page-PagingParameters<br/>
+				5.pageSize-PagingParameters<br/>
+				6.batchIds()-List<String><br/>
+				7.startDateTime-String <br/>
+		
+<h2>How to set the Ui value on QueryTransactionsDetail model </h2><br/>
+  
+           QueryTransactionsDetail queryTransactionsDetail=new QueryTransactionsDetail();
+	    	queryTransactionsDetail.setTransactionDetailFormat(com.velocity.enums.TransactionDetailFormat.CWSTransaction);
+			queryTransactionsDetail.getPagingParameters().setPage(0);
+			queryTransactionsDetail.getPagingParameters().setPageSize(10);
+			queryTransactionsDetail.setIncludeRelated(true);
+			queryTransactionsDetail.getQueryTransactionsParameters().getTransactionDateRange().setStartDateTime("2015-03-13 02:03:40");
+		    queryTransactionsDetail.getQueryTransactionsParameters().getTransactionDateRange().setEndDateTime("2015-03-14 02:03:40");
+			queryTransactionsDetail.getQueryTransactionsParameters().getTransactionIds().add("D2449805BD0A437C8FFA6A61AA207589");
+@returnType  <b>VelocityResponse</b>  <br/> 
+
+<b>Sample code</b><br/> 
+       1.Request a queryTransactionDetails() method from API .<br/> 
+        VelocityResponse velocityResponse=velocityProcessor.queryTransactionDetails(queryTransactionsDetail );<br/>
+       2.Get the success or Error response 	from API.<br/>  
+       
+          if(velocityResponse!=null){  
+		    	//Here get the successful status then show the corresponding message.  <br/>
+				 if(velocityResponse.velocityResponse.getTransactionDetailList() != null ){  
+				 List<TransactionDetail> transactionDetailList =velocityResponse.getTransactionDetailList();
+				for (TransactionDetail transactionDetail : transactionDetailList) {
+				     Log.i("VelocityProcessor", "QueryTransactionDetails: " + transactionDetail.getTransactionInformation().getTransactionStatusCode());  
+
+				   // TODO your business logic to complete payment...
+
+				 }
+       }
 <h2>2. VelocityResponse </h2><br/>
 
 This class implements the responses coming from the Velocity server for a payment transaction request. <br/>
@@ -543,8 +1198,9 @@ It has the following attributes with name and datatype.<br/>
      2.  message - String <br/>
      3.  bankcardTransactionResponse - com.velocity.verify.response.BankcardTransactionResponsePro  <br/>
      4.  bankcardCaptureResponse - com.velocity.verify.response.BankcardCaptureResponse    <br/>
-     5.  errorResponse - com.velocity.verify.response.ErrorResponse    <br/><br/>
-
+	 5.  arrayOfResponse-com.velocity.model.captureAll.response.ArrayOfResponse <br/>
+     6.  errorResponse - com.velocity.verify.response.ErrorResponse    <br/>
+     7.  transactionDetail-com.velocity.model.transactions.TransactionDetail <br/><br/>
 <h2>2.1 BankcardTransactionResponsePro</h2><br/>
 
 This class has the following main attributes with its name and data type. <br/>
@@ -605,8 +1261,36 @@ This class has the following main attributes with its name and datatype. <br/>
      16.  industryType - String     <br/>
      17.  transactionSummaryData - TransactionSummaryData     <br/>
      18.  prepaidCard - String      <br/>
-     
- <h2>2.3 ErrorResponse </h2><br/>     
+	 
+  <h2>2.3 ArrayOfResponse </h2><br/>      
+     1.   status - String     <br/>
+     2.   statusCode - String     <br/>
+     3.   statusMessage - String     <br/>
+     4.   transactionId - String     <br/>
+     5.   originatorTransactionId - String    <br/>
+     6.   serviceTransactionId - String     <br/
+     7.   addendum - Addendum    <br/>
+     8.   captureState - String     <br/>
+     9.  transactionState - String     <br/>
+     10.  isAcknowledged - boolean   <br/>
+     11.  prepaidCard - String     <br/>
+     12.  reference - String     <br/>
+     13.  batchId - String     <br/>
+     14.  industryType - String     <br/>
+     15.  PrepaidCard - String    <br/>
+	 16.  cashBackTotals - CashBackTotals   <br/>
+     17.  netTotals - NetTotals     <br/>
+     18.  pINDebitReturnTotals - PINDebitReturnTotals     <br/>
+     19.  pINDebitSaleTotals - PINDebitSaleTotals     <br/>
+     20.  returnTotals - ReturnTotals     <br/>
+     21.  saleTotals - SaleTotals    <br/>
+	 22.  voidTotals - VoidTotals    <br/>	 
+  <h2>2.4 TransactionDetail </h2><br/> 
+      1.transactionInformation-TransactionInformation<br/>
+      2.familyInformation-FamilyInformation<br/>
+      3.completeTransaction-CompleteTransaction <br/>
+    	  
+  <h2>2.5 ErrorResponse </h2><br/>     
  
 This class has the following main attributes with its name and data type. <br/>     
    1.  errorId - String   <br/>
@@ -666,6 +1350,8 @@ This class has the following main attributes with its name and data-type.<br/>
      43. transactionDataReference  String<br/>  
 	 44. customerId - String      <br/>
 	 45.  city - String <br/>
+	 46.securePaymentAccountData <br/>
+	 47.encryptionKeyId <br/>
 
 <h2>3.Velocity sample android Application </h2><br/>
 The velocity  sample android Application is responsible for putting the Velocity Android-SDK for test purpose. <br/>
