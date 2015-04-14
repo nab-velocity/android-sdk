@@ -196,20 +196,21 @@ The method is responsible for the invocation of authorize operation on the Veloc
        }
 	  
 	   
-	Authorize without Token Transaction:<br/>  
+Authorize without Token Transaction:<br/>  
 	
-	public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)<br/>
-	@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
+public VelocityResponse authorize(VelocityPaymentTransaction velocityPaymentTransaction)<br/>
+@parameter <b>velocityPaymentTransaction </b> - holds the values for the authorize request VelocityPaymentTransaction <br/>
 
-			   1.cardType - String     <br/>
-			   2.cardholderName - String     <br/>
-               3.panNumber-String   <br/>
-               4.expiryDate - String   <br/>
-			   5.street - String   <br/>
-               6.stateProvince - String     <br/>
-               7.postalCode - String   <br/>
-               8.phone - String    <br/>
-			   9.state - String     <br/>
+
+		1.cardType - String     <br/>
+		2.cardholderName - String     <br/>
+                3.panNumber-String   <br/>
+                4.expiryDate - String   <br/>
+		5.street - String   <br/>
+                6.stateProvince - String     <br/>
+                7.postalCode - String   <br/>
+                8.phone - String    <br/>
+		9.state - String     <br/>
                10.cvDataProvided - String    <br/>
                11.cVData - String   <br/>
 			   12.reportingDataReference String <br/>
