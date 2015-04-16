@@ -40,9 +40,6 @@ public class BankcardTransactionResponsePro {
 		private String settlementDate;
 		private String finalBalance;
 		private String cashBackAmount;
-		private String date;
-		private String time;
-		private String timeZone;
 		private String resubmit;
 		
 		
@@ -53,30 +50,6 @@ public class BankcardTransactionResponsePro {
 
 		public void setResubmit(String resubmit) {
 			this.resubmit = resubmit;
-		}
-
-		public String getDate() {
-			return date;
-		}
-
-		public void setDate(String date) {
-			this.date = date;
-		}
-
-		public String getTime() {
-			return time;
-		}
-
-		public void setTime(String time) {
-			this.time = time;
-		}
-
-		public String getTimeZone() {
-			return timeZone;
-		}
-
-		public void setTimeZone(String timeZone) {
-			this.timeZone = timeZone;
 		}
 
 		public String getCashBackAmount() {

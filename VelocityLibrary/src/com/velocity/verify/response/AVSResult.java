@@ -1,16 +1,25 @@
 package com.velocity.verify.response;
 
+import com.velocity.gson.annotations.SerializedName;
+
 
 
 public class AVSResult {
-	
+	@SerializedName("ActualResult")
 	private String actualResult;
+	@SerializedName("CityResult")
 	private String cityResult;
+	@SerializedName("AddressResult")
     private String addressResult;
+	@SerializedName("CountryResult")
 	private String countryResult;
+	@SerializedName("StateResult")
 	private String stateResult;
+	@SerializedName("PostalCodeResult")
 	private String postalCodeResult;
+	@SerializedName("PhoneResult")
 	private String phoneResult;
+	@SerializedName("CardholderNameResult")
     private String cardholderNameResult;
 	
 	

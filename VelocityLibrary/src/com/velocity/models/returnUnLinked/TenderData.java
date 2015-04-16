@@ -11,15 +11,65 @@ public class TenderData {
 
 	private PaymentAccountDataToken paymentAccountDataToken;
 
-	private SecurePaymentAccountData securePaymentAccountData;
+	private String securePaymentAccountData;
+	
+	private SecurePaymentAccountData securePaymentAccountDataToken;
 
-	private EncryptionKeyId encryptionKeyId;
+	private String encryptionKeyId;
+	
+	private EncryptionKeyId  encryptionKeyIdToken;
 
-	private SwipeStatus swipeStatus;
+	private String swipeStatus;
+	
+	private SwipeStatus swipeStatusToken;
 
 	private EcommerceSecurityData ecommerceSecurityData;
+	
+	private String identificationInformation;
 
 	private CardData cardData;
+	
+	
+
+	public SecurePaymentAccountData getSecurePaymentAccountDataToken() {
+		
+		 if(securePaymentAccountDataToken == null){
+			 
+			 securePaymentAccountDataToken = new SecurePaymentAccountData();
+		 }
+		return securePaymentAccountDataToken;
+	}
+
+	public void setSecurePaymentAccountDataToken(
+			SecurePaymentAccountData securePaymentAccountDataToken) {
+		this.securePaymentAccountDataToken = securePaymentAccountDataToken;
+	}
+
+	public EncryptionKeyId getEncryptionKeyIdToken() {
+		
+		 if(encryptionKeyIdToken == null){
+			 
+			 encryptionKeyIdToken = new EncryptionKeyId();
+		 }
+		return encryptionKeyIdToken;
+	}
+
+	public void setEncryptionKeyIdToken(EncryptionKeyId encryptionKeyIdToken) {
+		this.encryptionKeyIdToken = encryptionKeyIdToken;
+	}
+
+	public SwipeStatus getSwipeStatusToken() {
+		
+		 if(swipeStatusToken == null){
+			 
+			 swipeStatusToken = new SwipeStatus();
+		 }
+		return swipeStatusToken;
+	}
+
+	public void setSwipeStatusToken(SwipeStatus swipeStatusToken) {
+		this.swipeStatusToken = swipeStatusToken;
+	}
 
 	public PaymentAccountDataToken getPaymentAccountDataToken() {
 		if (paymentAccountDataToken == null) {
@@ -34,59 +84,6 @@ public class TenderData {
 		this.paymentAccountDataToken = paymentAccountDataToken;
 	}
 
-	public SecurePaymentAccountData getSecurePaymentAccountData() {
-		if (securePaymentAccountData == null) {
-			securePaymentAccountData = new SecurePaymentAccountData();
-		}
-
-		return securePaymentAccountData;
-	}
-
-	public void setSecurePaymentAccountData(
-			SecurePaymentAccountData securePaymentAccountData) {
-		this.securePaymentAccountData = securePaymentAccountData;
-	}
-
-	public EncryptionKeyId getEncryptionKeyId() {
-
-		if (encryptionKeyId == null) {
-			encryptionKeyId = new EncryptionKeyId();
-		}
-
-		return encryptionKeyId;
-	}
-
-	public void setEncryptionKeyId(EncryptionKeyId encryptionKeyId) {
-		this.encryptionKeyId = encryptionKeyId;
-	}
-
-	public SwipeStatus getSwipeStatus() {
-
-		if (swipeStatus == null) {
-			swipeStatus = new SwipeStatus();
-		}
-
-		return swipeStatus;
-	}
-
-	public void setSwipeStatus(SwipeStatus swipeStatus) {
-		this.swipeStatus = swipeStatus;
-	}
-
-	public EcommerceSecurityData getEcommerceSecurityData() {
-
-		if (ecommerceSecurityData == null) {
-			ecommerceSecurityData = new EcommerceSecurityData();
-		}
-
-		return ecommerceSecurityData;
-	}
-
-	public void setEcommerceSecurityData(
-			EcommerceSecurityData ecommerceSecurityData) {
-		this.ecommerceSecurityData = ecommerceSecurityData;
-	}
-
 	public CardData getCardData() {
 		if (cardData == null) {
 			cardData = new CardData();
@@ -99,4 +96,49 @@ public class TenderData {
 		this.cardData = cardData;
 	}
 
+	public String getSecurePaymentAccountData() {
+		return securePaymentAccountData;
+	}
+
+	public void setSecurePaymentAccountData(String securePaymentAccountData) {
+		this.securePaymentAccountData = securePaymentAccountData;
+	}
+
+	public String getEncryptionKeyId() {
+		return encryptionKeyId;
+	}
+
+	public void setEncryptionKeyId(String encryptionKeyId) {
+		this.encryptionKeyId = encryptionKeyId;
+	}
+
+	public String getSwipeStatus() {
+		return swipeStatus;
+	}
+
+	public void setSwipeStatus(String swipeStatus) {
+		this.swipeStatus = swipeStatus;
+	}
+
+	public String getIdentificationInformation() {
+		return identificationInformation;
+	}
+
+	public void setIdentificationInformation(String identificationInformation) {
+		this.identificationInformation = identificationInformation;
+	}
+
+	public EcommerceSecurityData getEcommerceSecurityData() {
+		if(ecommerceSecurityData == null){
+			
+			ecommerceSecurityData = new EcommerceSecurityData();
+		}
+		return ecommerceSecurityData;
+	}
+
+	public void setEcommerceSecurityData(EcommerceSecurityData ecommerceSecurityData) {
+		this.ecommerceSecurityData = ecommerceSecurityData;
+	}
+
+	
 }

@@ -16,6 +16,8 @@ public class CardData {
 	private String expire;
 
 	private Track1Data track1Data;
+	
+	private String cVData;
 
 	public String getCardType() {
 		return cardType;
@@ -53,5 +55,15 @@ public class CardData {
 	public void setTrack1Data(Track1Data track1Data) {
 		this.track1Data = track1Data;
 	}
+
+	public String getcVData() {
+		return cVData;
+	}
+
+	public void setcVData(String cVData) {
+		this.cVData = cVData;
+	}
+	
+	
 
 }
