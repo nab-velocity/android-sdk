@@ -19,17 +19,67 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
-   <!--          
+         <LinearLayout
+            android:id="@+id/linearHorizantal"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >     
      <CheckBox  
-        android:id="@+id/checkTestMode"  
+        android:id="@+id/checkCaptureAll"  
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.01"
         android:layout_alignParentLeft="true"  
         android:layout_alignParentTop="true"
         android:textColor="#000000"  
-        android:text="Enable Test mode" />  
-             -->
+        android:text="CaptureAll" />  
+         
+        <CheckBox  
+        android:id="@+id/checkP2PE"  
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:layout_alignParentLeft="true"  
+        android:layout_alignParentTop="true"
+        android:textColor="#000000"  
+        android:text="P2PE" /> 
+         <CheckBox  
+        android:id="@+id/checkSample"  
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:layout_alignParentLeft="true"  
+        android:layout_alignParentTop="true"
+        android:textColor="#000000"  
+        android:text="Normal" /> 
+        </LinearLayout>
+        
+       <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="AppProfileId" />
+              <Spinner
+               android:id="@+id/appProfileId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:entries="@array/appProfileId_arrays"/>
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="WorkFlowId" />
+              <Spinner
+               android:id="@+id/workFlowId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:entries="@array/workflowId_arrays" />
+       
+             
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,6 +93,8 @@
                android:layout_height="wrap_content"
                android:entries="@array/TransactionName_arrays"
                android:prompt="@string/TransactionName_prompt"/>
+         
+         
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,6 +106,38 @@
 
             <EditText
                 android:id="@+id/cardHolderName"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="SecurePaymentAccountData" />
+
+            <EditText
+                android:id="@+id/SPAccountData"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+              <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="EncryptionKeyId" />
+
+            <EditText
+                android:id="@+id/EncryptionKeyId"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"
@@ -230,6 +314,7 @@
                android:layout_height="wrap_content"
                android:entries="@array/cardType_arrays"
                android:prompt="@string/cardType_prompt" />
+              
               <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -276,7 +361,41 @@
                 android:layout_marginRight="100dp"
                 android:background="@android:drawable/editbox_background"
                 android:ems="10" />
-              <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="TransactionId" />
+
+            <EditText
+                android:id="@+id/transactionId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.37"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:text="BatchId" />
+
+            <EditText
+                android:id="@+id/batchId"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginRight="100dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10" />
+           
+             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.37"

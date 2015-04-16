@@ -12,16 +12,65 @@ public class TenderData {
 	
 	private PaymentAccountDataToken paymentAccountDatawithoutToken;
 
-	private SecurePaymentAccountData securePaymentAccountData;
-
-	private EncryptionKeyId encryptionKeyId;
-
-	private SwipeStatus swipeStatus;
+	private String securePaymentAccountData;
+	
+    private  SecurePaymentAccountData  securePaymentAccountDataToken;
+    
+	private String encryptionKeyId;
+	
+    private EncryptionKeyId encryptionKeyIdToken;
+    
+    private SwipeStatus swipeStatusToken;
+    
+    private String swipeStatus;
 
 	private CardData cardData;
+	
+	private CardSecurityData cardSecurityData;
 
 	private EcommerceSecurityData ecommerceSecurityData;
 
+    
+	public SecurePaymentAccountData getSecurePaymentAccountDataToken() {
+		
+		if(securePaymentAccountDataToken == null){
+			
+			securePaymentAccountDataToken = new SecurePaymentAccountData();	
+		}
+		return securePaymentAccountDataToken;
+	}
+
+	public void setSecurePaymentAccountDataToken(
+			SecurePaymentAccountData securePaymentAccountDataToken) {
+		this.securePaymentAccountDataToken = securePaymentAccountDataToken;
+	}
+
+	public EncryptionKeyId getEncryptionKeyIdToken() {
+		
+		if(encryptionKeyIdToken == null){
+			encryptionKeyIdToken = new EncryptionKeyId();
+		}
+		return encryptionKeyIdToken;
+	}
+
+	public void setEncryptionKeyIdToken(EncryptionKeyId encryptionKeyIdToken) {
+		this.encryptionKeyIdToken = encryptionKeyIdToken;
+	}
+
+	public SwipeStatus getSwipeStatusToken() {
+		
+		 if(swipeStatusToken == null){
+			 swipeStatusToken = new SwipeStatus();
+		 }
+		
+		return swipeStatusToken;
+	}
+
+	public void setSwipeStatusToken(SwipeStatus swipeStatusToken) {
+		this.swipeStatusToken = swipeStatusToken;
+	}
+
+	
 	public String getPaymentAccountDataToken() {
 		return paymentAccountDataToken;
 	}
@@ -30,46 +79,28 @@ public class TenderData {
 		this.paymentAccountDataToken = paymentAccountDataToken;
 	}
 
-	public SecurePaymentAccountData getSecurePaymentAccountData() {
 
-		if (securePaymentAccountData == null) {
-			securePaymentAccountData = new SecurePaymentAccountData();
-
-		}
-
+  public String getSecurePaymentAccountData() {
 		return securePaymentAccountData;
 	}
 
-	public void setSecurePaymentAccountData(
-			SecurePaymentAccountData securePaymentAccountData) {
+	public void setSecurePaymentAccountData(String securePaymentAccountData) {
 		this.securePaymentAccountData = securePaymentAccountData;
 	}
 
-	public EncryptionKeyId getEncryptionKeyId() {
-
-		if (encryptionKeyId == null) {
-			encryptionKeyId = new EncryptionKeyId();
-		}
-
+	public String getEncryptionKeyId() {
 		return encryptionKeyId;
 	}
 
-	public void setEncryptionKeyId(EncryptionKeyId encryptionKeyId) {
+	public void setEncryptionKeyId(String encryptionKeyId) {
 		this.encryptionKeyId = encryptionKeyId;
 	}
 
-	public SwipeStatus getSwipeStatus() {
-
-		if (swipeStatus == null) {
-
-			swipeStatus = new SwipeStatus();
-		}
-
+	public String getSwipeStatus() {
 		return swipeStatus;
 	}
 
-	public void setSwipeStatus(SwipeStatus swipeStatus) {
-
+	public void setSwipeStatus(String swipeStatus) {
 		this.swipeStatus = swipeStatus;
 	}
 
@@ -109,6 +140,20 @@ public class TenderData {
 	public void setPaymentAccountDatawithoutToken(PaymentAccountDataToken paymentAccountDatawithoutToken) {
 		this.paymentAccountDatawithoutToken = paymentAccountDatawithoutToken;
 	}
+
+	public CardSecurityData getCardSecurityData() {
+		
+		if(cardSecurityData == null){
+			cardSecurityData = new CardSecurityData();
+		}
+		return cardSecurityData;
+	}
+
+	public void setCardSecurityData(CardSecurityData cardSecurityData) {
+		this.cardSecurityData = cardSecurityData;
+	}
+	
+	
 	
 
 }

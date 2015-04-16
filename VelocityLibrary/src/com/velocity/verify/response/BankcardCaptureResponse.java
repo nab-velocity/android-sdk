@@ -1,14 +1,11 @@
 package com.velocity.verify.response;
 
-
-
 /**
  * @author ranjitk
- *
+ * 
  */
 public class BankcardCaptureResponse {
-	
-	
+
 	private String status;
 
 	private String statusCode;
@@ -32,52 +29,22 @@ public class BankcardCaptureResponse {
 	private String prepaidCard;
 
 	private String reference;
-
-	private String netAmount;
-
+	
 	private String cardType;
-
+	
 	private String approvalCode;
-    private String batchId;
-     private String industryType;
-    private String cVResult;
-    private String paymentAccountDataToken;
-    private String count;
-    private String date;
-    private String time;
-    private String timeZone;
-    
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public String getTimeZone() {
-		return timeZone;
-	}
-
-	public void setTimeZone(String timeZone) {
-		this.timeZone = timeZone;
-	}
-
-	public String getCount() {
-		return count;
-	}
-
-	public void setCount(String count) {
-		this.count = count;
-	}
+	
+	private String batchId;
+	
+	private String industryType;
+	
+	private String cVResult;
+	
+	private String paymentAccountDataToken;
+	
+	private SaleTotals saleTotals;
+	
+	private NetTotals netTotals;
 
 	public String getIndustryType() {
 		return industryType;
@@ -95,8 +62,6 @@ public class BankcardCaptureResponse {
 		this.paymentAccountDataToken = paymentAccountDataToken;
 	}
 
-	
-	
 	public String getcVResult() {
 		return cVResult;
 	}
@@ -104,8 +69,6 @@ public class BankcardCaptureResponse {
 	public void setcVResult(String cVResult) {
 		this.cVResult = cVResult;
 	}
-
-	
 
 	public String getBatchId() {
 		return batchId;
@@ -115,7 +78,6 @@ public class BankcardCaptureResponse {
 		this.batchId = batchId;
 	}
 
-	
 	public String getApprovalCode() {
 		return approvalCode;
 	}
@@ -124,7 +86,6 @@ public class BankcardCaptureResponse {
 		this.approvalCode = approvalCode;
 	}
 
-	
 	public void setCardType(String cardType) {
 		this.cardType = cardType;
 	}
@@ -178,6 +139,11 @@ public class BankcardCaptureResponse {
 	}
 
 	public ServiceTransactionDateTime getServiceTransactionDateTime() {
+
+		if (serviceTransactionDateTime == null) {
+			serviceTransactionDateTime = new ServiceTransactionDateTime();
+		}
+
 		return serviceTransactionDateTime;
 	}
 
@@ -226,17 +192,32 @@ public class BankcardCaptureResponse {
 		this.reference = reference;
 	}
 
-	public String getNetAmount() {
-		return netAmount;
-	}
-
-	public void setNetAmount(String netAmount) {
-		this.netAmount = netAmount;
-	}
-
 	public String getCardType() {
 		return cardType;
 	}
 
-	
+	public SaleTotals getSaleTotals() {
+
+		if (saleTotals == null) {
+			saleTotals = new SaleTotals();
+		}
+		return saleTotals;
+	}
+
+	public void setSaleTotals(SaleTotals saleTotals) {
+		this.saleTotals = saleTotals;
+	}
+
+	public NetTotals getNetTotals() {
+
+		if (netTotals == null) {
+			netTotals = new NetTotals();
+		}
+		return netTotals;
+	}
+
+	public void setNetTotals(NetTotals netTotals) {
+		this.netTotals = netTotals;
+	}
+
 }

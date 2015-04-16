@@ -13,15 +13,20 @@
         <string-array name="TransactionName_arrays">
          <item>Verify</item>
         <item>Authorize W/Token</item>
-         <item>Authorize W/O Token</item>
-         <item>AuthAndCapture W/Token</item>
-         <item>AuthAndCapture W/O Token</item>
-        <item>Capture</item>
-        <item>Void(Undo)</item>
+         <item>Authorize W/OToken</item>
+         <item> P2PE Authorize</item>
+        <item>AuthorizeAndCapture W/Token</item>
+        <item>AuthorizeAndCapture W/OToken</item>
+        <item>P2PE AuthorizeAndCapture</item>
+         <item>Capture</item>
+        <item>Undo</item>
         <item>Adjust</item>
         <item>ReturnById</item>
         <item>ReturnUnlinked W/Token</item>
-        <item>ReturnUnlinked W/O Token</item>
+        <item>ReturnUnlinked W/OToken</item>
+         <item>P2PE ReturnUnlinked</item>
+        <item>QueryTransactionalDetails</item>
+         <item>CaptureAll</item>
        </string-array>
       <string-array name="state_arrays">
         <item>Colorado</item>
@@ -36,6 +41,26 @@
         <item>Master</item>
          <item>Discover</item>
         <item>American Express</item>
+        </string-array>
+         <string-array name="workflowId_arrays">
+        <item>2317000001(Normal)</item>
+        <item>BBBAAA0001(P2PE)</item>
+         <item>A39DF00001(CaptureAll)</item>
+         </string-array>
+          <string-array name="workflowId_names">
+        <item>2317000001</item>
+        <item>BBBAAA0001</item>
+         <item>A39DF00001</item>
+         </string-array>
+       <string-array name="appProfileId_arrays">
+        <item>14644(Normal)</item>
+        <item>14560(P2PE)</item>
+         <item>15464(CaptureAll)</item>
+      </string-array>
+      <string-array name="appProfileId_names">
+        <item>14644</item>
+        <item>14560</item>
+         <item>15464</item>
       </string-array>
        <string-array name="month_arrays">
         <item>Jan</item>

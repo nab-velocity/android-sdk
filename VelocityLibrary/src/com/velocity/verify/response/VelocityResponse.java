@@ -1,4 +1,12 @@
 package com.velocity.verify.response;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.velocity.model.captureAll.response.ArrayOfResponse;
+import com.velocity.model.transactions.query.response.JsonErrorResponse;
+import com.velocity.model.transactions.query.response.TransactionDetail;
+
 /*
  *This class is used for getting for response for payment  gateway application.
  * 
@@ -16,7 +24,25 @@ public class VelocityResponse {
 	//here setting the data after parsing the error response based on the paymentgateaway response.
 	private ErrorResponse errorResponse;
 	
+	private List<TransactionDetail> transactionDetailList;
+	// CaptureAll response
+	private ArrayOfResponse  arrayOfResponse ;
+	// Error response for QueryTransactional details.
+	private JsonErrorResponse jsonErrorResponse;
 	
+   
+	public JsonErrorResponse getJsonErrorResponse() {
+		
+		if(jsonErrorResponse == null){
+			
+			jsonErrorResponse = new JsonErrorResponse();
+		}
+		return jsonErrorResponse;
+	}
+
+	public void setJsonErrorResponse(JsonErrorResponse jsonErrorResponse) {
+		this.jsonErrorResponse = jsonErrorResponse;
+	}
 
 	public String getStatusCode() {
 		return statusCode;
@@ -70,5 +96,33 @@ public class VelocityResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	public List<TransactionDetail> getTransactionDetailList() {
+		
+		 if(transactionDetailList == null){
+			 transactionDetailList = new ArrayList<TransactionDetail>();
+		 }
+		return transactionDetailList;
+	}
+
+	public void setTransactionDetailList(
+			List<TransactionDetail> transactionDetailList) {
+		this.transactionDetailList = transactionDetailList;
+	}
+
+	public ArrayOfResponse getArrayOfResponse() {
+		
+		if(arrayOfResponse == null){
+			
+			arrayOfResponse = new ArrayOfResponse();
+		}
+		return arrayOfResponse;
+	}
+
+	public void setArrayOfResponse(ArrayOfResponse arrayOfResponse) {
+		this.arrayOfResponse = arrayOfResponse;
+	}
+	
+	
 	
 }

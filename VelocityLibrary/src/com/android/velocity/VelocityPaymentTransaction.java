@@ -12,7 +12,7 @@ public class VelocityPaymentTransaction {
 	private String state;
 	private String country;
 	private String amountfordjust;
-	//private String type;
+	private String batchId;
 	private String cardType;
 	private String cardholderName;
 	private String panNumber;
@@ -54,8 +54,45 @@ public class VelocityPaymentTransaction {
 	private boolean partialShipment;
 	private String transactionId;
 	 private String customerId;
+	 private String securePaymentAccountData;
+	 private String encryptionKeyId;
+	 private String swipeStatus;
+	 private String identificationInformation;
+	 
 	
 	
+	public String getSecurePaymentAccountData() {
+		return securePaymentAccountData;
+	}
+
+	public void setSecurePaymentAccountData(String securePaymentAccountData) {
+		this.securePaymentAccountData = securePaymentAccountData;
+	}
+
+	public String getEncryptionKeyId() {
+		return encryptionKeyId;
+	}
+
+	public void setEncryptionKeyId(String encryptionKeyId) {
+		this.encryptionKeyId = encryptionKeyId;
+	}
+
+	public String getSwipeStatus() {
+		return swipeStatus;
+	}
+
+	public void setSwipeStatus(String swipeStatus) {
+		this.swipeStatus = swipeStatus;
+	}
+
+	public String getIdentificationInformation() {
+		return identificationInformation;
+	}
+
+	public void setIdentificationInformation(String identificationInformation) {
+		this.identificationInformation = identificationInformation;
+	}
+
 	public String getAccountType() {
 		return accountType;
 	}
@@ -402,5 +439,15 @@ public class VelocityPaymentTransaction {
 	public void setPartialApprovalCapable(String partialApprovalCapable) {
 		this.partialApprovalCapable = partialApprovalCapable;
 	}
+
+	public String getBatchId() {
+		return batchId;
+	}
+
+	public void setBatchId(String batchId) {
+		this.batchId = batchId;
+	}
+	
+	
 
 }
