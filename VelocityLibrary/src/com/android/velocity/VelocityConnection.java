@@ -156,7 +156,7 @@ public VelocityResponse verify(String workFlowId, AuthorizeTransaction authorize
 	 try {
 		 //generate the xml request based on the user input.
 	 verifyXMLInput = velocityXmlCreator.verifyXML(authorizeTransaction);
-	 //Log.d("verify xml", verifyXMLInput);
+	 Log.d("verify xml", verifyXMLInput);
 	 if(sessionToken==null || sessionToken.isEmpty()){
 	  sessionToken=signOn(identityToken);
 	 }

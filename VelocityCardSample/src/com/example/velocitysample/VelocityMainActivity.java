@@ -21,6 +21,10 @@ import android.widget.Spinner;
 
 import com.android.velocity.VelocityPaymentTransaction;
 import com.android.velocity.VelocityProcessor;
+import com.velocity.enums.CaptureState;
+import com.velocity.enums.CardType;
+import com.velocity.enums.QueryType;
+import com.velocity.enums.TransactionState;
 import com.velocity.exceptions.VelocityCardGenericException;
 import com.velocity.exceptions.VelocityNotFound;
 import com.velocity.exceptions.velocityCardIllegalArgument;
@@ -38,15 +42,16 @@ public class VelocityMainActivity extends Activity {
 	private String state;
 	private String workflowId;
 	private String appProfileId;
+	private String entryMode;
 	
 // create the reference for VelocityResponse model for getting status velocity response.
 	private VelocityResponse velocityResponse;
 	private EditText editCardHolName,editStreet,editCity,
 	         editZip,editCountry,editemail,editPhone,editAmount,editAmountforadjust,
 	         editCreditCardNumber,editCvc,editEmployeeId,editTipAmount,editSecureAccount,editEncriptedId,
-	         editTransactionId,editBatchId;
+	         editTransactionId,editBatchId,editTrack1Data,editTrack2Data;
 	private  Spinner spinnerTransName, spinnerState,spinnerCardType,spinnerMonth,
-	         spinnerYear,spinnerCurrencyCode,spinnerWorkFlowId,spinnerAppProfileId;
+	         spinnerYear,spinnerCurrencyCode,spinnerWorkFlowId,spinnerAppProfileId,spinnerEntryMode;
 	private  CheckBox checkCaptureAll,checkP2PE,checkSample;
 	final Context context=this;
 	// create the reference for VelocityProcessor class for access the implemented method.
@@ -146,11 +151,13 @@ public class VelocityMainActivity extends Activity {
 		velocityPaymentTransaction.setTipAmount(editTipAmount.getText().toString().trim());
 		//set the static value for entryMode.
 		 //velocityPaymentTransaction.setEntryMode("TrackDataFromMSR");
-		 velocityPaymentTransaction.setEntryMode("Keyed");
+		 velocityPaymentTransaction.setEntryMode(spinnerEntryMode.getSelectedItem().toString());
 		 velocityPaymentTransaction.setSecurePaymentAccountData(editSecureAccount.getText().toString().trim());
 		 velocityPaymentTransaction.setEncryptionKeyId(editEncriptedId.getText().toString().trim());
 		 velocityPaymentTransaction.setTransactionId(editTransactionId.getText().toString());
 		 velocityPaymentTransaction.setBatchId(editBatchId.getText().toString());
+		 velocityPaymentTransaction.setTrack1Data(editTrack1Data.getText().toString().trim());
+	     velocityPaymentTransaction.setTrack2Data(editTrack2Data.getText().toString().trim());
 	   // velocityPaymentTransaction.setSecurePaymentAccountData("2540E479632A5FBACD3BDB8A3798104BC5C06105421D5E6369C7F78CBEA85647434D966CF8B4DAD1");
 		// velocityPaymentTransaction.setSwipeStatus("61403000");
 	//	velocityPaymentTransaction.setEncryptionKeyId("9010010B257DC7000083");
@@ -554,6 +561,7 @@ public class VelocityMainActivity extends Activity {
 		spinnerMonth = (Spinner) findViewById(R.id.monthId);
 		spinnerYear = (Spinner) findViewById(R.id.yearId);
 		spinnerCurrencyCode = (Spinner) findViewById(R.id.currencyCodeId);
+		spinnerEntryMode= (Spinner) findViewById(R.id.entryMode);
 		editCardHolName=(EditText)findViewById(R.id.cardHolderName);
 		editStreet=(EditText)findViewById(R.id.street);
 		editCity=(EditText)findViewById(R.id.city);
@@ -570,6 +578,8 @@ public class VelocityMainActivity extends Activity {
 		editEncriptedId=(EditText)findViewById(R.id.EncryptionKeyId);
 		editTransactionId=(EditText)findViewById(R.id.transactionId);
 		editBatchId=(EditText)findViewById(R.id.batchId);
+		editTrack2Data=(EditText)findViewById(R.id.track2Data);
+	    editTrack1Data=(EditText)findViewById(R.id.track1Data);
 		checkCaptureAll=(CheckBox)findViewById(R.id.checkCaptureAll);
 		checkP2PE=(CheckBox)findViewById(R.id.checkP2PE);
 		checkSample=(CheckBox)findViewById(R.id.checkSample);
@@ -610,6 +620,23 @@ public class VelocityMainActivity extends Activity {
 				
 			}
 			
+		});
+		
+		spinnerEntryMode.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				entryMode= parent.getItemAtPosition(position).toString();
+				System.out.println("EntryMode :"+entryMode);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
 		});
 		  
 		/*testModeUrl.setOnClickListener(new OnClickListener() {
@@ -683,6 +710,8 @@ public class VelocityMainActivity extends Activity {
 		editEncriptedId.setText("9010010B257DC7000083");
 		editTransactionId.setText("D2449805BD0A437C8FFA6A61AA207589");
 		editBatchId.setText("0620");
+		editTrack2Data.setText("4012000033330026=09041011000012345678");
+		editTrack1Data.setText("%B4012000033330026^NAJEER/SHAIK ^0904101100001100000000123456780?");
 		
 	}
 	
@@ -785,15 +814,30 @@ public class VelocityMainActivity extends Activity {
 	    	queryTransactionsDetail.setTransactionDetailFormat(com.velocity.enums.TransactionDetailFormat.CWSTransaction);
 			queryTransactionsDetail.getPagingParameters().setPage(0);
 			queryTransactionsDetail.getPagingParameters().setPageSize(4);
-			queryTransactionsDetail.setIncludeRelated(true);
-			if(velocityPaymentTransaction.getBatchId()!=null && velocityPaymentTransaction.getBatchId().length()!=0){
+			queryTransactionsDetail.setIncludeRelated(false);
+			queryTransactionsDetail.getQueryTransactionsParameters().setIsAcknowledged("false");
+			//if(velocityPaymentTransaction.getBatchId()!=null && velocityPaymentTransaction.getBatchId().length()!=0){
 			 queryTransactionsDetail.getQueryTransactionsParameters().getBatchIds().add(velocityPaymentTransaction.getBatchId());
-			 }
-			if(velocityPaymentTransaction.getTransactionId()!=null && velocityPaymentTransaction.getTransactionId().length()!=0){
+			// }
+			//if(velocityPaymentTransaction.getTransactionId()!=null && velocityPaymentTransaction.getTransactionId().length()!=0){
 		     queryTransactionsDetail.getQueryTransactionsParameters().getTransactionIds().add(velocityPaymentTransaction.getTransactionId());
-			}
-		     //queryTransactionsDetail.getQueryTransactionsParameters().getTransactionDateRange().setStartDateTime("2015-03-13 02:03:40");
-		    // queryTransactionsDetail.getQueryTransactionsParameters().getTransactionDateRange().setEndDateTime("2015-03-14 02:03:40");
+			//}
+		     queryTransactionsDetail.getQueryTransactionsParameters().getTransactionDateRange().setStartDateTime("2015-03-13 02:03:40");
+		     queryTransactionsDetail.getQueryTransactionsParameters().getTransactionDateRange().setEndDateTime("2015-03-14 02:03:40");
+		     queryTransactionsDetail.getQueryTransactionsParameters().getCaptureDateRange().setStartDateTime("2015-03-13 02:03:40");
+			 queryTransactionsDetail.getQueryTransactionsParameters().getCaptureDateRange().setEndDateTime("2015-03-17 02:03:40");
+			 queryTransactionsDetail.getQueryTransactionsParameters().getApprovalCodes().add("VI1000");
+	     	/* queryTransactionsDetail.getQueryTransactionsParameters().getMerchantProfileIds().add("PrestaShop Global HC");
+	     	 queryTransactionsDetail.getQueryTransactionsParameters().getServiceIds().add("2317000001");
+	     	 queryTransactionsDetail.getQueryTransactionsParameters().getServiceKeys().add("FF3BB6DC58300001");
+	         queryTransactionsDetail.getQueryTransactionsParameters().setQueryType(QueryType.OR);
+	         queryTransactionsDetail.getQueryTransactionsParameters().setTransactionState(TransactionState.Authorized);
+	         queryTransactionsDetail.getQueryTransactionsParameters().setCaptureState(CaptureState.ReadyForCapture);
+	   	  	 queryTransactionsDetail.getQueryTransactionsParameters().getTransactionClassTypePair().put("TransactionClass", "CREDIT");
+	         queryTransactionsDetail.getQueryTransactionsParameters().getTransactionClassTypePair().put("TransactionType", "AUTHONLY");
+             queryTransactionsDetail.getQueryTransactionsParameters().getOrderNumbers().add("629203");
+	         queryTransactionsDetail.getQueryTransactionsParameters().setCardTypes(CardType.Visa);*/
+		     
              
 	   	  return queryTransactionsDetail;
 	   	 

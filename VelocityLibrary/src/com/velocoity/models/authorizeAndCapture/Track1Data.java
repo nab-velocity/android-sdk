@@ -1,7 +1,7 @@
 package com.velocoity.models.authorizeAndCapture;
 
 public class Track1Data {
-	private boolean nillable;
+	 private boolean nillable;
 	  private String value;
 	public boolean isNillable() {
 		return nillable;

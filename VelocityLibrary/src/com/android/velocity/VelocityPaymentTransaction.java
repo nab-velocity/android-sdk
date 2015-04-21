@@ -58,6 +58,8 @@ public class VelocityPaymentTransaction {
 	 private String encryptionKeyId;
 	 private String swipeStatus;
 	 private String identificationInformation;
+	 private String track1Data;
+	 private String track2Data;
 	 
 	
 	
@@ -447,6 +449,23 @@ public class VelocityPaymentTransaction {
 	public void setBatchId(String batchId) {
 		this.batchId = batchId;
 	}
+
+	public String getTrack1Data() {
+		return track1Data;
+	}
+
+	public void setTrack1Data(String track1Data) {
+		this.track1Data = track1Data;
+	}
+
+	public String getTrack2Data() {
+		return track2Data;
+	}
+
+	public void setTrack2Data(String track2Data) {
+		this.track2Data = track2Data;
+	}
+	
 	
 	
 

@@ -9,7 +9,7 @@ package com.velocity.models.verify;
  */
 public class Track1Data {
 	
-private boolean nillable;
+  private boolean nillable;
 	
 	private String value;
 

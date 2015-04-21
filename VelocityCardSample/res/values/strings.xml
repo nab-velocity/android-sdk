@@ -42,6 +42,10 @@
          <item>Discover</item>
         <item>American Express</item>
         </string-array>
+        <string-array name="entryMode_arrays">
+        <item>Keyed</item>
+        <item>TrackDataFromMSR</item>  
+        </string-array>
          <string-array name="workflowId_arrays">
         <item>2317000001(Normal)</item>
         <item>BBBAAA0001(P2PE)</item>

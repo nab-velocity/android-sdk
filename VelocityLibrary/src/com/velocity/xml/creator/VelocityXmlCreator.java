@@ -49,12 +49,29 @@ public class VelocityXmlCreator {
 		verifyRequestXML.append("<MerchantProfileId>"+  authorizeTransaction.getMerchantprofileId() + "</MerchantProfileId>");
 		verifyRequestXML.append("<Transaction xmlns:ns1=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions/Bankcard\" i:type=\"ns1:"+authorizeTransaction.getTransaction().getType()+"\">");
 		verifyRequestXML.append("<ns1:TenderData>");
-		verifyRequestXML.append("<ns1:CardData>"); 
+		verifyRequestXML.append("<ns1:CardData>");
+		if(cardData!=null && cardData.getPanNumber().length()!=0){
 		verifyRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
 		verifyRequestXML.append("<ns1:CardholderName>"+cardData.getCardholderName()+"</ns1:CardholderName>");
 		verifyRequestXML.append("<ns1:PAN>"+cardData.getPanNumber()+"</ns1:PAN>");
 		verifyRequestXML.append("<ns1:Expire>"+cardData.getExpiryDate()+"</ns1:Expire>");
-		verifyRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data().isNillable()+"\">"+cardData.getTrack1Data().getValue() +"</ns1:Track1Data>");
+		verifyRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data1().isNillable()+"\">"+cardData.getTrack1Data1().getValue() +"</ns1:Track1Data>");
+		verifyRequestXML.append("<ns1:Track2Data i:nil=\""+cardData.getTrack2Data2().isNillable()+"\">"+cardData.getTrack2Data2().getValue() +"</ns1:Track2Data>");
+		} else if(cardData.getTrack1Data()!=null && cardData.getTrack1Data().length()!=0){ 
+			verifyRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+			verifyRequestXML.append("<ns1:Track1Data>"+cardData.getTrack1Data()+"</ns1:Track1Data>");
+			verifyRequestXML.append("<ns1:CardholderName>"+cardData.getCardholderName()+"</ns1:CardholderName>");
+			verifyRequestXML.append("<ns1:PAN i:nil=\""+cardData.isPanNumber()+"\">"+"</ns1:PAN>");
+			verifyRequestXML.append("<ns1:Expire i:nil=\""+cardData.isExpiryDate()+"\">"+"</ns1:Expire>");
+			verifyRequestXML.append("<ns1:Track2Data i:nil=\""+cardData.getTrack2Data2().isNillable()+"\">"+"</ns1:Track2Data>");
+		} else if(cardData.getTrack2Data()!=null && cardData.getTrack2Data().length()!=0){
+			verifyRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+			verifyRequestXML.append("<ns1:Track2Data>"+cardData.getTrack2Data()+"</ns1:Track2Data>");
+			verifyRequestXML.append("<ns1:CardholderName>"+cardData.getCardholderName()+"</ns1:CardholderName>");
+			verifyRequestXML.append("<ns1:PAN i:nil=\""+cardData.isPanNumber()+"\">"+"</ns1:PAN>");
+			verifyRequestXML.append("<ns1:Expire i:nil=\""+cardData.isExpiryDate()+"\">"+"</ns1:Expire>");
+			verifyRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data1().isNillable()+"\">"+"</ns1:Track1Data>");	
+		}
 		verifyRequestXML.append("</ns1:CardData>");
 		verifyRequestXML.append("<ns1:CardSecurityData>");
 		if(aVSData!=null && aVSData.getPostalCode()!=null && aVSData.getPostalCode().length()!=0){
@@ -180,13 +197,31 @@ public class VelocityXmlCreator {
 		 authorizeRequestXML.append("<ns5:SecurePaymentAccountData xmlns:ns5=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getSecurePaymentAccountDataToken().isNillable()+"\">" +"</ns5:SecurePaymentAccountData>");
 		 authorizeRequestXML.append("<ns6:EncryptionKeyId xmlns:ns6=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getEncryptionKeyIdToken().isNillable()+"\">" +"</ns6:EncryptionKeyId>");
 		 authorizeRequestXML.append("<ns7:SwipeStatus xmlns:ns7=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getSwipeStatusToken().isNillable()+"\">" +"</ns7:SwipeStatus>");  
-		 authorizeRequestXML.append("<ns1:CardData>"); 
-		 authorizeRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
-		 authorizeRequestXML.append("<ns1:CardholderName>"+cardData.getCardHolderName()+"</ns1:CardholderName>");
-		 authorizeRequestXML.append("<ns1:PAN>"+cardData.getPan()+"</ns1:PAN>");
-		 authorizeRequestXML.append("<ns1:Expire>"+cardData.getExpiryDate()+"</ns1:Expire>");
-		 authorizeRequestXML.append("<ns1:CVData>"+cardData.getcVData()+"</ns1:CVData>");
-		 authorizeRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data().isNullable()+"\">"+cardData.getTrack1Data().getValue() +"</ns1:Track1Data>");
+		 authorizeRequestXML.append("<ns1:CardData>");
+		   if(cardData!=null && cardData.getPan().length()!=0){
+		  authorizeRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+		  authorizeRequestXML.append("<ns1:CardholderName>"+cardData.getCardHolderName()+"</ns1:CardholderName>");
+		  authorizeRequestXML.append("<ns1:PAN>"+cardData.getPan()+"</ns1:PAN>");
+		  authorizeRequestXML.append("<ns1:Expire>"+cardData.getExpiryDate()+"</ns1:Expire>");
+		  authorizeRequestXML.append("<ns1:CVData>"+cardData.getcVData()+"</ns1:CVData>");
+		  authorizeRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data1().isNullable()+"\">"+cardData.getTrack1Data1().getValue() +"</ns1:Track1Data>");
+		  authorizeRequestXML.append("<ns1:Track2Data i:nil=\""+cardData.getTrack1Data1().isNullable()+"\">"+cardData.getTrack1Data1().getValue() +"</ns1:Track2Data>");
+		   } else if(cardData.getTrack1Data()!=null && cardData.getTrack1Data().length()!=0){
+			   authorizeRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+			   authorizeRequestXML.append("<ns1:Track1Data>"+cardData.getTrack1Data()+"</ns1:Track1Data>");
+			   authorizeRequestXML.append("<ns1:CardholderName>"+cardData.getCardHolderName()+"</ns1:CardholderName>");
+			   authorizeRequestXML.append("<ns1:PAN i:nil=\""+cardData.isPanNumber()+"\">"+"</ns1:PAN>");
+			   authorizeRequestXML.append("<ns1:Expire i:nil=\""+cardData.isExpiryDate()+"\">"+"</ns1:Expire>");
+			   authorizeRequestXML.append("<ns1:Track2Data i:nil=\""+cardData.getTrack2Data2().isNillable()+"\">"+"</ns1:Track2Data>");
+		   } else if(cardData.getTrack2Data()!=null && cardData.getTrack2Data().length()!=0){
+			   authorizeRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+			   authorizeRequestXML.append("<ns1:Track2Data>"+cardData.getTrack2Data()+"</ns1:Track2Data>");
+			   authorizeRequestXML.append("<ns1:CardholderName>"+cardData.getCardHolderName()+"</ns1:CardholderName>");
+			   authorizeRequestXML.append("<ns1:PAN i:nil=\""+cardData.isPanNumber()+"\">"+"</ns1:PAN>");
+			   authorizeRequestXML.append("<ns1:Expire i:nil=\""+cardData.isExpiryDate()+"\">"+"</ns1:Expire>");
+			   authorizeRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data1().isNullable()+"\">"+"</ns1:Track1Data>");
+			   
+		   }
 		 authorizeRequestXML.append("</ns1:CardData>");
 		     }
 		 }
@@ -306,12 +341,31 @@ public class VelocityXmlCreator {
 			authorizeAndCaptureRequestXML.append("<ns6:EncryptionKeyId xmlns:ns6=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getEncryptionKeyIdToken().isNillable()+"\">"+"</ns6:EncryptionKeyId>");
 			authorizeAndCaptureRequestXML.append("<ns7:SwipeStatus xmlns:ns7=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getSwipeStatusToken().isNillable()+"\">" +"</ns7:SwipeStatus>");
 			authorizeAndCaptureRequestXML.append("<ns1:CardData>"); 
+			if(cardData!=null && cardData.getPan().length()!=0){
 			authorizeAndCaptureRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
 			authorizeAndCaptureRequestXML.append("<ns1:CardholderName>"+cardData.getCardHolderName()+"</ns1:CardholderName>");
 			authorizeAndCaptureRequestXML.append("<ns1:PAN>"+cardData.getPan()+"</ns1:PAN>");
 			authorizeAndCaptureRequestXML.append("<ns1:Expire>"+cardData.getExpiryDate()+"</ns1:Expire>");
 			authorizeAndCaptureRequestXML.append("<ns1:CVData>"+cardData.getcVData()+"</ns1:CVData>");
-			authorizeAndCaptureRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data().isNillable()+"\">"+cardData.getTrack1Data().getValue() +"</ns1:Track1Data>");
+			authorizeAndCaptureRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data1().isNillable()+"\">"+cardData.getTrack1Data1().getValue() +"</ns1:Track1Data>");
+			authorizeAndCaptureRequestXML.append("<ns1:Track2Data i:nil=\""+cardData.getTrack2Data2().isNillable()+"\">"+cardData.getTrack2Data2().getValue() +"</ns1:Track2Data>");
+			} else if(cardData.getTrack1Data()!=null && cardData.getTrack1Data().length()!=0){
+				
+				authorizeAndCaptureRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+				authorizeAndCaptureRequestXML.append("<ns1:Track1Data>"+cardData.getTrack1Data()+"</ns1:Track1Data>");
+			    authorizeAndCaptureRequestXML.append("<ns1:CardholderName>"+cardData.getCardHolderName()+"</ns1:CardholderName>");
+				authorizeAndCaptureRequestXML.append("<ns1:PAN i:nil=\""+cardData.isPanNumber()+"\">"+"</ns1:PAN>");
+			    authorizeAndCaptureRequestXML.append("<ns1:Expire i:nil=\""+cardData.isExpiryDate()+"\">"+"</ns1:Expire>");
+				authorizeAndCaptureRequestXML.append("<ns1:Track2Data i:nil=\""+cardData.getTrack2Data2().isNillable()+"\">"+"</ns1:Track2Data>");
+			} else if(cardData.getTrack2Data()!=null && cardData.getTrack2Data().length()!=0){
+				
+				authorizeAndCaptureRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+				authorizeAndCaptureRequestXML.append("<ns1:Track2Data>"+cardData.getTrack2Data()+"</ns1:Track2Data>");
+				authorizeAndCaptureRequestXML.append("<ns1:CardholderName>"+cardData.getCardHolderName()+"</ns1:CardholderName>");
+				authorizeAndCaptureRequestXML.append("<ns1:PAN i:nil=\""+cardData.isPanNumber()+"\">"+"</ns1:PAN>");
+				authorizeAndCaptureRequestXML.append("<ns1:Expire i:nil=\""+cardData.isExpiryDate()+"\">"+"</ns1:Expire>");
+				authorizeAndCaptureRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data1().isNillable()+"\">"+"</ns1:Track1Data>");
+			}
 			authorizeAndCaptureRequestXML.append("</ns1:CardData>");
 			 }
 			}
@@ -622,10 +676,28 @@ public class VelocityXmlCreator {
 				returnUnlinkedRequestXML.append("<ns6:EncryptionKeyId xmlns:ns6=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getEncryptionKeyIdToken().isNillable()+"\">"+"</ns6:EncryptionKeyId>");
 				returnUnlinkedRequestXML.append("<ns7:SwipeStatus xmlns:ns7=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getSwipeStatusToken().isNillable()+"\">" +"</ns7:SwipeStatus>");
 			   returnUnlinkedRequestXML.append("<ns1:CardData>");
+			   if(cardData.getpAN()!=null && cardData.getpAN().length()!=0){
 			   returnUnlinkedRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
 			   returnUnlinkedRequestXML.append("<ns1:PAN>"+cardData.getpAN()+"</ns1:PAN>");
 			   returnUnlinkedRequestXML.append("<ns1:Expire>"+cardData.getExpire()+"</ns1:Expire>");
-			   returnUnlinkedRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data().isNillable()+"\">"+ cardData.getTrack1Data().getValue() +"</ns1:Track1Data>");
+			   returnUnlinkedRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data1().isNillable()+"\">"+ cardData.getTrack1Data1().getValue() +"</ns1:Track1Data>");
+				}  else if(cardData.getTrack1Data()!=null && cardData.getTrack1Data().length()!=0){
+					
+					returnUnlinkedRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+					returnUnlinkedRequestXML.append("<ns1:Track1Data>"+cardData.getTrack1Data()+"</ns1:Track1Data>");
+					returnUnlinkedRequestXML.append("<ns1:CardholderName>"+cardData.isCardHolderName()+"</ns1:CardholderName>");
+					returnUnlinkedRequestXML.append("<ns1:PAN i:nil=\""+cardData.isPanNumber()+"\">"+"</ns1:PAN>");
+					returnUnlinkedRequestXML.append("<ns1:Expire i:nil=\""+cardData.isExpiryDate()+"\">"+"</ns1:Expire>");
+					returnUnlinkedRequestXML.append("<ns1:Track2Data i:nil=\""+cardData.getTrack2Data2().isNillable()+"\">"+"</ns1:Track2Data>");
+				} else if(cardData.getTrack2Data()!=null && cardData.getTrack2Data().length()!=0){
+					
+					returnUnlinkedRequestXML.append("<ns1:CardType>"+cardData.getCardType()+"</ns1:CardType>");
+					returnUnlinkedRequestXML.append("<ns1:Track2Data>"+cardData.getTrack2Data()+"</ns1:Track2Data>");
+					returnUnlinkedRequestXML.append("<ns1:CardholderName>"+cardData.isCardHolderName()+"</ns1:CardholderName>");
+					returnUnlinkedRequestXML.append("<ns1:PAN i:nil=\""+cardData.isPanNumber()+"\">"+"</ns1:PAN>");
+					returnUnlinkedRequestXML.append("<ns1:Expire i:nil=\""+cardData.isExpiryDate()+"\">"+"</ns1:Expire>");
+					returnUnlinkedRequestXML.append("<ns1:Track1Data i:nil=\""+cardData.getTrack1Data1().isNillable()+"\">"+"</ns1:Track1Data>");
+				}
 			   returnUnlinkedRequestXML.append("</ns1:CardData>");
 			//  returnUnlinkedRequestXML.append("<ns1:EcommerceSecurityData i:nil=\""+returnUnlinkedTransaction.getTransaction().getTenderData().getEcommerceSecurityData().isNillable()+"\">"+ returnUnlinkedTransaction.getTransaction().getTenderData().getEcommerceSecurityData().getValue() +"</ns1:EcommerceSecurityData>");
 			}
