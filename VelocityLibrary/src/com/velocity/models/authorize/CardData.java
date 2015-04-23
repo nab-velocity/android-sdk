@@ -19,7 +19,7 @@ public class CardData {
 	
 	private String track1Data;
 	
-	private Track2Data track2Data2;
+	private TrackData track2Data2;
 	
 	private String track2Data;
 	
@@ -90,16 +90,16 @@ public class CardData {
 		this.track1Data1 = track1Data1;
 	}
 
-	public Track2Data getTrack2Data2() {
+	public TrackData getTrack2Data2() {
 		
 		if(track2Data2 == null){
 			
-			track2Data2 = new Track2Data();
+			track2Data2 = new TrackData();
 		}
 		return track2Data2;
 	}
 
-	public void setTrack2Data2(Track2Data track2Data2) {
+	public void setTrack2Data2(TrackData track2Data2) {
 		this.track2Data2 = track2Data2;
 	}
 

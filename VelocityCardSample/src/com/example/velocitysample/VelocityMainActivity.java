@@ -827,7 +827,7 @@ public class VelocityMainActivity extends Activity {
 		     queryTransactionsDetail.getQueryTransactionsParameters().getCaptureDateRange().setStartDateTime("2015-03-13 02:03:40");
 			 queryTransactionsDetail.getQueryTransactionsParameters().getCaptureDateRange().setEndDateTime("2015-03-17 02:03:40");
 			 queryTransactionsDetail.getQueryTransactionsParameters().getApprovalCodes().add("VI1000");
-	     	/* queryTransactionsDetail.getQueryTransactionsParameters().getMerchantProfileIds().add("PrestaShop Global HC");
+	     	 queryTransactionsDetail.getQueryTransactionsParameters().getMerchantProfileIds().add("PrestaShop Global HC");
 	     	 queryTransactionsDetail.getQueryTransactionsParameters().getServiceIds().add("2317000001");
 	     	 queryTransactionsDetail.getQueryTransactionsParameters().getServiceKeys().add("FF3BB6DC58300001");
 	         queryTransactionsDetail.getQueryTransactionsParameters().setQueryType(QueryType.OR);
@@ -836,7 +836,7 @@ public class VelocityMainActivity extends Activity {
 	   	  	 queryTransactionsDetail.getQueryTransactionsParameters().getTransactionClassTypePair().put("TransactionClass", "CREDIT");
 	         queryTransactionsDetail.getQueryTransactionsParameters().getTransactionClassTypePair().put("TransactionType", "AUTHONLY");
              queryTransactionsDetail.getQueryTransactionsParameters().getOrderNumbers().add("629203");
-	         queryTransactionsDetail.getQueryTransactionsParameters().setCardTypes(CardType.Visa);*/
+	         queryTransactionsDetail.getQueryTransactionsParameters().setCardTypes(CardType.Visa);
 		     
              
 	   	  return queryTransactionsDetail;
