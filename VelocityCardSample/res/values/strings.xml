@@ -38,9 +38,9 @@
     </string-array>
        <string-array name="cardType_arrays">
         <item>Visa</item>
-        <item>Master</item>
+        <item>MasterCard</item>
          <item>Discover</item>
-        <item>American Express</item>
+        <item>AmericanExpress</item>
         </string-array>
         <string-array name="entryMode_arrays">
         <item>Keyed</item>
