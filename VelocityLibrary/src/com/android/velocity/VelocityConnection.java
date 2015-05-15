@@ -367,7 +367,7 @@ return null;
 
 			//Generate the xml request based on the input request.
 			    captureXMLInput =velocityXmlCreator.captureXML(captureTransaction,appProfileId,merchantProfileId);
-			   // Log.d("capture xml", captureXMLInput);
+			    Log.d("capture xml", captureXMLInput);
 			  //get the session token from signon method.
 			    if(sessionToken==null || sessionToken.isEmpty()){
 			  	  sessionToken=signOnWithToken(identityToken);
@@ -515,7 +515,7 @@ return null;
 			
 			//Generate the xml request based on the input request.
 		      returnByIdXMLInput = velocityXmlCreator.returnByIdXML(returnByIdTransaction,appProfileId,merchantProfileId);
-		     // Log.d("returnByid xml", returnByIdXMLInput);
+		     Log.d("returnByid xml", returnByIdXMLInput);
 			 //get the session token from signon method.
 		      if(sessionToken==null || sessionToken.isEmpty()){
 		    	  sessionToken=signOnWithToken(identityToken);
