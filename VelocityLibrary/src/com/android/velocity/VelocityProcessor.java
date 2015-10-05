@@ -597,12 +597,12 @@ public  class VelocityProcessor {
 //Here set the value in model class given by data from user interface.
  private com.velocity.models.capture.ChangeTransaction getCaptureTransactionInstance() throws VelocityGenericException{
 	 
-	 float sumOfTipAmount=Float.parseFloat(velocityPaymentTransaction.getAmount())+Float.parseFloat(velocityPaymentTransaction.getTipAmount());
-	    String sumValue=Float.toString(sumOfTipAmount);
+	 //float sumOfTipAmount=Float.parseFloat(velocityPaymentTransaction.getAmount())+Float.parseFloat(velocityPaymentTransaction.getTipAmount());
+	    //String sumValue=Float.toString(sumOfTipAmount);
 	   com.velocity.models.capture.ChangeTransaction captureTransaction = new com.velocity.models.capture.ChangeTransaction();
 	   captureTransaction.getDifferenceData().setType(VelocityEnums.BankcardCapture);
 	   //captureTransaction.getDifferenceData().setTransactionId(objVelocityResponse.getBankcardTransactionResponse().getTransactionId());
-	   captureTransaction.getDifferenceData().setAmount(sumValue);
+	   captureTransaction.getDifferenceData().setAmount(velocityPaymentTransaction.getAmount());
 	   captureTransaction.getDifferenceData().setTipAmount(velocityPaymentTransaction.getTipAmount());
 	   
 	   return captureTransaction;
