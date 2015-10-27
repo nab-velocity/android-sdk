@@ -212,6 +212,10 @@ public class VelocityXmlParser {
 					 line = (Element) timeZone.item(0);
 					String timeZoneValue = getCharacterDataFromElement(line);
 					bankcardTransactionResponsePro.getServiceTransactionDateTime().setTimeZone(timeZoneValue);
+					NodeList emvData = element.getElementsByTagName("EMVData");
+					 line = (Element) emvData.item(0);
+					String emvDataValue = getCharacterDataFromElement(line);
+					bankcardTransactionResponsePro.setEMVData(emvDataValue);			
 					NodeList resubmit = element.getElementsByTagName("Resubmit");
 					 line = (Element) resubmit.item(0);
 					String resubmitValue = getCharacterDataFromElement(line);

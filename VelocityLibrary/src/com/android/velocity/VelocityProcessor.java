@@ -7,6 +7,7 @@ import org.apache.http.client.ClientProtocolException;
 
 import android.os.AsyncTask;
 
+import com.velocity.enums.EMVChipCondition;
 import com.velocity.enums.VelocityEnums;
 import com.velocity.exceptions.VelocityCardGenericException;
 import com.velocity.exceptions.VelocityGenericException;
@@ -365,6 +366,10 @@ public  class VelocityProcessor {
  		cardSecurityData.getKeySerialNumber().setNillable(true);
  		cardSecurityData.getpIN().setNillable(true);
  		cardSecurityData.setIdentificationInformation(velocityPaymentTransaction.getIdentificationInformation());
+ 		if (velocityPaymentTransaction.getEMVData() != null && velocityPaymentTransaction.getEMVData().length() != 0){
+ 			cardSecurityData.setEMVChipCondition(velocityPaymentTransaction.getEMVChipCondition());
+ 			cardSecurityData.setEMVData(velocityPaymentTransaction.getEMVData());
+ 		}
  		cardData.setCardHolderName(velocityPaymentTransaction.getCardholderName());
  		cardData.setCardType(velocityPaymentTransaction.getCardType());
  		cardData.setExpiryDate(velocityPaymentTransaction.getExpiryDate());

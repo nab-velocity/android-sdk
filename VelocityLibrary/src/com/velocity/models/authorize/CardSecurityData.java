@@ -3,6 +3,8 @@
  */
 package com.velocity.models.authorize;
 
+import com.velocity.enums.EMVChipCondition;
+
 /**
  * @author ranjitk
  *
@@ -18,6 +20,10 @@ public class CardSecurityData {
 	private PIN pIN;
 	
 	private String identificationInformation;
+	
+	private EMVChipCondition emvChipCondition;
+	
+	private String emvData;
 
 	public AVSData getaVSData() {
 		
@@ -79,7 +85,19 @@ public class CardSecurityData {
 		this.identificationInformation = identificationInformation;
 	}
 	
+	public EMVChipCondition getEMVChipCondition(){
+		return emvChipCondition;
+	}
 	
+	public void setEMVChipCondition(EMVChipCondition emvChipCondition){
+		this.emvChipCondition = emvChipCondition;
+	}
 	
-
+	public String getEMVData(){
+		return this.emvData;
+	}
+	
+	public void setEMVData(String emvData){
+		this.emvData = emvData;
+	}
 }

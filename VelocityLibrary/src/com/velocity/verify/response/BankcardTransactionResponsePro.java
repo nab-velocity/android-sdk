@@ -40,6 +40,7 @@ public class BankcardTransactionResponsePro {
 		private String settlementDate;
 		private String finalBalance;
 		private String cashBackAmount;
+		private String emvData;
 		private String resubmit;
 		
 		
@@ -308,5 +309,13 @@ public class BankcardTransactionResponsePro {
 
 		public void setReturnedACI(String returnedACI) {
 			this.returnedACI = returnedACI;
-		}	
+		}
+		
+		public String getEMVData(){
+			return this.emvData;
+		}
+		
+		public String setEMVData(String emvData){
+			return this.emvData = emvData;
+		}
 	}

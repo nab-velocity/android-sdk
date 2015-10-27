@@ -1,5 +1,7 @@
 package com.android.velocity;
 
+import com.velocity.enums.EMVChipCondition;
+
 /**
  * 
  * 
@@ -60,6 +62,8 @@ public class VelocityPaymentTransaction {
 	 private String identificationInformation;
 	 private String track1Data;
 	 private String track2Data;
+	 private EMVChipCondition emvChipCondition;
+     private String emvData;
 	 
 	
 	
@@ -466,7 +470,19 @@ public class VelocityPaymentTransaction {
 		this.track2Data = track2Data;
 	}
 	
+	public EMVChipCondition getEMVChipCondition(){
+		return emvChipCondition;
+	}
 	
+	public void setEMVChipCondition(EMVChipCondition emvChipCondition){
+		this.emvChipCondition = emvChipCondition;
+	}
 	
-
+	public String getEMVData(){
+		return this.emvData;
+	}
+	
+	public void setEMVData(String emvData){
+		this.emvData = emvData;
+	}
 }

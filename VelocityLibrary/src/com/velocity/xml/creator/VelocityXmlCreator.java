@@ -186,11 +186,17 @@ public class VelocityXmlCreator {
 			} else {
 				authorizeRequestXML.append("<ns7:SwipeStatus xmlns:ns7=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getSwipeStatusToken().isNillable()+"\">" +"</ns7:SwipeStatus>");	
 			}
-		if(tenderData.getCardSecurityData().getIdentificationInformation()!=null && tenderData.getCardSecurityData().getIdentificationInformation().length()!=0){
-		authorizeRequestXML.append("<ns1:CardSecurityData>"); 
-		authorizeRequestXML.append("<ns1:IdentificationInformation>"+tenderData.getCardSecurityData().getIdentificationInformation()+ "</ns1:IdentificationInformation>");
-		
-		authorizeRequestXML.append("</ns1:CardSecurityData>");
+		if(tenderData.getCardSecurityData().getIdentificationInformation()!=null && tenderData.getCardSecurityData().getIdentificationInformation().length()!=0 ||
+				tenderData.getCardSecurityData().getEMVData()!=null && tenderData.getCardSecurityData().getEMVData().length()!=0){
+			authorizeRequestXML.append("<ns1:CardSecurityData>");
+			if(tenderData.getCardSecurityData().getIdentificationInformation()!=null && tenderData.getCardSecurityData().getIdentificationInformation().length()!=0){
+				authorizeRequestXML.append("<ns1:IdentificationInformation>"+tenderData.getCardSecurityData().getIdentificationInformation()+ "</ns1:IdentificationInformation>");
+			}
+			if(tenderData.getCardSecurityData().getEMVData()!=null && tenderData.getCardSecurityData().getEMVData().length()!=0){
+				authorizeRequestXML.append("<ns1:EMVChipCondition>"+tenderData.getCardSecurityData().getEMVChipCondition() + "</ns1:EMVChipCondition>");
+				authorizeRequestXML.append("<ns1:EMVData>"+tenderData.getCardSecurityData().getEMVData() + "</ns1:EMVData>");
+			}
+			authorizeRequestXML.append("</ns1:CardSecurityData>");
 		}
 	  } else {
 	     authorizeRequestXML.append("<ns4:PaymentAccountDataToken xmlns:ns4=\"http://schemas.ipcommerce.com/CWS/v2.0/Transactions\" i:nil=\""+tenderData.getPaymentAccountDatawithoutToken().isNillable()+"\">"+"</ns4:PaymentAccountDataToken>"); 
